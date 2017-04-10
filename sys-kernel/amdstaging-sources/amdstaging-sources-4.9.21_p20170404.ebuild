@@ -71,4 +71,5 @@ src_prepare() {
 
 	unpack_fix_install_path
 	unpack_set_extraversion
+	touch .scmversion
 }

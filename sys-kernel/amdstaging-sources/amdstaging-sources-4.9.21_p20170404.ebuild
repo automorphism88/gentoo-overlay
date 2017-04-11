@@ -35,7 +35,8 @@ gentoo-base? ( https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/1500_XATTR_U
 https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/1510_fs-enable-link-security-restrictions-by-default.patch
 https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/2300_enable-poweroff-on-Mac-Pro-11.patch )
 gentoo-extras? ( https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/4200_fbcondecor.patch
-https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/4400_alpha-sysctl-uac.patchhttps://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/4567_distro-Gentoo-Kconfig.patch )
+https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/4400_alpha-sysctl-uac.patch
+https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/4567_distro-Gentoo-Kconfig.patch )
 gentoo-experimental? ( https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/5001_block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.9.patch
 https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/5002_block-introduce-the-BFQ-v7r11-I-O-sched-for-4.9.patch1
 https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/5003_block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for-4.9.patch

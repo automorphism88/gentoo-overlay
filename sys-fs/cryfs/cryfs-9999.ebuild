@@ -10,7 +10,7 @@ DESCRIPTION="Encrypted FUSE filesystem that conceals metadata"
 HOMEPAGE="https://www.cryfs.org/"
 
 LICENSE="LGPL-3 BSD-2 MIT
-test? ( BSD )"
+	test? ( BSD )"
 # cryfs - LGPL-3
 # scrypt - BSD-2
 # spdlog - MIT

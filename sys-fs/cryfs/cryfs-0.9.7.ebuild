@@ -28,7 +28,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/cryfs/cryfs/archive/${PV}.tar.gz"
+	SRC_URI="https://github.com/cryfs/cryfs/releases/download/${PV}/cryfs-${PV}.tar.xz"
 	KEYWORDS="~amd64"
 fi
 

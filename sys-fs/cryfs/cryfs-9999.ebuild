@@ -2,17 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit cmake-utils python-any-r1
 
 DESCRIPTION="Encrypted FUSE filesystem that conceals metadata"
 HOMEPAGE="https://www.cryfs.org/"
 
-LICENSE="LGPL-3
-	BSD-2
-	MIT
-	test? ( BSD )"
+LICENSE="LGPL-3 BSD-2 MIT
+test? ( BSD )"
 # cryfs - LGPL-3
 # scrypt - BSD-2
 # spdlog - MIT
@@ -28,7 +26,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/cryfs/cryfs/releases/download/${PV}/cryfs-${PV}.tar.xz"
+	SRC_URI="https://github.com/cryfs/cryfs/releases/download/${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64"
 fi
 
@@ -43,9 +41,7 @@ DEPEND="${RDEPEND}
 CMAKE_MIN_VERSION="2.8"
 
 src_configure() {
-	local mycmakeargs=(
-		-DBoost_USE_STATIC_LIBS=off
-	)
+	local mycmakeargs=("-DBoost_USE_STATIC_LIBS=off")
 
 	if use update-check ; then
 		mycmakeargs+=("-DCRYFS_UPDATE_CHECKS=on")

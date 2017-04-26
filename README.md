@@ -3,6 +3,9 @@ Personal Gentoo overlay
 
 Packages:
 
+app-backup/buttersink  
+See https://github.com/AmesCornish/buttersink
+
 app-text/calibre  
 Gentoo ebuild with a USE flag added to toggle system vs bundled
 dev-python/beautifulsoup. Also updated to latest version of calibre more

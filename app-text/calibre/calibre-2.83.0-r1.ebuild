@@ -89,7 +89,7 @@ DEPEND="${COMMON_DEPEND}
 src_prepare() {
 	# no_updates: do not annoy user with "new version is availible all the time
 	# disable_plugins: walking sec-hole, wait for upstream to use GHNS interface
-	if ! use update-check ; then
+	if use no-update-dialog ; then
 	   eapply "${FILESDIR}/${PN}-2.9.0-no_updates_dialog.patch"
 	fi
 

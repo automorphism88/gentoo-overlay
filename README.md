@@ -7,9 +7,10 @@ app-backup/buttersink
 See https://github.com/AmesCornish/buttersink
 
 app-text/calibre  
-Gentoo ebuild with a USE flag added to toggle system vs bundled
-dev-python/beautifulsoup. Also updated to latest version of calibre more
-quickly than official Gentoo ebuild.
+Gentoo ebuild with USE flags added to toggle system vs bundled
+dev-python/beautifulsoup and Gentoo patches removing update dialogs and
+disabling plugins. Default behavior is as in official Gentoo ebuild. Also
+updated to latest version of calibre more quickly than official Gentoo ebuild.
 
 sys-boot/grub-customizer  
 See https://launchpad.net/grub-customizer

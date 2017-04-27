@@ -14,6 +14,8 @@
     <remote-id type="sourceforge">calibre</remote-id>
   </upstream>
   <use>
+    <flag name="disable-plugins">Apply Gentoo patch to disable plugins (improves security)</flag>
+    <flag name="no-update-dialog">Apply Gentoo patch to disable update prompt dialog</flag>
     <flag name="system-beautifulsoup">Use system dev-python/beautifulsoup instead of bundled</flag>
   </use>
 </pkgmetadata>

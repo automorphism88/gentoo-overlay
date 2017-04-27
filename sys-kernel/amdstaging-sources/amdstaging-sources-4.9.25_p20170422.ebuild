@@ -64,7 +64,8 @@ EGIT_CHECKOUT_DIR="${WORKDIR}/linux-${PVR}-amdstaging"
 S="${EGIT_CHECKOUT_DIR}"
 
 src_prepare() {
-	eapply ${DISTDIR}/patch-4.9.24-25.xz
+	xz -cd ${DISTDIR}/patch-4.9.24-25.xz > ${T}/kernel-4.9.24-25.patch
+	eapply ${T}/kernel-4.9.24-25.patch
 
 	if use gentoo-base ; then
 		for i in ${GENTOO_BASE_PATCHES} ; do

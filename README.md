@@ -6,6 +6,9 @@ Packages:
 app-backup/buttersink  
 See https://github.com/AmesCornish/buttersink
 
+app-backup/snapper-gui  
+See https://github.com/ricardomv/snapper-gui
+
 app-text/calibre  
 Gentoo ebuild with USE flags added to toggle system vs bundled
 dev-python/beautifulsoup and Gentoo patches removing update dialogs and

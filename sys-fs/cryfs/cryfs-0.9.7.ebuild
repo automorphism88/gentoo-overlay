@@ -18,6 +18,7 @@ LICENSE="LGPL-3 BSD-2 MIT
 
 SLOT=0
 IUSE="+update-check -test -debug"
+S=${WORKDIR}
 
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3

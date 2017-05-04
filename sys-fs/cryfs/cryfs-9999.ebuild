@@ -28,6 +28,7 @@ if [[ "${PV}" == 9999 ]] ; then
 else
 	SRC_URI="https://github.com/cryfs/cryfs/releases/download/${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64"
+	S=${WORKDIR}
 fi
 
 RDEPEND=">=dev-libs/boost-1.56

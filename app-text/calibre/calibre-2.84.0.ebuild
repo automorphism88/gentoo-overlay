@@ -97,8 +97,6 @@ src_prepare() {
 		eapply "${FILESDIR}/${PN}-disable_plugins.patch"
 	fi
 
-	eapply "${FILESDIR}/${PN}-2.83.0-lzxd-bounds-error-bug-540596.patch"
-
 	eapply_user
 
 	# Fix outdated version constant.

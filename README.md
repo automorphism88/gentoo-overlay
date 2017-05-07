@@ -15,6 +15,12 @@ dev-python/beautifulsoup and Gentoo patches removing update dialogs and
 disabling plugins. Default behavior is as in official Gentoo ebuild. Also
 updated to latest version of calibre more quickly than official Gentoo ebuild.
 
+games-misc/cowsay-philosoraptor  
+See https://bitbucket.org/rohtie/philosoraptor-cowsay-fortune/
+
+games-misc/fortune-mod-philosoraptor  
+See https://bitbucket.org/rohtie/philosoraptor-cowsay-fortune/
+
 sys-boot/grub-customizer  
 See https://launchpad.net/grub-customizer
 

@@ -15,6 +15,10 @@ dev-python/beautifulsoup and Gentoo patches removing update dialogs and
 disabling plugins. Default behavior is as in official Gentoo ebuild. Also
 updated to latest version of calibre more quickly than official Gentoo ebuild.
 
+games-misc/cowsay  
+Modified from Gentoo version to keep upstream default of installing cow files to
+/usr/share/cows
+
 games-misc/cowsay-philosoraptor  
 See https://bitbucket.org/rohtie/philosoraptor-cowsay-fortune/
 

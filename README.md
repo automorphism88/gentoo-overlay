@@ -19,6 +19,9 @@ games-misc/cowsay
 Modified from Gentoo version to keep upstream default of installing cow files to
 /usr/share/cows
 
+games-misc/cowsay-files  
+See https://github.com/paulkaefer/cowsay-files
+
 games-misc/cowsay-philosoraptor  
 See https://bitbucket.org/rohtie/philosoraptor-cowsay-fortune/
 

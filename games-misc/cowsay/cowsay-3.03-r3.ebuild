@@ -36,6 +36,7 @@ src_install() {
 	doman cowsay.1
 	dosym cowsay /usr/bin/cowthink
 	dosym cowsay.1 /usr/share/man/man1/cowthink.1
-	dodir /usr/share/${P}/cows
-	cp -r cows "${ED}"/usr/share/${P}/ || die "cp failed"
+
+	insinto /usr/share/cows
+	doins cows/*
 }

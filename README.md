@@ -18,6 +18,10 @@ updated to latest version of calibre more quickly than official Gentoo ebuild.
 sys-boot/grub-customizer  
 See https://launchpad.net/grub-customizer
 
+sys-fs/btrfsmaintenance  
+Collection of btrfs maintenance scripts from openSUSE. See
+https://github.com/kdave/btrfsmaintenance
+
 sys-fs/cryfs  
 See https://www.cryfs.org
 

@@ -20,5 +20,5 @@ RDEPEND="games-misc/cowsay"
 src_install()
 {
 	insinto /usr/share/cows
-	doins cows/*
+	doins cows/*.cow
 }

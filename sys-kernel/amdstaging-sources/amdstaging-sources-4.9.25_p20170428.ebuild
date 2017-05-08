@@ -4,7 +4,7 @@
 EAPI=6
 ETYPE="sources"
 
-inherit kernel-2 git-r3 versionator
+inherit kernel-2 git-r3
 detect_version
 detect_arch
 
@@ -55,8 +55,7 @@ SRC_URI="gentoo-base? (
 EGIT_REPO_URI="https://github.com/M-Bab/linux-kernel-amdgpu/"
 EGIT_BRANCH="mbab_4.9"
 
-pdate="$(get_version_component_range 4)"
-EGIT_COMMIT_DATE="${pdate%p}"
+EGIT_COMMIT="1b25b9665e2d874286b745bc630ec429ee9c2f29"
 KEYWORDS="~amd64"
 
 EGIT_CHECKOUT_DIR="${WORKDIR}/linux-${PVR}-amdstaging"

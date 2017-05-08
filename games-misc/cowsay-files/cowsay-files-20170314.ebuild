@@ -12,7 +12,7 @@ KEYWORDS="amd64"
 
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/paulkaefer/cowsay-files/"
-EGIT_COMMIT_DATE="${PV}"
+EGIT_COMMIT="710518b62a2c4644eac72e04a77e4ebb073d58e3"
 
 DEPEND="${RDEPEND}"
 RDEPEND="games-misc/cowsay"

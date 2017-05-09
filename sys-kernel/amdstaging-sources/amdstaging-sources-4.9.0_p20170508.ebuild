@@ -52,7 +52,7 @@ SRC_URI="gentoo-base? (
 	)
 "
 
-EGIT_REPO_URI="https://cgit.freedesktop.org/~agd5f/linux/log/?h=amd-staging-4.9/"
+EGIT_REPO_URI="https://cgit.freedesktop.org/~agd5f/linux"
 EGIT_BRANCH="amd-staging-4.9"
 
 EGIT_COMMIT="63ca49e01dceecd17a2ebadbe080fb728954f9c3"

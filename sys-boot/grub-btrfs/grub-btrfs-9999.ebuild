@@ -20,6 +20,12 @@ fi
 RDEPEND="sys-boot/grub:2"
 DEPEND="${RDEPEND}"
 
+src_prepare()
+{
+	sed -i 's/#! \/usr\/bin\/bash/#!\/usr\/bin\/env bash/' 41_snapshots-btrfs ||
+		die "Couldn't sed shebang in 41_snapshots-btrfs"
+}
+
 src_install()
 {
 	insinto /etc/grub.d

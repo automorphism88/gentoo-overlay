@@ -17,6 +17,7 @@ GENTOO_BASE_PATCHES="
 	1500_XATTR_USER_PREFIX.patch
 	1510_fs-enable-link-security-restrictions-by-default.patch
 	2300_enable-poweroff-on-Mac-Pro-11.patch
+	2900_dev-root-proc-mount-fix.patch
 "
 
 GENTOO_EXTRA_PATCHES="
@@ -37,6 +38,7 @@ SRC_URI="gentoo-base? (
 		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/1500_XATTR_USER_PREFIX.patch
 		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/1510_fs-enable-link-security-restrictions-by-default.patch
 		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/2300_enable-poweroff-on-Mac-Pro-11.patch
+		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/2900_dev-root-proc-mount-fix.patch
 	)
 	gentoo-extras? (
 		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/4200_fbcondecor.patch

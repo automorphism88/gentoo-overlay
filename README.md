@@ -42,13 +42,18 @@ sys-fs/cryfs
 See https://www.cryfs.org
 
 sys-kernel/amdstaging-sources  
-Linux kernel based on the amd-staging-4.9 git tree with DC/DAL support in the
-AMDGPU driver, plus the latest 4.9.x patch from kernel.org (using M-Bab's git
-tree, found at https://github.com/M-Bab/linux-kernel-amdgpu), and the other
+Linux kernel based on the amd-staging git tree with DC/DAL support in the
+AMDGPU driver, plus the latest 4.9.x patch from kernel.org and the other
 patches from gentoo-sources (optional, controlled by USE flags).
 
+sys-kernel/mbab-sources  
+Linux kernel based on M-Bab's git tree (found at
+https://github.com/M-Bab/linux-kernel-amdgpu) with the DC/DAL support from
+the amd-staging kernel.
+
 virtual/linux-sources  
-Modified to accept sys-kernel/amdstaging-sources as a dependency
+Modified to accept sys-kernel/amdstaging-sources or sys-kernel/mbab-sources
+as a dependency
 
 x11-base/xorg-drivers and x11-base/xorg-server  
 Xorg version 1.17.4 for use with x11-drivers/ati-drivers (previously removed

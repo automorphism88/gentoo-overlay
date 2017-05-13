@@ -26,4 +26,5 @@ RDEPEND="
 		sys-kernel/aufs-sources
 		sys-kernel/raspberrypi-sources
 		sys-kernel/amdstaging-sources
+		sys-kernel/mbab-sources
 	)"

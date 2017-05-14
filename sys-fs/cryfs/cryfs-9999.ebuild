@@ -9,6 +9,9 @@ inherit cmake-utils python-any-r1
 DESCRIPTION="Encrypted FUSE filesystem that conceals metadata"
 HOMEPAGE="https://www.cryfs.org/"
 
+SLOT=0
+IUSE="-update-check -test -debug"
+
 LICENSE="LGPL-3 BSD-2 MIT
 	test? ( BSD )"
 # cryfs - LGPL-3
@@ -16,19 +19,15 @@ LICENSE="LGPL-3 BSD-2 MIT
 # spdlog - MIT
 # googletest - BSD
 
-SLOT=0
-IUSE="+update-check -test -debug"
-
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
-
 	EGIT_REPO_URI="https://github.com/cryfs/cryfs"
 	SRC_URI=""
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/cryfs/cryfs/releases/download/${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64"
-	S=${WORKDIR}
+	S="${WORKDIR}"
 fi
 
 RDEPEND=">=dev-libs/boost-1.56:=
@@ -64,7 +63,7 @@ src_configure() {
 }
 
 src_test() {
-	TMPDIR=${T}
+	TMPDIR="${T}"
 	addread /dev/fuse
 	addwrite /dev/fuse
 

@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit cmake-utils python-any-r1
@@ -10,14 +10,12 @@ DESCRIPTION="Encrypted FUSE filesystem that conceals metadata"
 HOMEPAGE="https://www.cryfs.org/"
 
 SLOT=0
-IUSE="-update-check -test -debug"
+IUSE="debug test update-check"
 
-LICENSE="LGPL-3 BSD-2 MIT
-	test? ( BSD )"
+LICENSE="LGPL-3 BSD-2 MIT"
 # cryfs - LGPL-3
 # scrypt - BSD-2
 # spdlog - MIT
-# googletest - BSD
 
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
@@ -34,24 +32,14 @@ RDEPEND=">=dev-libs/boost-1.56:=
 	>=dev-libs/crypto++-5.6.3:=
 	net-misc/curl:=
 	>=sys-fs/fuse-2.8.6:=
-	dev-libs/openssl:="
+	dev-libs/openssl:0="
 DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
-	|| ( >=sys-devel/gcc-4.8 >=sys-devel/clang-3.7 )"
-CMAKE_MIN_VERSION="2.8"
+	${PYTHON_DEPS}"
 
 src_configure() {
-	local mycmakeargs=("-DBoost_USE_STATIC_LIBS=off")
-
-	if use update-check ; then
-		mycmakeargs+=("-DCRYFS_UPDATE_CHECKS=on")
-	else
-		mycmakeargs+=("-DCRYFS_UPDATE_CHECKS=off")
-	fi
-
-	if use test ; then
-		mycmakeargs+=("-DBUILD_TESTING=on")
-	fi
+	local mycmakeargs=( "-DBoost_USE_STATIC_LIBS=off"
+						"-DCRYFS_UPDATE_CHECKS=$(xuse update-check)"
+						"-DBUILD_TESTING=$(xuse test)" )
 
 	if use debug ; then
 		CMAKE_BUILD_TYPE=Debug
@@ -63,7 +51,7 @@ src_configure() {
 }
 
 src_test() {
-	TMPDIR="${T}"
+	local TMPDIR="${T}"
 	addread /dev/fuse
 	addwrite /dev/fuse
 

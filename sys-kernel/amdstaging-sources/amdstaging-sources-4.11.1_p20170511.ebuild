@@ -34,7 +34,8 @@ GENTOO_EXP_PATCHES="
 	5010_enable-additional-cpu-optimizations-for-gcc.patch
 "
 
-SRC_URI="gentoo-base? ( genpatches-4.11-4.base.tar.xz )
+SRC_URI="https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.11.1.xz
+	gentoo-base? ( genpatches-4.11-4.base.tar.xz )
 	gentoo-extras? ( genpatches-4.11-4.extras.tar.xz )
 	gentoo-experimental? ( genpatches-4.11-4.experimental.tar.xz )"
 
@@ -48,6 +49,9 @@ EGIT_CHECKOUT_DIR="${WORKDIR}/linux-${PVR}-amdstaging"
 S="${EGIT_CHECKOUT_DIR}"
 
 src_prepare() {
+	unpack patch-4.11.1.xz
+	eapply patch-4.11.1
+
 	if use gentoo-base ; then
 		unpack genpatches-4.11-4.base.tar.xz
 		for i in ${GENTOO_BASE_PATCHES} ; do

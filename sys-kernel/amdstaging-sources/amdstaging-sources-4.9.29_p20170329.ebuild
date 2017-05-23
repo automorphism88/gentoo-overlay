@@ -34,25 +34,9 @@ GENTOO_EXP_PATCHES="
 	5010_enable-additional-cpu-optimizations-for-gcc.patch
 "
 
-SRC_URI="gentoo-base? (
-		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/1500_XATTR_USER_PREFIX.patch
-		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/1510_fs-enable-link-security-restrictions-by-default.patch
-		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/2300_enable-poweroff-on-Mac-Pro-11.patch
-		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/2900_dev-root-proc-mount-fix.patch
-	)
-	gentoo-extras? (
-		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/4200_fbcondecor.patch
-		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/4400_alpha-sysctl-uac.patch
-		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/4567_distro-Gentoo-Kconfig.patch
-	)
-	gentoo-experimental? (
-		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/5001_block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.9.patch
-		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/5002_block-introduce-the-BFQ-v7r11-I-O-sched-for-4.9.patch1
-		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/5003_block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for-4.9.patch
-		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/5004_Turn-BFQ-v7r11-into-BFQ-v8r7-for-4.9.0.patch1
-		https://dev.gentoo.org/~mpagano/genpatches/trunk/4.9/5010_enable-additional-cpu-optimizations-for-gcc.patch
-	)
-"
+SRC_URI="gentoo-base? ( genpatches-4.9-30.base.tar.xz )
+	gentoo-extras? ( genpatches-4.9-30.extras.tar.xz )
+	gentoo-experimental? ( genpatches-4.9-30.experimental.tar.xz )"
 
 EGIT_REPO_URI="https://github.com/automorphism88/amd-staging-sources/"
 EGIT_BRANCH="4.9-20170329"
@@ -65,20 +49,23 @@ S="${EGIT_CHECKOUT_DIR}"
 
 src_prepare() {
 	if use gentoo-base ; then
+		unpack genpatches-4.9-30.base.tar.xz
 		for i in ${GENTOO_BASE_PATCHES} ; do
-			eapply ${DISTDIR}/${i}
+			eapply ${i}
 		done
 	fi
 
 	if use gentoo-extras ; then
+		unpack genpatches-4.9-30.extras.tar.xz
 		for i in ${GENTOO_EXTRA_PATCHES} ; do
-			eapply ${DISTDIR}/${i}
+			eapply ${i}
 		done
 	fi
 
 	if use gentoo-experimental ; then
+		unpack genpatches-4.9-30.experimental.tar.xz
 		for i in ${GENTOO_EXP_PATCHES} ; do
-			eapply ${DISTDIR}/${i}
+			eapply ${i}
 		done
 	fi
 

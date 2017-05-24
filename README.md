@@ -15,6 +15,13 @@ dev-python/beautifulsoup and Gentoo patches removing update dialogs and
 disabling plugins. Default behavior is as in official Gentoo ebuild. Also
 updated to latest version of calibre more quickly than official Gentoo ebuild.
 
+dev-java/ecj-gcj  
+Modified from official Gentoo version to check in $PATH for gcj if it is not
+found in the current gcc profile. This allows the package to be built if the
+user is using GCC 7+ (or an earlier version without USE=gcj) as the default, so
+long as /etc/portage/package.env is used to put a different gcc version with gcj
+in the PATH.
+
 games-misc/cowsay  
 Modified from Gentoo version to keep upstream default of installing cow files to
 /usr/share/cows

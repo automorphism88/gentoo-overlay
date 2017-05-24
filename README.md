@@ -49,8 +49,9 @@ sys-fs/btrfsmaintenance
 Collection of btrfs maintenance scripts from openSUSE. See
 https://github.com/kdave/btrfsmaintenance
 
-sys-fs/cryfs  
-See https://www.cryfs.org
+~~sys-fs/cryfs  
+See https://www.cryfs.org~~  
+Removed after being merged into official Portage tree
 
 sys-kernel/amdstaging-sources  
 Linux kernel based on the amd-staging git tree with DC/DAL support in the

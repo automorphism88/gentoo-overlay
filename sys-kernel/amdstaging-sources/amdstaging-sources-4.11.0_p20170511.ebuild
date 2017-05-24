@@ -63,7 +63,7 @@ src_prepare() {
 	fi
 
 	if use gentoo-experimental ; then
-		pushd "${T}" unpack genpatches-4.11-4.experimental.tar.xz && popd
+		pushd "${T}" && unpack genpatches-4.11-4.experimental.tar.xz && popd
 		for i in ${GENTOO_EXP_PATCHES} ; do
 			eapply "${T}"/${i}
 		done

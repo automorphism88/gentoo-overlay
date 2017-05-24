@@ -49,27 +49,27 @@ EGIT_CHECKOUT_DIR="${WORKDIR}/linux-${PVR}-amdstaging"
 S="${EGIT_CHECKOUT_DIR}"
 
 src_prepare() {
-	unpack patch-4.11.1.xz
-	eapply patch-4.11.1
+	pushd "${T}" && unpack patch-4.11.1.xz && popd
+	eapply "${T}"/patch-4.11.1
 
 	if use gentoo-base ; then
-		unpack genpatches-4.11-4.base.tar.xz
+		pushd "${T}" && unpack genpatches-4.11-4.base.tar.xz && popd
 		for i in ${GENTOO_BASE_PATCHES} ; do
-			eapply ${i}
+			eapply "${T}"/${i}
 		done
 	fi
 
 	if use gentoo-extras ; then
-		unpack genpatches-4.11-4.extras.tar.xz
+		pushd "${T}" && unpack genpatches-4.11-4.extras.tar.xz && popd
 		for i in ${GENTOO_EXTRA_PATCHES} ; do
-			eapply ${i}
+			eapply "${T}"/${i}
 		done
 	fi
 
 	if use gentoo-experimental ; then
-		unpack genpatches-4.11-4.experimental.tar.xz
+		pushd "${T}" unpack genpatches-4.11-4.experimental.tar.xz && popd
 		for i in ${GENTOO_EXP_PATCHES} ; do
-			eapply ${i}
+			eapply "${T}"/${i}
 		done
 	fi
 

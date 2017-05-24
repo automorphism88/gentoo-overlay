@@ -49,23 +49,23 @@ S="${EGIT_CHECKOUT_DIR}"
 
 src_prepare() {
 	if use gentoo-base ; then
-		unpack genpatches-4.9-29.base.tar.xz
+		pushd "${T}" && unpack genpatches-4.9-29.base.tar.xz && popd
 		for i in ${GENTOO_BASE_PATCHES} ; do
-			eapply ${i}
+			eapply "${T}"/${i}
 		done
 	fi
 
 	if use gentoo-extras ; then
-		unpack genpatches-4.9-29.extras.tar.xz
+		pushd "${T}" && unpack genpatches-4.9-29.extras.tar.xz && popd
 		for i in ${GENTOO_EXTRA_PATCHES} ; do
-			eapply ${i}
+			eapply "${T}"/${i}
 		done
 	fi
 
 	if use gentoo-experimental ; then
-		unpack genpatches-4.9-29.experimental.tar.xz
+		pushd "${T}" && unpack genpatches-4.9-29.experimental.tar.xz && popd
 		for i in ${GENTOO_EXP_PATCHES} ; do
-			eapply ${i}
+			eapply "${T}"/${i}
 		done
 	fi
 

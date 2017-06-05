@@ -13,6 +13,8 @@ HOMEPAGE="https://cgit.freedesktop.org/~agd5f/linux/log/?h=amd-staging-4.11"
 LICENSE="GPL-2 freedist"
 IUSE="+gentoo-base +gentoo-extras +gentoo-experimental"
 
+DEPEND="dev-util/patchutils"
+
 GENTOO_BASE_PATCHES="
 	1500_XATTR_USER_PREFIX.patch
 	1510_fs-enable-link-security-restrictions-by-default.patch

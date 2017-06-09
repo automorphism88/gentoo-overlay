@@ -44,7 +44,7 @@ SRC_URI="https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.11.4.xz
 EGIT_REPO_URI="git://people.freedesktop.org/~agd5f/linux"
 EGIT_BRANCH="amd-staging-4.11"
 
-EGIT_COMMIT_DATE="2017-06-06"
+EGIT_COMMIT_DATE="2017-06-09"
 KEYWORDS="~amd64"
 
 EGIT_CHECKOUT_DIR="${WORKDIR}/linux-${PVR}-amdstaging"

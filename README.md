@@ -1,5 +1,8 @@
 # gentoo-overlay
-Personal Gentoo overlay
+Personal Gentoo overlay, containing a combination of staging ebuilds I'm hoping
+to eventually get merged into the official repos, experimental ebuilds that are
+too hackish to upstream, and official ebuilds I've modified to reflect my own
+preferences.
 
 Packages:
 

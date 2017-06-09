@@ -51,8 +51,8 @@ EGIT_CHECKOUT_DIR="${WORKDIR}/linux-${PVR}-amdstaging"
 S="${EGIT_CHECKOUT_DIR}"
 
 src_prepare() {
-	xz -cd patch-4.11.4.xz |
-		filterdiff -x "*/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c" -x "*/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c" -x "*/drivers/gpu/drm/amd/amdgpu/dce_v6_0.c" -x "*/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c" -x "*/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_hwmgr.c" -x "*/drivers/gpu/drm/amd/radeon/*" > ${T}/patch-4.11.4-fixed
+	xz -cd "${DISTDIR}"/patch-4.11.4.xz |
+		filterdiff -x "*/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c" -x "*/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c" -x "*/drivers/gpu/drm/amd/amdgpu/dce_v6_0.c" -x "*/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c" -x "*/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_hwmgr.c" -x "*/drivers/gpu/drm/radeon/*" > ${T}/patch-4.11.4-fixed
 	eapply "${T}"/patch-4.11.4-fixed
 
 	if use gentoo-base ; then

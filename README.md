@@ -81,3 +81,6 @@ from portage tree, with patches added for kernels up to 4.9)
 
 x11-libs/amd-sdl-sdk and x11-libs/xvba-video  
 For use with x11-drivers/ati-drivers (previously removed from portage tree)
+
+x11-themes/cloak-theme  
+See http://killhellokitty.deviantart.com/art/Cloak-3-20-6-05052016-603341133

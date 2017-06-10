@@ -19,7 +19,7 @@ if [[ ${PV} == 99999999 ]] ; then
 	KEYWORDS=""
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/killhellokitty/Cloak-3.20"
+	EGIT_REPO_URI="https://github.com/automorphism88/Cloak-3.20"
 else
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/automorphism88/Cloak-3.20/archive/${PV}.tar.gz -> ${P}.tar.gz"

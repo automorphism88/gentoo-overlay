@@ -57,6 +57,9 @@ https://github.com/kdave/btrfsmaintenance
 See https://www.cryfs.org~~  
 Removed after being merged into official Portage tree
 
+sys-fs/vhba  
+New versions
+
 sys-kernel/amdstaging-sources  
 Linux kernel based on the amd-staging git tree with DC/DAL support in the
 AMDGPU driver, plus the latest 4.9.x patch from kernel.org and the other

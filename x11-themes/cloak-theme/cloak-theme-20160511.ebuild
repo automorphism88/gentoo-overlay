@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="A black theme set for GTK"
-HOMEPAGE="https://github.com/killhellokitty/Cloak-3.20/"
+HOMEPAGE="https://github.com/automorphism88/Cloak-3.20/"
 LICENSE="GPL-3"
 SLOT=0
 

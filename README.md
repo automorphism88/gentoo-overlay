@@ -13,6 +13,9 @@ Removed after being merged into official Portage tree
 app-backup/snapper-gui  
 See https://github.com/ricardomv/snapper-gui
 
+app-cdr/cdemu (plus app-cdr/{cdemu-daemon,gcdemu} and dev-libs/libmirage)  
+Version 3.1.0
+
 app-emulation/playonlinux  
 Modified from official Gentoo version to accept the new virtual/wine as a
 dependency in addition to app-emulation/wine

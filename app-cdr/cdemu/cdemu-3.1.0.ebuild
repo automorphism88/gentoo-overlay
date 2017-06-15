@@ -1,12 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
 PLOCALES="no sl sv"
 
-inherit bash-completion-r1 cmake-utils eutils fdo-mime l10n python-single-r1
+inherit bash-completion-r1 cmake-utils fdo-mime l10n python-single-r1
 
 DESCRIPTION="Command-line tool for controlling cdemu-daemon"
 HOMEPAGE="http://cdemu.org"
@@ -34,7 +34,8 @@ pkg_setup() {
 
 src_prepare() {
 	python_fix_shebang src/cdemu
-	epatch "${FILESDIR}/${PN}-3.0.0-bash-completion-dir.patch"
+	eapply -p2 "${FILESDIR}/${PN}-3.0.0-bash-completion-dir.patch"
+	eapply_user
 }
 
 src_configure() {

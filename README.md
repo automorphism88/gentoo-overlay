@@ -7,7 +7,7 @@ preferences.
 Packages:
 
 ~~app-backup/buttersink  
-See https://github.com/AmesCornish/buttersink~~
+See https://github.com/AmesCornish/buttersink~~  
 Removed after being merged into official Portage tree
 
 app-backup/snapper-gui  

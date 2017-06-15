@@ -18,7 +18,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/kdave/btrfsmaintenance"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/kdave/btrfsmaintenance/archive/v${PV}.tar.gz"
+	SRC_URI="https://github.com/kdave/btrfsmaintenance/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 

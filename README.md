@@ -60,8 +60,8 @@ https://github.com/kdave/btrfsmaintenance
 See https://www.cryfs.org~~  
 Removed after being merged into official Portage tree
 
-sys-fs/vhba  
-New versions
+~~sys-fs/vhba~~  
+New versions - removed after being upstreamed
 
 sys-kernel/amdstaging-sources  
 Linux kernel based on the amd-staging git tree with DC/DAL support in the

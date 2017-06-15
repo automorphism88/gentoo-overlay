@@ -8,10 +8,11 @@ HOMEPAGE="https://github.com/automorphism88/Cloak-3.20/"
 LICENSE="GPL-3"
 SLOT=0
 
-IUSE="cinnamon firefox gnome mate openbox xfce xfdashboard"
+IUSE="cinnamon firefox gnome-shell +gtk2 +gtk3 mate openbox xfce xfdashboard"
 
-RDEPEND=">=x11-themes/gnome-themes-standard-3.20
-	x11-themes/gtk-engines-murrine
+RDEPEND="gtk2? ( >=x11-themes/gnome-themes-standard-3.20
+	x11-themes/gtk-engines-murrine )
+	gtk3? ( >=x11-libs/gtk+-3.20:3 )
 	x11-libs/gdk-pixbuf"
 DEPEND="${RDEPEND}"
 
@@ -29,11 +30,13 @@ fi
 src_install() {
 	dodir /usr/share/themes/Cloak-3.20
 	cd "${S}/Cloak-3.20" || die
-	cp -R index.theme gtk-2.0 gtk-3.0 "${D}/usr/share/themes/Cloak-3.20" || die
+	cp index.theme "${D}/usr/share/themes/Cloak-3.20" || die
 
 	use cinnamon && { cp -R cinnamon "${D}/usr/share/themes/Cloak-3.20" || die; }
 	use firefox && { cp -R Firefox "${D}/usr/share/themes/Cloak-3.20" || die; }
-	use gnome && { cp -R gnome-shell gnome-shell-GDM "${D}/usr/share/themes/Cloak-3.20" || die; }
+	use gnome-shell && { cp -R gnome-shell gnome-shell-GDM "${D}/usr/share/themes/Cloak-3.20" || die; }
+	use gtk2 && { cp -R gtk-2.0 "${D}/usr/share/themes/Cloak-3.20" || die; }
+	use gtk3 && { cp -R gtk-3.0 "${D}/usr/share/themes/Cloak-3.20" || die; }
 	use mate && { cp -R metacity-1 "${D}/usr/share/themes/Cloak-3.20" || die; }
 	use openbox && { cp -R openbox-3 "${D}/usr/share/themes/Cloak-3.20" || die; }
 	use xfce && { cp -R xfwm4 "${D}/usr/share/themes/Cloak-3.20" || die; }

@@ -52,7 +52,8 @@ S="${EGIT_CHECKOUT_DIR}"
 
 src_prepare() {
 	xz -cd "${DISTDIR}"/patch-4.11.5.xz |
-		filterdiff -x "*/drivers/gpu/drm/amd/amdgpu/ci_dpm.c" -x "*/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c" -x "*/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c" -x "*/drivers/gpu/drm/amd/amdgpu/dce_v6_0.c" -x "*/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c" -x "*/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_hwmgr.c" -x "*/drivers/gpu/drm/radeon/*" > ${T}/patch-4.11.5-fixed
+		filterdiff -x "*/drivers/gpu/drm/amd/amdgpu/ci_dpm.c" -x "*/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c" -x "*/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c" -x "*/drivers/gpu/drm/amd/amdgpu/dce_v6_0.c" -x "*/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c" -x "*/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_hwmgr.c" -x "*/drivers/gpu/drm/radeon/*" > ${T}/patch-4.11.5-fixed || die
+	[[ ${PIPESTATUS[0]} == 0 ]] || die
 	eapply "${T}"/patch-4.11.5-fixed
 
 	if use gentoo-base ; then

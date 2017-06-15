@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="A black theme set for GTK"
+DESCRIPTION="A black theme set for GTK+"
 HOMEPAGE="https://github.com/automorphism88/cloak-theme/"
 LICENSE="GPL-3"
 SLOT=0

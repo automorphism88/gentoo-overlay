@@ -38,6 +38,7 @@ src_install() {
 	use openbox && { cp -R openbox-3 "${D}/usr/share/themes/Cloak-3.20" || die; }
 	use xfce && { cp -R xfwm4 "${D}/usr/share/themes/Cloak-3.20" || die; }
 	use xfdashboard && { cp -R ../xfdashboard-cloak-3.20/xfdashboard-1.0 "${D}/usr/share/themes/Cloak-3.20" || die; }
+	dodoc README
 }
 
 pkg_postinst() {

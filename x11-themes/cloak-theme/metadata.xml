@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>adebeus@gmail.com</email>
+  </maintainer>
+  <use>
+    <flag name="cinnamon">Install theme for gnome-extra/cinnamon</flag>
+    <flag name="firefox">Install theme for www-client/firefox</flag>
+    <flag name="gnome-shell">Install theme for gnome-base/gnome-shell</flag>
+    <flag name="gtk2">Install GTK+2 theme</flag>
+    <flag name="gtk3">Install GTK+3 theme</flag>
+    <flag name="mate">Install metacity theme for mate-base/mate</flag>
+    <flag name="openbox">Install theme for x11-wm/openbox</flag>
+    <flag name="xfce">Install theme for xfce-base/xfwm4</flag>
+    <flag name="xfdashboard">Install theme for xfce-extra/xfdashboard</flag>
+  </use>
+  <longdescription>A black theme set for GTK+</longdescription>
+</pkgmetadata>
+

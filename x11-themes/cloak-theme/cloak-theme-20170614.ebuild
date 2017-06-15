@@ -28,7 +28,7 @@ fi
 
 src_install() {
 	dodir /usr/share/themes/Cloak
-	cd "${S}/Cloak" || die
+	cd "${S}/Cloak-3.20" || die
 	cp index.theme "${D}/usr/share/themes/Cloak" || die
 
 	use cinnamon && { cp -R cinnamon "${D}/usr/share/themes/Cloak" || die; }

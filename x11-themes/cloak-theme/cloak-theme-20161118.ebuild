@@ -43,10 +43,10 @@ src_install() {
 
 pkg_postinst() {
 	if use firefox ; then
-		einfo "To use Firefox theme, create a symlink from"
-		einfo "'/usr/share/themes/Cloak-3.20/Firefox/chrome'"
-		einfo "into your Firefox profile directory"
-		einfo "(e.g. '\$HOME/.mozilla/firefox/foo.default'"
-		einfo "Cloak-3.20 must be selected as GTK theme to use Firefox theme."
+		elog "To use Firefox theme, create a symlink from"
+		elog "'/usr/share/themes/Cloak-3.20/Firefox/chrome'"
+		elog "into your Firefox profile directory"
+		elog "(e.g. '\$HOME/.mozilla/firefox/foo.default'"
+		elog "Cloak-3.20 must be selected as GTK theme to use Firefox theme."
 	fi
 }

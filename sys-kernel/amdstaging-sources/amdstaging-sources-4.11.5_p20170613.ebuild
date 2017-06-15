@@ -36,7 +36,7 @@ GENTOO_EXP_PATCHES="
 	5010_enable-additional-cpu-optimizations-for-gcc.patch
 "
 
-SRC_URI="https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.11.4.xz
+SRC_URI="https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.11.5.xz
 	gentoo-base? ( genpatches-4.11-7.base.tar.xz )
 	gentoo-extras? ( genpatches-4.11-7.extras.tar.xz )
 	gentoo-experimental? ( genpatches-4.11-7.experimental.tar.xz )"

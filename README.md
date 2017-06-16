@@ -46,7 +46,7 @@ See https://bitbucket.org/rohtie/philosoraptor-cowsay-fortune/
 games-misc/fortune-mod-philosoraptor  
 See https://bitbucket.org/rohtie/philosoraptor-cowsay-fortune/
 
-sys-boot/btrfs  
+sys-boot/grub-btrfs  
 See https://github.com/Antynea/grub-btrfs
 
 sys-boot/grub-customizer  

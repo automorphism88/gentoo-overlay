@@ -2,15 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 inherit systemd
 
 DESCRIPTION="btrfs maintenance scripts from openSUSE"
 HOMEPAGE="https://github.com/kdave/btrfsmaintenance"
 LICENSE="GPL-2"
-
-IUSE="-systemd"
 SLOT=0
+IUSE="systemd"
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -19,7 +17,7 @@ if [[ ${PV} == 9999 ]] ; then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/kdave/btrfsmaintenance/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 src_install()
@@ -34,12 +32,10 @@ src_install()
 
 	dosym /usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh /usr/sbin/btrfsmaintenance-refresh-cron
 
-	if use systemd ; then
-		systemd_dounit btrfsmaintenance-refresh.service
-	fi
+	use systemd && systemd_dounit btrfsmaintenance-refresh.service
 
 	newdoc README.md README
-	newdoc btrfsmaintenance.changes CHANGES
+	newdoc btrfsmaintenance.changes CHANGELOG
 }
 
 pkg_postinst()

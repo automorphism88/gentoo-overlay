@@ -44,9 +44,7 @@ src_install()
 
 pkg_postinst()
 {
-	einfo "Settings for btrfsmaintenance are in /etc/default/btrfsmaintenance"
-	einfo "After editing this file, run btrfsmaintenance-refresh-cron"
-	if use systemd ; then
-		einfo "or use the systemd service"
-	fi
+	elog "Settings for btrfsmaintenance are in /etc/default/btrfsmaintenance"
+	elog "After editing this file, run btrfsmaintenance-refresh-cron"
+	use systemd && elog "or use the systemd service"
 }

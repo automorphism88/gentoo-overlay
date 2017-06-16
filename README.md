@@ -20,6 +20,9 @@ app-emulation/playonlinux
 Modified from official Gentoo version to accept the new virtual/wine as a
 dependency in addition to app-emulation/wine
 
+app-misc/jdupes  
+See https://github.com/jbruchon/jdupes
+
 app-text/calibre  
 Gentoo ebuild with USE flags added to toggle system vs bundled
 dev-python/beautifulsoup and Gentoo patches removing update dialogs and

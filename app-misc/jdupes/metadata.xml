@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>adebeus@gmail.com</email>
+  </maintainer>
+  <use>
+    <flag name="btrfs">Build support for btrfs deduplication with '-B/--dedupe'</flag>
+    <flag name="custom-optimization">Build with user-specified compiler optimization from CFLAGS</flag>
+    <flag name="debug">Build support for debug output with '-@'</flag>
+    <flag name="low-memory">Build for low memory usage instead of speed</flag>
+    <flag name="stats">Build with support for algorithm statistic reporting with '-D'</flag>
+  </use>
+  <longdescription>Fork of fdupes with better performance and btrfs deduplication support</longdescription>
+</pkgmetadata>
+

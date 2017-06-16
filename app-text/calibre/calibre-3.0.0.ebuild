@@ -232,6 +232,8 @@ src_install() {
 	newinitd "${FILESDIR}"/calibre-server.init calibre-server
 	newconfd "${FILESDIR}"/calibre-server.conf calibre-server
 
+	doenvd "${FILESDIR}"/99calibre
+
 	bashcomp_alias calibre \
 		lrfviewer \
 		calibre-debug \

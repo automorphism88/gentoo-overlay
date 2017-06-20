@@ -27,6 +27,11 @@ src_prepare() {
 	cmake-utils_src_prepare
 }
 
+src_configure() {
+	local mycmakeargs=("-DSYSTEM_BUS_SERVICE=1")
+	cmake-utils_src_configure
+}
+
 pkg_postinst() {
 	elog "You will need to load the vhba module to use cdemu devices:"
 	elog " # modprobe vhba"

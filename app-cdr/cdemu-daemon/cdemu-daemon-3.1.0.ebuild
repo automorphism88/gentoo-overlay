@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/cdemu/${P}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0/7" # subslot = CDEMU_DAEMON_INTERFACE_VERSION_MAJOR in CMakeLists.txt
 KEYWORDS="~amd64 ~hppa ~x86"
-IUSE="session"
+IUSE=""
 
 RDEPEND=">=dev-libs/glib-2.32:2
 	>=dev-libs/libmirage-${PV}:=
@@ -24,7 +24,6 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	DOCS="AUTHORS README"
-	mycmakeargs=("-DSESSION_BUS_SERVICE")
 	cmake-utils_src_prepare
 }
 

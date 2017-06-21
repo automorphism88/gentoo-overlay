@@ -8,7 +8,6 @@ DESCRIPTION="btrfs maintenance scripts from openSUSE"
 HOMEPAGE="https://github.com/kdave/btrfsmaintenance"
 LICENSE="GPL-2"
 SLOT=0
-IUSE="systemd"
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -32,7 +31,7 @@ src_install()
 
 	dosym /usr/share/btrfsmaintenance/btrfsmaintenance-refresh-cron.sh /usr/sbin/btrfsmaintenance-refresh-cron
 
-	use systemd && systemd_dounit btrfsmaintenance-refresh.service
+	systemd_dounit btrfsmaintenance-refresh.service
 
 	newdoc README.md README
 	newdoc btrfsmaintenance.changes CHANGELOG
@@ -42,5 +41,5 @@ pkg_postinst()
 {
 	elog "Settings for btrfsmaintenance are in /etc/default/btrfsmaintenance"
 	elog "After editing this file, run btrfsmaintenance-refresh-cron"
-	use systemd && elog "or use the systemd service"
+	elog "or use the systemd service"
 }

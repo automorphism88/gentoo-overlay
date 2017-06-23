@@ -16,10 +16,6 @@ See https://github.com/ricardomv/snapper-gui
 app-cdr/{cdemu-daemon,gcdemu} and dev-libs/libmirage)  
 Version 3.1.0
 
-app-emulation/playonlinux  
-Modified from official Gentoo version to accept the new virtual/wine as a
-dependency in addition to app-emulation/wine
-
 app-misc/jdupes  
 See https://github.com/jbruchon/jdupes
 

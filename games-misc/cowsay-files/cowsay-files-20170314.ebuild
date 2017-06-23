@@ -8,7 +8,7 @@ inherit git-r3
 
 DESCRIPTION="Collection of additional cow files for games-misc/cowsay"
 HOMEPAGE="https://github.com/paulkaefer/cowsay-files/"
-KEYWORDS="amd64"
+KEYWORDS="amd64 x86"
 
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/paulkaefer/cowsay-files/"

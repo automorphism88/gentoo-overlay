@@ -8,7 +8,7 @@ inherit git-r3
 
 DESCRIPTION="Philosoraptor quotes for games-misc/fortune-mod"
 HOMEPAGE="https://bitbucket.org/rohtie/philosoraptor-cowsay-fortune/"
-KEYWORDS="amd64"
+KEYWORDS="amd64 x86"
 
 SRC_URI=""
 EGIT_REPO_URI="https://bitbucket.org/rohtie/philosoraptor-cowsay-fortune"

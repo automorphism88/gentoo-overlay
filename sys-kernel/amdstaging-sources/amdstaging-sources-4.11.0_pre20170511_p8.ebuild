@@ -18,8 +18,10 @@ detect_arch
 MY_PATCHV="$(get_version_component_range 1-3)"
 MY_MAJORV="$(get_version_component_range 1-2)"
 MY_MINORV="$(get_version_component_range 3)"
-MY_GITV="$(get_version_component_range 4 | cut -c4-11 | sed -e 's/./&-/4' -e 's/./&-/7')"
-MY_GENPATCHESV="$(get_version_component_range 5 | cut -c2-)"
+# avoid calling sed/cut in global scope
+MY_TMPV="$(get_version_component_range 4-5)"
+MY_GITV="${MY_TMPV:3:4}-${MY_TMPV:7:2}-${MY_TMPV:9:2}"
+MY_GENPATCHESV="${MY_TMPV:13}"
 
 if [[ "MY_MINORV" -ge 1 ]] ; then
 	SRC_URI="https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${MY_PATCHV}.xz"

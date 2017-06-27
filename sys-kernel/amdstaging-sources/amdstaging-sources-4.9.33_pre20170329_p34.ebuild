@@ -20,7 +20,7 @@ MY_MAJORV="$(get_version_component_range 1-2)"
 MY_MINORV="$(get_version_component_range 3)"
 # avoid calling sed/cut in global scope
 MY_TMPV="$(get_version_component_range 4-5)"
-MY_GITV="${MY_TMPV:3:4}-${MY_TMPV:7:2}-${MY_TMPV:9:2}"
+MY_GITV="${MY_TMPV:3:8}"
 MY_GENPATCHESV="${MY_TMPV:13}"
 
 SRC_URI="

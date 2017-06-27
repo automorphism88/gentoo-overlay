@@ -28,7 +28,7 @@ SRC_URI="
 	gentoo-extras? ( genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.extras.tar.xz )
 	gentoo-experimental? ( genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.experimental.tar.xz )"
 
-EGIT_REPO_URI="https://github.com/automorphism88/amd-staging-sources"
+EGIT_REPO_URI="https://github.com/automorphism88/amd-staging-sources.git"
 EGIT_BRANCH="${MY_MAJORV}-${MY_GITV}"
 EGIT_COMMIT="${MY_PATCHV}"
 EGIT_CHECKOUT_DIR="${WORKDIR}/linux-${PVR}-amdstaging"

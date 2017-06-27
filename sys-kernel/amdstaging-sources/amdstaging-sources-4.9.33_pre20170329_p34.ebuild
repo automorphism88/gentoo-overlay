@@ -4,74 +4,50 @@
 EAPI=6
 ETYPE="sources"
 
-inherit kernel-2 git-r3
-detect_version
-detect_arch
+inherit kernel-2 git-r3 versionator
 
 DESCRIPTION="amd-staging kernel with DC/DAL, plus gentoo-sources patches"
 HOMEPAGE="https://cgit.freedesktop.org/~agd5f/linux/log/?h=amd-staging-4.9"
 LICENSE="GPL-2 freedist"
+KEYWORDS="~amd64 ~x86"
 IUSE="+gentoo-base +gentoo-extras +gentoo-experimental"
 
-GENTOO_BASE_PATCHES="
-	1500_XATTR_USER_PREFIX.patch
-	1510_fs-enable-link-security-restrictions-by-default.patch
-	2300_enable-poweroff-on-Mac-Pro-11.patch
-	2900_dev-root-proc-mount-fix.patch
-"
+detect_version
+detect_arch
 
-GENTOO_EXTRA_PATCHES="
-	4200_fbcondecor.patch
-	4400_alpha-sysctl-uac.patch
-	4567_distro-Gentoo-Kconfig.patch
-"
+MY_PATCHV="$(get_version_component_range 1-3)"
+MY_MAJORV="$(get_version_component_range 1-2)"
+MY_MINORV="$(get_version_component_range 3)"
+# avoid calling sed/cut in global scope
+MY_TMPV="$(get_version_component_range 4-5)"
+MY_GITV="${MY_TMPV:3:4}-${MY_TMPV:7:2}-${MY_TMPV:9:2}"
+MY_GENPATCHESV="${MY_TMPV:13}"
 
-GENTOO_EXP_PATCHES="
-	5001_block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.9.patch
-	5002_block-introduce-the-BFQ-v7r11-I-O-sched-for-4.9.patch1
-	5003_block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for-4.9.patch
-	5004_Turn-BFQ-v7r11-into-BFQ-v8r7-for-4.9.0.patch1
-	5010_enable-additional-cpu-optimizations-for-gcc.patch
-"
+SRC_URI="
+	gentoo-base? ( genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.base.tar.xz )
+	gentoo-extras? ( genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.extras.tar.xz )
+	gentoo-experimental? ( genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.experimental.tar.xz )"
 
-SRC_URI="gentoo-base? ( genpatches-4.9-34.base.tar.xz )
-	gentoo-extras? ( genpatches-4.9-34.extras.tar.xz )
-	gentoo-experimental? ( genpatches-4.9-34.experimental.tar.xz )"
-
-EGIT_REPO_URI="https://github.com/automorphism88/amd-staging-sources/"
-EGIT_BRANCH="4.9-20170329"
-
-EGIT_COMMIT="4.9.33"
-KEYWORDS="~amd64"
-
+EGIT_REPO_URI="https://github.com/automorphism88/amd-staging-sources"
+EGIT_BRANCH="${MY_MAJORV}-${MY_GITV}"
+EGIT_COMMIT="${MY_PATCHV}"
 EGIT_CHECKOUT_DIR="${WORKDIR}/linux-${PVR}-amdstaging"
 S="${EGIT_CHECKOUT_DIR}"
 
 src_prepare() {
-	if use gentoo-base ; then
-		pushd "${T}" && unpack genpatches-4.9-34.base.tar.xz && popd
-		for i in ${GENTOO_BASE_PATCHES} ; do
-			eapply "${T}"/${i}
-		done
-	fi
-
-	if use gentoo-extras ; then
-		pushd "${T}" && unpack genpatches-4.9-34.extras.tar.xz && popd
-		for i in ${GENTOO_EXTRA_PATCHES} ; do
-			eapply "${T}"/${i}
-		done
-	fi
-
-	if use gentoo-experimental ; then
-		pushd "${T}" && unpack genpatches-4.9-34.experimental.tar.xz && popd
-		for i in ${GENTOO_EXP_PATCHES} ; do
-			eapply "${T}"/${i}
-		done
-	fi
+	local MY_PATCHDIR="${T}/patches"
+	mkdir "${MY_PATCHDIR}" || die
+	pushd "${MY_PATCHDIR}" || die
+	use gentoo-base && unpack genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.base.tar.xz && rm {0[0-9],1[0-4]}[0-9][0-9]_*
+	use gentoo-extras && unpack genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.extras.tar.xz
+	use gentoo-experimental && unpack genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.experimental.tar.xz
+	popd || die
+	for i in "${MY_PATCHDIR}"/* ; do eapply "${i}" ; done
 
 	eapply_user
 
 	unpack_fix_install_path
 	unpack_set_extraversion
+	rm -fr .git
 	touch .scmversion
 }

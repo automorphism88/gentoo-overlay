@@ -66,5 +66,6 @@ src_prepare() {
 
 	unpack_fix_install_path
 	unpack_set_extraversion
+	rm -fr .git
 	touch .scmversion
 }

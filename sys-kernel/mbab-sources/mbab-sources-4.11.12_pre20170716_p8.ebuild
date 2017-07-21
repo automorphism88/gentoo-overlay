@@ -22,22 +22,25 @@ MY_TMPV="$(get_version_component_range 4-5)"
 MY_GITV="${MY_TMPV:3:4}-${MY_TMPV:7:2}-${MY_TMPV:9:2}"
 MY_GENPATCHESV="${MY_TMPV:13}"
 
-SRC_URI=""
+SRC_URI="https://cdn.kernel.org/pub/linux/kernel/v4.x/incr/patch-4.11.11-12.xz"
 SRC_URI+="
 	gentoo-base? ( genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.base.tar.xz )
 	gentoo-extras? ( genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.extras.tar.xz )
 	gentoo-experimental? ( genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.experimental.tar.xz )"
 
-# ensure we can merge kernel.org patches with git
-EGIT_MIN_CLONE_TYPE="single"
-
 EGIT_REPO_URI="git://people.freedesktop.org/~agd5f/linux"
-EGIT_BRANCH="amd-staging-${MY_MAJORV}"
+EGIT_BRANCH="mbab_${MY_MAJORV}"
 EGIT_COMMIT_DATE="$MY_GITV"
 EGIT_CHECKOUT_DIR="${WORKDIR}/linux-${PVR}-amdstaging"
 S="${EGIT_CHECKOUT_DIR}"
 
 src_prepare() {
+	for i in patch-4.11.10-11.xz; do
+		xz -cd "${FILESDIR}/${i}" | patch -p1
+		[[ ${PIPESTATUS[0]} == 0 ]] || die
+		[[ ${PIPESTATUS[1]} == 0 ]] || die
+	done
+
 	local MY_PATCHDIR="${T}/patches"
 	mkdir "${MY_PATCHDIR}" || die
 	pushd "${MY_PATCHDIR}" || die
@@ -51,6 +54,6 @@ src_prepare() {
 
 	unpack_fix_install_path
 	unpack_set_extraversion
-	rm -fr .git
-	touch .scmversion
+	rm -fr .git || die
+	touch .scmversion || die
 }

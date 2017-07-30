@@ -28,7 +28,7 @@ SRC_URI+="
 	gentoo-extras? ( genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.extras.tar.xz )
 	gentoo-experimental? ( genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.experimental.tar.xz )"
 
-EGIT_REPO_URI="git://people.freedesktop.org/~agd5f/linux"
+EGIT_REPO_URI="git://github.com/M-Bab/linux-kernel-amdgpu"
 EGIT_BRANCH="mbab_${MY_MAJORV}"
 EGIT_COMMIT_DATE="$MY_GITV"
 EGIT_CHECKOUT_DIR="${WORKDIR}/linux-${PVR}-amdstaging"

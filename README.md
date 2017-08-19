@@ -34,6 +34,9 @@ in the PATH.
 dev-python/html5-parser  
 Needed as prerequisite for >=app-text/calibre-3.5.0
 
+games-fps/gzdoom  
+See https://zdoom.org/
+
 games-misc/cowsay  
 Modified from Gentoo version to keep upstream default of installing cow files to
 /usr/share/cows

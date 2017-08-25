@@ -66,7 +66,7 @@ Removed after being merged into official Portage tree
 
 sys-kernel/amdstaging-sources  
 Linux kernel based on the amd-staging git tree with DC/DAL support in the
-AMDGPU driver, plus the latest 4.9.x/4.11.x patch from kernel.org and the
+AMDGPU driver, plus the latest minor patch from kernel.org and the
 other patches from gentoo-sources (optional, controlled by USE flags).
 In the version number, _pre represents the AMD git commit date and _p
 represents the genkernel patch number (for Gentoo patches only, since

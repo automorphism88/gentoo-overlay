@@ -70,6 +70,9 @@ Removed after being merged into official Portage tree
 sys-fs/mergerfs
 See https://www.github.com/trapexit/mergerfs
 
+sys-fs/mergerfs-tools
+See https://github.com/trapexit/mergerfs-tools
+
 sys-kernel/amdstaging-sources  
 Linux kernel based on the amd-staging git tree with DC/DAL support in the
 AMDGPU driver, plus the latest minor patch from kernel.org and the

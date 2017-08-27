@@ -2,9 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
-inherit python-any-r1
-
 DESCRIPTION="Featureful FUSE-based union filesystem"
 HOMEPAGE="https://github.com/trapexit/mergerfs"
 LICENSE="ISC"
@@ -24,8 +21,7 @@ RDEPEND="sys-apps/attr
 		sys-devel/gettext
 		sys-fs/fuse"
 DEPEND="app-text/pandoc
-		${RDEPEND}
-		${PYTHON_DEPS}"
+		${RDEPEND}"
 
 PATCHES=( "${FILESDIR}/makefile-respect-user-cflags.patch" )
 

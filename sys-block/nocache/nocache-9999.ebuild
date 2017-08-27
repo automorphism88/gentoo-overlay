@@ -4,7 +4,7 @@
 EAPI=6
 inherit multilib
 
-DESCRIPTION="Start a program without caching its reads"
+DESCRIPTION="Minimize the effect a program has on the file system cache"
 HOMEPAGE="https://github.com/Feh/nocache/"
 LICENSE="BSD-2"
 SLOT=0

@@ -3,7 +3,7 @@
 
 EAPI=6
 USE_RUBY="ruby22 ruby23"
-inherit ruby-fakegem
+inherit ruby-fakegem systemd
 SLOT=0
 
 DESCRIPTION="A synchronization tool for snapper based on btrfs send/receive"
@@ -16,3 +16,12 @@ ruby_add_rdepend ">=dev-ruby/concurrent-ruby-0.9.0
 				 >=dev-ruby/logging-2.0.0
 				 >=dev-ruby/ruby-dbus-0.11.0
 				 >=dev-ruby/thor-0.19.1"
+
+src_prepare() {
+	sed -i 's:/opt/snapsync:/usr:' "all/${P}/snapsync.service" || die
+	ruby-ng_src_prepare
+}
+
+all_fakegem_install() {
+	systemd_dounit snapsync.service
+}

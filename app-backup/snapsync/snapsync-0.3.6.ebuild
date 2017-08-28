@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+# enable ruby24 as soon as dev-ruby/logging supports it
 USE_RUBY="ruby22 ruby23"
 inherit ruby-fakegem systemd
 SLOT=0

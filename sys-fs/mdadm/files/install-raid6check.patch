@@ -1,0 +1,35 @@
+--- Makefile.orig	2017-07-21 07:55:08.902799839 -0700
++++ Makefile	2017-07-21 08:26:29.403375167 -0700
+@@ -164,7 +164,7 @@
+ ASSEMBLE_FLAGS += -DMDASSEMBLE_AUTO
+ endif
+ 
+-all : mdadm mdmon
++all : mdadm mdmon raid6check
+ man : mdadm.man md.man mdadm.conf.man mdmon.man raid6check.man
+ 
+ check_rundir:
+@@ -269,9 +269,10 @@
+ sha1.o : sha1.c sha1.h md5.h
+ 	$(CC) $(CFLAGS) -DHAVE_STDINT_H -o sha1.o -c sha1.c
+ 
+-install : mdadm mdmon install-man install-udev
++install : mdadm mdmon raid6check install-man install-udev
+ 	$(INSTALL) -D $(STRIP) -m 755 mdadm $(DESTDIR)$(BINDIR)/mdadm
+ 	$(INSTALL) -D $(STRIP) -m 755 mdmon $(DESTDIR)$(BINDIR)/mdmon
++	$(INSTALL) -D $(STRIP) -m 755 raid6check $(DESTDIR)$(BINDIR)/raid6check
+ 
+ install-static : mdadm.static install-man
+ 	$(INSTALL) -D $(STRIP) -m 755 mdadm.static $(DESTDIR)$(BINDIR)/mdadm
+@@ -285,9 +286,10 @@
+ install-klibc : mdadm.klibc install-man
+ 	$(INSTALL) -D $(STRIP) -m 755 mdadm.klibc $(DESTDIR)$(BINDIR)/mdadm
+ 
+-install-man: mdadm.8 md.4 mdadm.conf.5 mdmon.8
++install-man: mdadm.8 md.4 mdadm.conf.5 mdmon.8 raid6check.8
+ 	$(INSTALL) -D -m 644 mdadm.8 $(DESTDIR)$(MAN8DIR)/mdadm.8
+ 	$(INSTALL) -D -m 644 mdmon.8 $(DESTDIR)$(MAN8DIR)/mdmon.8
++	$(INSTALL) -D -m 644 raid6check.8 $(DESTDIR)$(MAN8DIR)/raid6check.8
+ 	$(INSTALL) -D -m 644 md.4 $(DESTDIR)$(MAN4DIR)/md.4
+ 	$(INSTALL) -D -m 644 mdadm.conf.5 $(DESTDIR)$(MAN5DIR)/mdadm.conf.5
+ 

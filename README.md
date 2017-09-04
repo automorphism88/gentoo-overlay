@@ -73,6 +73,9 @@ https://github.com/kdave/btrfsmaintenance
 See https://www.cryfs.org~~  
 Removed after being merged into official Portage tree
 
+sys-fs/mdadm  
+Git version. Also patches Makefile to build and install the 'raid6check' binary.
+
 sys-fs/mergerfs
 See https://www.github.com/trapexit/mergerfs
 

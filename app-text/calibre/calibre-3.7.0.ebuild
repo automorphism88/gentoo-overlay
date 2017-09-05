@@ -63,9 +63,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
 	>=dev-python/PyQt5-5.8[gui,svg,webkit,widgets,network,printsupport,${PYTHON_USEDEP}]
 	dev-python/regex[${PYTHON_USEDEP}]
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
+	dev-qt/qtcore:5=
+	dev-qt/qtgui:5=
+	dev-qt/qtwidgets:5=
 	media-fonts/liberation-fonts
 	>=media-gfx/imagemagick-6.5.9[jpeg,png]
 	media-libs/fontconfig

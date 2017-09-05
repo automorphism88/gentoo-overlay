@@ -28,10 +28,10 @@ SRC_URI+="
 	gentoo-extras? ( genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.extras.tar.xz )
 	gentoo-experimental? ( genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.experimental.tar.xz )"
 
-EGIT_REPO_URI="https://github.com/M-Bab/linux-kernel-mbab"
+EGIT_REPO_URI="https://github.com/M-Bab/linux-kernel-amdgpu"
 EGIT_BRANCH="mbab_${MY_MAJORV}"
 EGIT_COMMIT_DATE="$MY_GITV"
-EGIT_CHECKOUT_DIR="${WORKDIR}/linux-${PVR}-amdstaging"
+EGIT_CHECKOUT_DIR="${WORKDIR}/linux-${PVR}-mbab"
 S="${EGIT_CHECKOUT_DIR}"
 
 src_prepare() {

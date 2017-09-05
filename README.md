@@ -37,6 +37,9 @@ in the PATH.
 dev-python/html5-parser  
 Needed as dependency for >=app-text/calibre-3.5.0
 
+dev-qt/qtstyleplugins  
+See https://code.qt.io/qt/qtstyleplugins.git - needed to use GTK+ style in Qt 5.7+
+
 dev-ruby/ruby-dbus
 Needed as dependency for app-backup/snapsync
 

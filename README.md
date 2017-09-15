@@ -16,9 +16,6 @@ See https://github.com/ricardomv/snapper-gui
 app-backup/snapsync
 See https://github.com/doudou/snapsync/
 
-app-cdr/{cdemu-daemon,gcdemu} and dev-libs/libmirage)  
-Version 3.1.0
-
 app-misc/jdupes  
 See https://github.com/jbruchon/jdupes
 

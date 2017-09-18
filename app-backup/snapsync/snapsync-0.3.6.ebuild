@@ -23,6 +23,7 @@ src_prepare() {
 	ruby-ng_src_prepare
 }
 
-all_fakegem_install() {
-	systemd_dounit snapsync.service
+src_install() {
+	systemd_dounit "all/${P}/snapsync.service"
+	ruby-ng_src_install
 }

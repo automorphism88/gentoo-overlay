@@ -5,7 +5,7 @@
  MANPAGE     = $(TARGET).1
  FUSE_CFLAGS = -D_FILE_OFFSET_BITS=64 -Ilibfuse/include
 -CFLAGS      = -g -Wall \
-+LCFLAGS     = -g -Wall \
++MY_CFLAGS     = -g -Wall \
  	      $(OPTS) \
  	      -Wno-unused-result \
                $(FUSE_CFLAGS) \
@@ -13,7 +13,7 @@
                -MMD \
  	      -DUGID_USE_RWLOCK=$(UGID_USE_RWLOCK)
 -LDFLAGS       = -pthread -lrt
-+LLDFLAGS      = -pthread -lrt
++MY_LDFLAGS      = -pthread -lrt
  
  PREFIX        = /usr/local
  EXEC_PREFIX   = $(PREFIX)
@@ -22,7 +22,7 @@
  ifeq ($(XATTR_AVAILABLE),0)
  $(warning "xattr not available: disabling")
 -CFLAGS += -DWITHOUT_XATTR
-+LCFLAGS += -DWITHOUT_XATTR
++MY_CFLAGS += -DWITHOUT_XATTR
  endif
  
  all: $(TARGET)
@@ -31,7 +31,7 @@
  $(TARGET): src/version.hpp obj/obj-stamp libfuse/lib/.libs/libfuse.a $(OBJ)
  	cd libfuse && make
 -	$(CXX) $(CFLAGS) $(OBJ) -o $@ libfuse/lib/.libs/libfuse.a -ldl $(LDFLAGS)
-+	$(CXX) $(CFLAGS) $(LCFLAGS) $(OBJ) -o $@ libfuse/lib/.libs/libfuse.a $(LDFLAGS) -ldl $(LLDFLAGS)
++	$(CXX) $(CXXFLAGS) $(MY_CFLAGS) $(OBJ) -o $@ libfuse/lib/.libs/libfuse.a $(LDFLAGS) -ldl $(MY_LDFLAGS)
  
  mount.mergerfs: $(TARGET)
  	$(LN) -fs "$<" "$@"
@@ -40,7 +40,7 @@
  
  obj/%.o: src/%.cpp
 -	$(CXX) $(CFLAGS) -c $< -o $@
-+	$(CXX) $(CFLAGS) $(LCFLAGS) -c $< -o $@
++	$(CXX) $(CXXFLAGS) $(MY_CFLAGS) -c $< -o $@
  
  clean: rpm-clean libfuse_Makefile
  	$(RM) -f src/version.hpp
@@ -49,7 +49,7 @@
  endif
  
 -unexport CFLAGS LDFLAGS
-+unexport LCFLAGS LLDFLAGS
++unexport MY_CFLAGS MY_LDFLAGS
  .PHONY: libfuse_Makefile
  libfuse_Makefile:
  ifeq ($(shell test -e libfuse/Makefile; echo $$?),1)

@@ -17,12 +17,11 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-RDEPEND="sys-apps/attr
-		sys-devel/gettext
-		sys-fs/fuse"
+RDEPEND="sys-apps/attr:=
+		sys-devel/gettext:=
+		sys-fs/fuse:="
 DEPEND="app-text/pandoc
 		${RDEPEND}"
-
 PATCHES=( "${FILESDIR}/makefile-respect-user-cflags.patch" )
 
 src_prepare() {

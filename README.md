@@ -27,9 +27,6 @@ user is using GCC 7+ (or an earlier version without USE=gcj) as the default, so
 long as /etc/portage/package.env is used to put a different gcc version with gcj
 in the PATH.
 
-dev-python/html5-parser  
-Needed as dependency for >=app-text/calibre-3.5.0
-
 dev-qt/qtstyleplugins  
 See https://code.qt.io/qt/qtstyleplugins.git - needed to use GTK+ style in Qt 
 5.7+

@@ -6,14 +6,10 @@ preferences.
 
 Packages:
 
-~~app-backup/buttersink  
-See https://github.com/AmesCornish/buttersink~~  
-Removed after being merged into official Portage tree
-
 app-backup/snapper-gui  
 See https://github.com/ricardomv/snapper-gui
 
-app-backup/snapsync
+app-backup/snapsync  
 See https://github.com/doudou/snapsync/
 
 app-misc/jdupes  
@@ -35,7 +31,8 @@ dev-python/html5-parser
 Needed as dependency for >=app-text/calibre-3.5.0
 
 dev-qt/qtstyleplugins  
-See https://code.qt.io/qt/qtstyleplugins.git - needed to use GTK+ style in Qt 5.7+
+See https://code.qt.io/qt/qtstyleplugins.git - needed to use GTK+ style in Qt 
+5.7+
 
 dev-ruby/ruby-dbus
 Needed as dependency for app-backup/snapsync
@@ -69,17 +66,13 @@ sys-fs/btrfsmaintenance
 Collection of btrfs maintenance scripts from openSUSE. See
 https://github.com/kdave/btrfsmaintenance
 
-~~sys-fs/cryfs  
-See https://www.cryfs.org~~  
-Removed after being merged into official Portage tree
-
 sys-fs/mdadm  
 Git version. Also patches Makefile to build and install the 'raid6check' binary.
 
-sys-fs/mergerfs
+sys-fs/mergerfs  
 See https://www.github.com/trapexit/mergerfs
 
-sys-fs/mergerfs-tools
+sys-fs/mergerfs-tools  
 See https://github.com/trapexit/mergerfs-tools
 
 sys-kernel/amdstaging-sources  
@@ -113,3 +106,14 @@ For use with x11-drivers/ati-drivers (previously removed from portage tree)
 
 x11-themes/cloak-theme  
 See http://killhellokitty.deviantart.com/art/Cloak-3-20-6-05052016-603341133
+
+I also proxy maintain the following ebuilds in the official portage tree which
+originated from this overlay:
+
+app-backup/buttersink  
+See https://github.com/AmesCornish/buttersink  
+Removed after being merged into official Portage tree
+
+sys-fs/cryfs  
+See https://www.cryfs.org  
+Removed after being merged into official Portage tree

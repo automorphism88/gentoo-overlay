@@ -9,13 +9,13 @@ DESCRIPTION="GUI for snapper, a tool for Linux filesystem snapshot management"
 HOMEPAGE="https://github.com/ricardomv/snapper-gui"
 inherit distutils-r1
 if [[ "${PV}" = 9999 ]] ; then
-  inherit git-r3
-  EGIT_REPO_URI="https://github.com/ricardomv/${PN}.git"
-  SRC_URI=""
-  KEYWORDS=""
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/ricardomv/${PN}.git"
+	SRC_URI=""
+	KEYWORDS=""
 else
-  SRC_URI="https://github.com/ricardomv/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-  KEYWORDS="~amd64 ~x86"
+	SRC_URI="https://github.com/ricardomv/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2"

@@ -50,7 +50,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-python/cssselect-0.7.1[${PYTHON_USEDEP}]
 	>=dev-python/cssutils-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/dbus-python-1.2.4[${PYTHON_USEDEP}]
-	>=dev-python/html5-parser-0.4.3[${PYTHON_USEDEP}]
+	dev-python/html5-parser[${PYTHON_USEDEP}]
 	>=dev-libs/dbus-glib-0.106
 	>=sys-apps/dbus-1.10.8
 	>=dev-python/lxml-3.2.1[${PYTHON_USEDEP}]

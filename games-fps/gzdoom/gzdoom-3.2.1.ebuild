@@ -36,6 +36,8 @@ S="${WORKDIR}/${PN}-g${PV}"
 
 src_prepare() {
 	sed -i -e "s:/usr/local/share/:/usr/share/:" src/posix/i_system.h || die
+	sed -i -e "s/<unknown version>/${PV}/" \
+		tools/updaterevision/updaterevision.c || die
 	eapply_user
 	cmake-utils_src_prepare
 }

@@ -59,6 +59,10 @@ See https://github.com/Antynea/grub-btrfs
 sys-boot/grub-customizer  
 See https://launchpad.net/grub-customizer
 
+sys-fs/btrfsmaintenance  
+Collection of btrfs maintenance scripts from openSUSE. See
+https://github.com/kdave/btrfsmaintenance
+
 sys-fs/mdadm  
 Git version. Also patches Makefile to build and install the 'raid6check' binary.
 

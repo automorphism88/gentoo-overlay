@@ -12,6 +12,9 @@ See https://github.com/ricardomv/snapper-gui
 app-backup/snapsync  
 See https://github.com/doudou/snapsync/
 
+app-emacs/markdown-preview-mode  
+See https://github.com/ancane/markdown-preview-mode
+
 app-emacs/uuidgen  
 See https://github.com/kanru/uuidgen-el
 

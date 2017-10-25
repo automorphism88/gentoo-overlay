@@ -12,6 +12,9 @@ See https://github.com/ricardomv/snapper-gui
 app-backup/snapsync  
 See https://github.com/doudou/snapsync/
 
+app-emacs/uuidgen  
+See https://github.com/kanru/uuidgen-el
+
 app-misc/jdupes  
 See https://github.com/jbruchon/jdupes
 

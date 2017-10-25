@@ -15,6 +15,9 @@ See https://github.com/doudou/snapsync/
 app-emacs/uuidgen  
 See https://github.com/kanru/uuidgen-el
 
+app-emacs/websocket  
+See https://github.com/ahyatt/emacs-websocket
+
 app-misc/jdupes  
 See https://github.com/jbruchon/jdupes
 

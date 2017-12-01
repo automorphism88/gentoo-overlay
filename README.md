@@ -30,7 +30,10 @@ See https://github.com/jbruchon/jdupes
 app-text/calibre  
 Gentoo ebuild with USE flags added to toggle system vs bundled
 dev-python/beautifulsoup and Gentoo patches removing update dialogs and
-disabling plugins. Default behavior is as in official Gentoo ebuild.
+disabling plugins. A USE flag is also available to patch sending deleted
+files to the trash out of the source code since the upstream author does
+not want to make this configurable. Default behavior is as in official
+Gentoo ebuild.
 
 dev-java/ecj-gcj  
 Modified from official Gentoo version to check in $PATH for gcj if it is not

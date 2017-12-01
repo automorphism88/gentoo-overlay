@@ -34,7 +34,7 @@ LICENSE="
 "
 KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0"
-IUSE="ios +udisks +disable-plugins +no-update-dialog +system-beautifulsoup"
+IUSE="ios +udisks +disable-plugins no-trash +no-update-dialog +system-beautifulsoup"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -97,6 +97,7 @@ src_prepare() {
 	# disable_plugins: walking sec-hole, wait for upstream to use GHNS interface
 	use no-update-dialog && eapply "${FILESDIR}/${PN}-2.9.0-no_updates_dialog.patch"
 	use disable-plugins && eapply "${FILESDIR}/${PN}-disable_plugins.patch"
+	use no-trash && eapply "${FILESDIR}/no-trash.patch"
 	eapply_user
 
 	# Fix outdated version constant.

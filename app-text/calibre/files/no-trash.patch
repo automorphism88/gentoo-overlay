@@ -1,0 +1,51 @@
+--- a/src/calibre/utils/recycle_bin.py	2017-11-30 19:37:47.000000000 -0800
++++ b/src/calibre/utils/recycle_bin.py	2017-12-01 12:39:48.951576583 -0800
+@@ -117,36 +117,18 @@
+     can_recycle = callable(recycle)
+ 
+ 
+-def delete_file(path, permanent=False):
+-    if not permanent and can_recycle:
+-        try:
+-            recycle(path)
+-            return
+-        except:
+-            import traceback
+-            traceback.print_exc()
++def delete_file(path, permanent=True):
+     os.remove(path)
+ 
+ 
+-def delete_tree(path, permanent=False):
+-    if permanent:
+-        try:
+-            # For completely mysterious reasons, sometimes a file is left open
+-            # leading to access errors. If we get an exception, wait and hope
+-            # that whatever has the file (Antivirus, DropBox?) lets go of it.
+-            shutil.rmtree(path)
+-        except:
+-            import traceback
+-            traceback.print_exc()
+-            time.sleep(1)
+-            shutil.rmtree(path)
+-    else:
+-        if can_recycle:
+-            try:
+-                recycle(path)
+-                return
+-            except:
+-                import traceback
+-                traceback.print_exc()
+-        delete_tree(path, permanent=True)
+-
++def delete_tree(path, permanent=True):
++    try:
++        # For completely mysterious reasons, sometimes a file is left open
++        # leading to access errors. If we get an exception, wait and hope
++        # that whatever has the file (Antivirus, DropBox?) lets go of it.
++        shutil.rmtree(path)
++    except:
++        import traceback
++        traceback.print_exc()
++        time.sleep(1)
++        shutil.rmtree(path)

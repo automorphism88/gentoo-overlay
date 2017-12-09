@@ -65,6 +65,9 @@ See https://bitbucket.org/rohtie/philosoraptor-cowsay-fortune/
 games-misc/fortune-mod-philosoraptor  
 See https://bitbucket.org/rohtie/philosoraptor-cowsay-fortune/
 
+media-sound/codec2  
+See http://www.rowetel.com/?page_id=452
+
 sys-block/nocache
 See https://github.com/Feh/nocache
 

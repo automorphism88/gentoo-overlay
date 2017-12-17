@@ -95,17 +95,12 @@ sys-fs/mergerfs-tools
 See https://github.com/trapexit/mergerfs-tools
 
 sys-kernel/amdstaging-sources  
-Linux kernel based on the amd-staging git tree with DC/DAL support in the
-AMDGPU driver, plus the latest minor patch from kernel.org and the
+Linux kernel 4.9 LTS based on the amd-staging git tree with DC/DAL support in
+the AMDGPU driver, plus the latest minor patch from kernel.org and the
 other patches from gentoo-sources (optional, controlled by USE flags).
 In the version number, _pre represents the AMD git commit date and _p
 represents the genkernel patch number (for Gentoo patches only, since
 upstream patches are pulled directly from kernel.org).
-
-sys-kernel/mbab-sources  
-Linux kernel based on M-Bab's git tree (found at
-https://github.com/M-Bab/linux-kernel-amdgpu) with the DC/DAL support from
-the amd-staging kernel.
 
 virtual/linux-sources  
 Modified to accept sys-kernel/amdstaging-sources or sys-kernel/mbab-sources

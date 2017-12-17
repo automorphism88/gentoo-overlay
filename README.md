@@ -42,6 +42,10 @@ user is using GCC 7+ (or an earlier version without USE=gcj) as the default, so
 long as /etc/portage/package.env is used to put a different gcc version with gcj
 in the PATH.
 
+dev-java/icedtea
+Original icedtea:7 (removed from official tree). Useful for bootstrapping newer
+icedtea from gcj.
+
 dev-qt/qtstyleplugins  
 See https://code.qt.io/qt/qtstyleplugins.git - needed to use GTK+ style in Qt 
 5.7+

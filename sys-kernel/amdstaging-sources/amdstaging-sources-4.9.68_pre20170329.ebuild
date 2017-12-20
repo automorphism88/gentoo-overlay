@@ -23,11 +23,6 @@ MY_TMPV="$(get_version_component_range 4-5)"
 MY_GITV="${MY_TMPV:3:8}"
 MY_GENPATCHESV="${MY_TMPV:13}"
 
-SRC_URI="
-	gentoo-base? ( genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.base.tar.xz )
-	gentoo-extras? ( genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.extras.tar.xz )
-	gentoo-experimental? ( genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.experimental.tar.xz )"
-
 EGIT_REPO_URI="https://github.com/automorphism88/amd-staging-sources.git"
 EGIT_BRANCH="${MY_MAJORV}-${MY_GITV}"
 EGIT_COMMIT="${MY_PATCHV}_pre${MY_GITV}"
@@ -35,17 +30,14 @@ EGIT_CHECKOUT_DIR="${WORKDIR}/linux-${PVR}-amdstaging"
 S="${EGIT_CHECKOUT_DIR}"
 
 src_prepare() {
-	local MY_PATCHDIR="${T}/patches"
-	mkdir "${MY_PATCHDIR}" || die
-	pushd "${MY_PATCHDIR}" || die
-	use gentoo-base && unpack genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.base.tar.xz && rm {0[0-9],1[0-4]}[0-9][0-9]_*
-	use gentoo-extras && unpack genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.extras.tar.xz
-	use gentoo-experimental && unpack genpatches-${MY_MAJORV}-${MY_GENPATCHESV}.experimental.tar.xz
-	popd || die
-	for i in "${MY_PATCHDIR}"/* ; do eapply "${i}" ; done
-
+	for i in base extras experimental ; do
+		if use gentoo-${i} ; then
+			for j in "${FILESDIR}/gentoo-${MY_MAJORV}-${i}/"* ; do
+				eapply "${j}"
+			done
+		fi
+	done
 	eapply_user
-
 	unpack_fix_install_path
 	unpack_set_extraversion
 	rm -fr .git || die

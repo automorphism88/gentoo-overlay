@@ -30,7 +30,7 @@ SRC_URI="
 
 EGIT_REPO_URI="https://github.com/automorphism88/amd-staging-sources.git"
 EGIT_BRANCH="${MY_MAJORV}-${MY_GITV}"
-EGIT_COMMIT="${MY_PATCHV}"
+EGIT_COMMIT="${MY_PATCHV}_pre${MY_GITV}"
 EGIT_CHECKOUT_DIR="${WORKDIR}/linux-${PVR}-amdstaging"
 S="${EGIT_CHECKOUT_DIR}"
 

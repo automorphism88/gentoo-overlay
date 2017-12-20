@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-SLOT=0
+SLOT="0/0.7"
 inherit cmake-utils subversion
 DEPEND="media-libs/speex"
 RDEPEND="${DEPEND}"

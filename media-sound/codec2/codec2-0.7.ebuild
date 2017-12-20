@@ -5,7 +5,6 @@ EAPI=6
 SLOT="0/0.7"
 inherit cmake-utils subversion
 DEPEND="media-libs/speex"
-RDEPEND="${DEPEND}"
 
 if [[ "${PV}" == 9999 ]] ; then
 	ESVN_REPO_URI="https://svn.code.sf.net/p/freetel/code/codec2-dev"

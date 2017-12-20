@@ -285,11 +285,7 @@ src_install() {
 	fi
 
 	insinto /etc/default
-	if use opensuse ; then
-		newins "${FILESDIR}"/grub.default grub
-	else
-		newins "${FILESDIR}"/grub.default-3 grub
-	fi
+	newins "${FILESDIR}"/grub.default-3 grub
 	if use opensuse ; then
 		insinto /etc/grub.d
 		doins "${FILESDIR}"/20_memtest86+

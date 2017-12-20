@@ -81,6 +81,11 @@ See https://github.com/Antynea/grub-btrfs
 sys-boot/grub-customizer  
 See https://launchpad.net/grub-customizer
 
+sys-boot/grub  
+GRUB2 with openSUSE patches applied (useful for booting into btrfs snapshots).
+Controlled via opensuse USE flag, which also requires the multislot USE flag
+to be enabled.
+
 sys-fs/btrfsmaintenance  
 Collection of btrfs maintenance scripts from openSUSE. See
 https://github.com/kdave/btrfsmaintenance

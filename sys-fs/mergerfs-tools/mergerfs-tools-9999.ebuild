@@ -15,6 +15,15 @@ KEYWORDS=""
 RDEPEND="sys-fs/mergerfs"
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	sed -i '/^PREFIX/s/=/?=/' Makefile || die
+	eapply_user
+}
+
+src_compile() {
+	emake DESTDIR="${D}" PREFIX="/usr"
+}
+
 src_install() {
 	emake DESTDIR="${D}" PREFIX="/usr" install
 }

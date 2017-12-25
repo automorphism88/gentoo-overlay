@@ -30,3 +30,8 @@ RDEPEND="
 	dev-python/pygobject
 	x11-libs/gtksourceview
 "
+
+src_prepare() {
+	cp "${FILESDIR}/snapper-gui.desktop" snapper-gui.desktop || die
+	eapply_user
+}

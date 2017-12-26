@@ -3,6 +3,7 @@
 
 EAPI=6
 # enable ruby24 as soon as dev-ruby/logging supports it
+# also need concurrent-ruby and thor for ruby25
 USE_RUBY="ruby22 ruby23"
 inherit ruby-fakegem systemd
 SLOT=0

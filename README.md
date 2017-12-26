@@ -9,9 +9,6 @@ Packages:
 app-backup/snapper-gui  
 See https://github.com/ricardomv/snapper-gui
 
-app-backup/snapraid-btrfs
-See https://github.com/automorphism88/snapraid-btrfs
-
 app-backup/snapsync  
 See https://github.com/doudou/snapsync/
 
@@ -143,3 +140,6 @@ Removed after being merged into official Portage tree
 sys-fs/cryfs  
 See https://www.cryfs.org  
 Removed after being merged into official Portage tree
+
+sys-fs/snapraid-btrfs
+See https://github.com/automorphism88/snapraid-btrfs

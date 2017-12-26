@@ -8,7 +8,7 @@ DESCRIPTION="A 3D-accelerated Doom source port based on ZDoom code"
 HOMEPAGE="https://gzdoom.drdteam.org/"
 SRC_URI="https://zdoom.org/files/gzdoom/src/${PN}-g${PV}.zip -> ${P}.zip"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3 LGPL-2.1 BSD DUMB-0.9.2 MPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="fluidsynth +gtk kde +openal timidity"

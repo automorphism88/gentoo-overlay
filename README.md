@@ -110,6 +110,9 @@ In the version number, _pre represents the AMD git commit date and _p
 represents the genkernel patch number (for Gentoo patches only, since
 upstream patches are pulled directly from kernel.org).
 
+sys-kernel/dracut-crypt-ssh  
+See https://github.com/dracut-crypt-ssh/dracut-crypt-ssh
+
 virtual/linux-sources  
 Modified to accept sys-kernel/amdstaging-sources or sys-kernel/mbab-sources
 as a dependency

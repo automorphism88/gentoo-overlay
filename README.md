@@ -99,6 +99,9 @@ See https://www.github.com/trapexit/mergerfs
 sys-fs/mergerfs-tools  
 See https://github.com/trapexit/mergerfs-tools
 
+sys-fs/snapraid-btrfs  
+See https://github.com/automorphism88/snapraid-btrfs
+
 sys-kernel/amdstaging-sources  
 Linux kernel 4.9 LTS based on the amd-staging git tree with DC/DAL support in
 the AMDGPU driver, plus the latest minor patch from kernel.org and the
@@ -140,6 +143,3 @@ Removed after being merged into official Portage tree
 sys-fs/cryfs  
 See https://www.cryfs.org  
 Removed after being merged into official Portage tree
-
-sys-fs/snapraid-btrfs
-See https://github.com/automorphism88/snapraid-btrfs

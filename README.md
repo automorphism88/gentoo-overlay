@@ -53,7 +53,7 @@ See https://code.qt.io/qt/qtstyleplugins.git - needed to use GTK+ style in Qt
 dev-ruby/ruby-dbus  
 Needed as dependency for app-backup/snapsync
 
-games-fps/{,g}zdoom  
+games-fps/{,g,q}zdoom  
 See https://zdoom.org/
 
 games-misc/cowsay  

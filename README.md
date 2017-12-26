@@ -114,8 +114,7 @@ sys-kernel/dracut-crypt-ssh
 See https://github.com/dracut-crypt-ssh/dracut-crypt-ssh
 
 virtual/linux-sources  
-Modified to accept sys-kernel/amdstaging-sources or sys-kernel/mbab-sources
-as a dependency
+Modified to accept sys-kernel/amdstaging-sources as a dependency
 
 x11-base/xorg-drivers and x11-base/xorg-server  
 Xorg version 1.17.4 for use with x11-drivers/ati-drivers (previously removed

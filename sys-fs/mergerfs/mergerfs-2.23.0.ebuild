@@ -18,6 +18,7 @@ else
 fi
 
 RDEPEND="sys-apps/attr:=
+		>=sys-apps/util-linux-2.18
 		sys-devel/gettext:=
 		sys-fs/fuse:="
 DEPEND="app-text/pandoc

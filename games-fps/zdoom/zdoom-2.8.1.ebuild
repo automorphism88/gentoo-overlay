@@ -11,15 +11,13 @@ SRC_URI="https://zdoom.org/files/${PN}/$(get_version_component_range 1-2)/${P}-s
 LICENSE="BSD BUILD DOOM LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-# FIXME fmod does not work
-IUSE="asm gtk openal"
+IUSE="asm fluidsynth gtk openal"
 
-# fmod? ( media-libs/fmod:1 )
 RDEPEND="app-arch/bzip2
 	media-libs/game-music-emu
 	media-libs/libsdl2
 	openal? ( media-libs/openal )
-	media-sound/fluidsynth
+	fluidsynth? ( media-sound/fluidsynth )
 	sys-libs/zlib
 	virtual/jpeg:0
 	x11-libs/libXcursor
@@ -47,14 +45,12 @@ src_prepare() {
 
 src_configure() {
 	mycmakeargs=(
-#		"-DFMOD_LOCAL_LIB_DIRS=/opt/fmodex/api/lib"
-#		"-DFMOD_INCLUDE_DIR=/opt/fmodex/api/inc"
 		"-DGME_INCLUDE_DIR=/usr/include"
 		"-DFORCE_INTERNAL_GME=no"
-		-DNO_ASM=$(usex !asm)
-#		-DNO_FMOD=$(usex !fmod)
-		-DNO_GTK=$(usex !gtk)
-		-DNO_OPENAL=$(usex !openal)
+		"-DNO_FMOD=yes"
+		"-DNO_ASM=$(usex !asm)"
+		"-DNO_GTK=$(usex !gtk)"
+		"-DNO_OPENAL=$(usex !openal)"
 	)
 	cmake-utils_src_configure
 }

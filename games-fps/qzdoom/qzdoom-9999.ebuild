@@ -36,7 +36,8 @@ RDEPEND="fluidsynth? ( media-sound/fluidsynth )
 	sys-libs/zlib:=
 	virtual/glu
 	virtual/jpeg
-	virtual/opengl"
+	virtual/opengl
+	!games-fps/gzdoom"
 DEPEND="${RDEPEND}
 	x86? ( >=dev-lang/nasm-0.98.39 )"
 

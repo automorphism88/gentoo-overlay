@@ -8,7 +8,7 @@ DESCRIPTION="ZDoom is an enhanced port of the official DOOM source code"
 HOMEPAGE="https://zdoom.org"
 SRC_URI="https://zdoom.org/files/${PN}/$(get_version_component_range 1-2)/${P}-src.7z"
 
-LICENSE="BSD BUILD DOOM LGPL-2.1"
+LICENSE="BSD GPL-3 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="asm fluidsynth gtk openal"

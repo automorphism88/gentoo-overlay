@@ -1,5 +1,5 @@
---- a/Makefile	2017-08-26 23:36:50.689515122 -0700
-+++ b/Makefile	2017-08-26 23:41:00.398425371 -0700
+--- a/Makefile	2017-12-26 14:47:41.310848618 -0800
++++ b/Makefile	2017-12-26 14:47:35.201848318 -0800
 @@ -51,14 +51,14 @@
  TARGET      = mergerfs
  MANPAGE     = $(TARGET).1
@@ -26,12 +26,14 @@
  endif
  
  all: $(TARGET)
-@@ -86,7 +86,7 @@
+@@ -85,8 +85,8 @@
+ 	@echo "make XATTR_AVAILABLE=0 - to build program without xattrs functionality (auto discovered otherwise)"
  
  $(TARGET): src/version.hpp obj/obj-stamp libfuse/lib/.libs/libfuse.a $(OBJ)
- 	cd libfuse && make
+-	cd libfuse && make
 -	$(CXX) $(CFLAGS) $(OBJ) -o $@ libfuse/lib/.libs/libfuse.a -ldl $(LDFLAGS)
-+	$(CXX) $(CXXFLAGS) $(MY_CFLAGS) $(OBJ) -o $@ libfuse/lib/.libs/libfuse.a $(LDFLAGS) -ldl $(MY_LDFLAGS)
++	cd libfuse && $(MAKE)
++	$(CXX) $(CFLAGS) $(MY_CFLAGS) $(OBJ) -o $@ libfuse/lib/.libs/libfuse.a -ldl $(LDFLAGS) $(MY_LDFLAGS)
  
  mount.mergerfs: $(TARGET)
  	$(LN) -fs "$<" "$@"

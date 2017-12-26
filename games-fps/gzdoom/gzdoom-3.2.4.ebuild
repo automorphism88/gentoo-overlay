@@ -5,7 +5,7 @@ EAPI=6
 inherit eutils cmake-utils gnome2-utils flag-o-matic
 
 DESCRIPTION="A 3D-accelerated Doom source port based on ZDoom code"
-HOMEPAGE="https://gzdoom.drdteam.org/"
+HOMEPAGE="https://zdoom.org/"
 LICENSE="GPL-3 LGPL-2.1 BSD DUMB-0.9.2 MPL-2"
 SLOT="0"
 IUSE="fluidsynth +gtk kde +openal timidity"

@@ -20,7 +20,7 @@ is a directory, otherwise, add the following to the end of the file):
 location = /foo/bar
 sync-type = git
 sync-uri = https://github.com/automorphism88/gentoo-overlay.git/
-auto-sync=yes
+auto-sync = yes
 ```
 
 ## Packages

@@ -4,7 +4,26 @@ to eventually get merged into the official repos, experimental ebuilds that are
 too hackish to upstream, and official ebuilds I've modified to reflect my own
 preferences.
 
-Packages:
+## Instructions
+You can add this overlay to your system using either the layman method or the
+repos.conf method, as described below. You may also need to add the package(s)
+you wish to install to `/etc/portage/package.keywords` (see the Gentoo wiki).
+### Using layman
+```
+layman -o https://raw.githubusercontent.com/automorphism88/gentoo-overlay/master/automorphism.xml -f -a automorphism
+```
+### Using repos.conf
+Create a file in `/etc/portage/repos.conf` with the following contents (if it
+is a directory, otherwise, add the following to the end of the file):
+```
+[automorphism]
+location = /foo/bar
+sync-type = git
+sync-uri = https://github.com/automorphism88/gentoo-overlay.git/
+auto-sync=yes
+```
+
+## Packages
 
 app-backup/snapper-gui  
 See https://github.com/ricardomv/snapper-gui

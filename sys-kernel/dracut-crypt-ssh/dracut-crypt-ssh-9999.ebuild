@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,8 @@ else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz"
 fi
 
-DEPEND="sys-kernel/dracut"
+DEPEND="net-misc/dropbear
+	sys-kernel/dracut"
 RDEPEND="${DEPEND}"
 
 DOCS=( README.md )

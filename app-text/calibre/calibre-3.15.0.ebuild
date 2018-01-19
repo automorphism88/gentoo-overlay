@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,17 +42,18 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/podofo-0.8.2:=
 	>=app-text/poppler-0.26.5[qt5]
 	>=dev-libs/chmlib-0.40:=
-	dev-libs/glib:2
+	dev-libs/glib:2=
 	>=dev-libs/icu-57.1:=
+	dev-libs/libinput:=
 	>=dev-python/apsw-3.13.0[${PYTHON_USEDEP}]
 	system-beautifulsoup? ( >=dev-python/beautifulsoup-3.0.5:python-2[${PYTHON_USEDEP}] )
 	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/cssselect-0.7.1[${PYTHON_USEDEP}]
 	>=dev-python/cssutils-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/dbus-python-1.2.4[${PYTHON_USEDEP}]
-	dev-python/html5-parser[${PYTHON_USEDEP}]
 	>=dev-libs/dbus-glib-0.106
 	>=sys-apps/dbus-1.10.8
+	dev-python/html5-parser[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.2.1[${PYTHON_USEDEP}]
 	>=dev-python/mechanize-0.2.5[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
@@ -64,21 +65,25 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-python/PyQt5-5.8[gui,svg,webkit,widgets,network,printsupport,${PYTHON_USEDEP}]
 	dev-python/regex[${PYTHON_USEDEP}]
 	dev-qt/qtcore:5=
+	dev-qt/qtdbus:5=
 	dev-qt/qtgui:5=
 	dev-qt/qtwidgets:5=
+	dev-util/desktop-file-utils
+	dev-util/gtk-update-icon-cache
 	media-fonts/liberation-fonts
-	>=media-gfx/imagemagick-6.5.9[jpeg,png]
-	media-libs/fontconfig
+	media-libs/fontconfig:=
 	>=media-libs/freetype-2:=
 	>=media-libs/libmtp-1.1.11:=
 	>=media-libs/libwmf-0.2.8
 	>=media-gfx/optipng-0.7.6
-	sys-libs/zlib
+	sys-libs/zlib:=
 	virtual/libusb:1=
 	virtual/python-dnspython[${PYTHON_USEDEP}]
-	x11-libs/libX11
-	x11-libs/libXext
-	x11-libs/libXrender
+	x11-libs/libxkbcommon:=
+	x11-libs/libX11:=
+	x11-libs/libXext:=
+	x11-libs/libXrender:=
+	x11-misc/shared-mime-info
 	>=x11-misc/xdg-utils-1.0.2-r2
 	ios? (
 		>=app-pda/usbmuxd-1.0.8
@@ -91,6 +96,14 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-python/setuptools-23.1.0[${PYTHON_USEDEP}]
 	>=virtual/podofo-build-0.9.4
 	virtual/pkgconfig"
+
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary && $(gcc-major-version) -lt 6 ]]; then
+		eerror "Calibre cannot be built with this version of gcc."
+		eerror "You need at least gcc-6.0"
+		die "Your C compiler is too old for this package."
+	fi
+}
 
 src_prepare() {
 	# no_updates: do not annoy user with "new version is availible all the time
@@ -254,6 +267,7 @@ src_install() {
 }
 
 pkg_preinst() {
+	gnome2_icon_savelist
 	# Indentify stray directories from upstream's "Binary install"
 	# method (see bug 622728).
 	CALIBRE_LIB_DIR=/usr/$(get_libdir)/calibre
@@ -270,8 +284,8 @@ pkg_postinst() {
 			rm -rf "${x}"
 		fi
 	done
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 

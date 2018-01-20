@@ -66,8 +66,8 @@ Original icedtea:7 (removed from official tree). Useful for bootstrapping newer
 icedtea from gcj.
 
 dev-qt/qtstyleplugins  
-See https://code.qt.io/qt/qtstyleplugins.git - needed to use GTK+ style in Qt 
-5.7+
+See https://code.qt.io/cgit/qt/qtstyleplugins.git/ - needed to use GTK+ style
+in Qt 5.7+
 
 dev-ruby/ruby-dbus  
 Needed as dependency for app-backup/snapsync

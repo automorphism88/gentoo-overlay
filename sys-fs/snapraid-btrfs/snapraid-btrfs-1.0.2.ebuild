@@ -17,9 +17,7 @@ else
 fi
 
 RDEPEND="app-backup/snapper[btrfs]
-	sys-fs/snapraid
-	>=app-shells/bash-4.1
-	virtual/awk"
+	sys-fs/snapraid"
 
 src_install() {
 	dobin snapraid-btrfs

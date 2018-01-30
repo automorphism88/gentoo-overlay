@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ else
 	SRC_URI="https://github.com/automorphism88/snapraid-btrfs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-RDEPEND="app-backup/snapper
+RDEPEND="app-backup/snapper[btrfs]
 	sys-fs/snapraid
 	>=app-shells/bash-4.1
 	virtual/awk"

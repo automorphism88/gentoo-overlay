@@ -14,13 +14,17 @@ LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
 SRC_URI="https://github.com/doudou/snapsync/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-RDEPEND="app-backup/snapper[btrfs]
+RDEPEND="${RDEPEND}
+	app-backup/snapper[btrfs]
 	sys-fs/btrfs-progs"
+DEPEND="${DEPEND}
+	app-backup/snapper[btrfs]
+	sys-fs/btrfs-progs"
+
 ruby_add_rdepend ">=dev-ruby/concurrent-ruby-0.9.0
 				 >=dev-ruby/logging-2.0.0
 				 >=dev-ruby/ruby-dbus-0.11.0
 				 >=dev-ruby/thor-0.19.1"
-DEPEND="${RDEPEND}"
 
 src_prepare() {
 	sed -i 's:/opt/snapsync:/usr:' "all/${P}/snapsync.service" || die

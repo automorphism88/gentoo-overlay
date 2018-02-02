@@ -12,7 +12,7 @@ if [[ "${PV}" = 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/automorphism88/snapraid-btrfs.git"
 	SRC_URI=""
 else
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	SRC_URI="https://github.com/automorphism88/snapraid-btrfs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 

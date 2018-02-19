@@ -46,6 +46,9 @@ See https://github.com/ahyatt/emacs-websocket
 app-misc/jdupes  
 See https://github.com/jbruchon/jdupes
 
+app-text/acroread  
+Old Gentoo ebuild (removed from official portage tree)
+
 app-text/calibre  
 Gentoo ebuild with USE flags added to toggle system vs bundled
 dev-python/beautifulsoup and Gentoo patches removing update dialogs and

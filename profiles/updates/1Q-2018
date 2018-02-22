@@ -1,0 +1,1 @@
+move sys-kernel/dracut-crypt-ssh sys-boot/dracut-crypt-ssh

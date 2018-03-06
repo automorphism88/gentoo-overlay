@@ -135,6 +135,9 @@ upstream patches are pulled directly from kernel.org).
 sys-kernel/dracut-crypt-ssh  
 See https://github.com/dracut-crypt-ssh/dracut-crypt-ssh
 
+sys-kernel/earlyoom  
+See https://github.com/rfjakob/earlyoom
+
 virtual/linux-sources  
 Modified to accept sys-kernel/amdstaging-sources as a dependency
 

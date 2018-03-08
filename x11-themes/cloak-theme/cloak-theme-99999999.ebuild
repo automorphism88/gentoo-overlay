@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,18 +28,18 @@ fi
 
 src_install() {
 	dodir /usr/share/themes/Cloak
+	insinto /usr/share/themes/Cloak
 	cd "${S}/Cloak-3.20" || die
-	cp index.theme "${D}/usr/share/themes/Cloak" || die
-
-	use cinnamon && { cp -R cinnamon "${D}/usr/share/themes/Cloak" || die; }
-	use firefox && { cp -R Firefox "${D}/usr/share/themes/Cloak" || die; }
-	use gnome-shell && { cp -R gnome-shell gnome-shell-GDM "${D}/usr/share/themes/Cloak" || die; }
-	use gtk2 && { cp -R gtk-2.0 "${D}/usr/share/themes/Cloak" || die; }
-	use gtk3 && { cp -R gtk-3.0 "${D}/usr/share/themes/Cloak" || die; }
-	use mate && { cp -R metacity-1 "${D}/usr/share/themes/Cloak" || die; }
-	use openbox && { cp -R openbox-3 "${D}/usr/share/themes/Cloak" || die; }
-	use xfce && { cp -R xfwm4 "${D}/usr/share/themes/Cloak" || die; }
-	use xfdashboard && { cp -R ../xfdashboard-cloak-3.20/xfdashboard-1.0 "${D}/usr/share/themes/Cloak" || die; }
+	doins index.theme
+	use cinnamon && doins -r cinnamon
+	use firefox && doins -r Firefox
+	use gnome-shell && doins -r gnome-shell gnome-shell-GDM
+	use gtk2 && doins -r gtk-2.0
+	use gtk3 && doins -r gtk-3.0
+	use mate && doins -r metacity-1
+	use openbox && doins -r openbox-3
+	use xfce && doins -r xfwm4
+	use xfdashboard && doins -r ../xfdashboard-cloak-3.20/xfdashboard-1.0
 	dodoc README
 }
 

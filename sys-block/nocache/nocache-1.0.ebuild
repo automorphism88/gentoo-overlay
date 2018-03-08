@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,6 +20,7 @@ else
 fi
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="/usr" LIBDIR="/$(get_libdir)" install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX%/}/usr" LIBDIR="/$(get_libdir)" \
+		install
 	einstalldocs
 }

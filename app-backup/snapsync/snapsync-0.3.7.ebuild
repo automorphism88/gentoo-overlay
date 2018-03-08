@@ -27,7 +27,8 @@ ruby_add_rdepend ">=dev-ruby/concurrent-ruby-0.9.0
 				 >=dev-ruby/thor-0.19.1"
 
 src_prepare() {
-	sed -i 's:/opt/snapsync:/usr:' "all/${P}/snapsync.service" || die
+	sed -i "s:/opt/snapsync:${EPREFIX%/}/usr:" \
+		"all/${P}/snapsync.service" || die
 	ruby-ng_src_prepare
 }
 

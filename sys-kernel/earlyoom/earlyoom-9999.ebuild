@@ -25,11 +25,12 @@ src_prepare() {
 }
 
 src_compile() {
-	emake DESTDIR="${D}" PREFIX="/usr" "${PN}" "${PN}.service"
+	emake DESTDIR="${D}" PREFIX="${EPREFIX%/}/usr" VERSION="${PV}" \
+		"${PN}" "${PN}.service"
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="/usr" install-bin
+	emake DESTDIR="${D}" PREFIX="${EPREFIX%/}/usr" install-bin
 	newinitd "${FILESDIR}/${PN}.openrc" "${PN}"
 	newconfd "${PN}.default" "${PN}"
 	systemd_dounit "${PN}.service"

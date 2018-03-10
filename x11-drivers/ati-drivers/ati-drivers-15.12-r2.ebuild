@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,9 @@ SLOT="1"
 #DRIVERS_URI="http://www2.ati.com/drivers/linux/amd-catalyst-13.12-linux-x86.x86_64.zip"
 #DRV_VER="amd-catalyst-${PV}-linux-installer-15.201.1151-x86.x86_64.zip"
 DRV_VER="radeon-crimson-${PV}-${BUILD_VER}-151217a-297685e.zip"
-DRIVERS_URI="mirror://gentoo/${DRV_VER}"
+#DRIVERS_URI="mirror://gentoo/${DRV_VER}"
+DRIVERS_URI="http://www2.ati.com/drivers/linux/radeon-crimson-${PV}-${BUILD_VER}-151217a-297685e.zip"
+# Only works if --referer 'http://support.amd.com' is passed to wget
 SDK_VER="xvba-sdk-0.74-404001.tar.gz"
 XVBA_SDK_URI="http://developer.amd.com/wordpress/media/2012/10/${SDK_VER}"
 SRC_URI="${DRIVERS_URI} ${XVBA_SDK_URI}"

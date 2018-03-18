@@ -170,3 +170,7 @@ Removed after being merged into official Portage tree
 sys-fs/cryfs  
 See https://www.cryfs.org  
 Removed after being merged into official Portage tree
+
+## Bugs
+Please report any bugs on GitHub at
+https://github.com/automorphism88/gentoo-overlay

@@ -105,8 +105,8 @@ See https://launchpad.net/grub-customizer
 
 sys-boot/grub  
 GRUB2 with openSUSE patches applied (useful for booting into btrfs snapshots).
-Controlled via opensuse USE flag, which also requires the multislot USE flag
-to be enabled.
+Uses a separate SLOT called 2-opensuse, so that it can coexist with either the
+official grub:2[-multislot] or grub:0.
 
 sys-fs/btrfsmaintenance  
 Collection of btrfs maintenance scripts from openSUSE. See

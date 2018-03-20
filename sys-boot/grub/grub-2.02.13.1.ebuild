@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,14 +47,13 @@ HOMEPAGE="https://www.gnu.org/software/grub/"
 
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3 fonts? ( GPL-2-with-font-exception ) themes? ( BitstreamVera )"
-SLOT="2/${PVR}"
-IUSE="debug device-mapper doc efiemu +fonts mount +multislot nls +opensuse static sdl test +themes truetype libzfs"
+SLOT="2-opensuse/${PVR}"
+IUSE="debug device-mapper doc efiemu +fonts mount nls static sdl test +themes truetype libzfs"
 
 GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot qemu qemu-mips pc uboot xen xen-32 )
 IUSE+=" ${GRUB_ALL_PLATFORMS[@]/#/grub_platforms_}"
 
 REQUIRED_USE="
-	opensuse? ( multislot )
 	grub_platforms_coreboot? ( fonts )
 	grub_platforms_qemu? ( fonts )
 	grub_platforms_ieee1275? ( fonts )
@@ -64,6 +63,7 @@ REQUIRED_USE="
 # os-prober: Used on runtime to detect other OSes
 # xorriso (dev-libs/libisoburn): Used on runtime for mkrescue
 RDEPEND="
+	!sys-boot/grub:2[multislot]
 	app-arch/xz-utils
 	>=sys-libs/ncurses-5.2-r5:0=
 	debug? (
@@ -114,7 +114,6 @@ RDEPEND+="
 		grub_platforms_efi-32? ( sys-boot/efibootmgr )
 		grub_platforms_efi-64? ( sys-boot/efibootmgr )
 	)
-	!multislot? ( !sys-boot/grub:0 !sys-boot/grub-static )
 	nls? ( sys-devel/gettext )
 "
 
@@ -134,19 +133,15 @@ src_unpack() {
 }
 
 src_prepare() {
-	if use opensuse ; then
-		for i in $(cat "${FILESDIR}/${PV}.patches") ; do
+	for i in $(cat "${FILESDIR}/${PV}.patches") ; do
 			eapply "${FILESDIR}/$i"
-		done
-	fi
-	if use multislot; then
-		# fix texinfo file name, bug 416035
-		sed -i -e 's/^\* GRUB:/* GRUB2:/' -e 's/(grub)/(grub2)/' docs/grub.texi || die
-	fi
-	if use opensuse ; then
-		mv -v docs/grub{,2}.texi || die
-		mv -v po/grub{,2}.pot || die
-	fi
+	done
+	# fix texinfo file name, bug 416035
+	sed -e 's/^\* GRUB:/* GRUB2:/' \
+		-e 's/(grub)/(grub2)/' \
+		-i docs/grub.texi || die
+	mv -v docs/grub{,2}.texi || die
+	mv -v po/grub{,2}.pot || die
 	default
 
 	sed -i -e /autoreconf/d autogen.sh || die
@@ -217,9 +212,7 @@ grub_configure() {
 		$(usex efiemu '' '--disable-efiemu')
 	)
 
-	if use multislot; then
-		myeconfargs+=( --program-transform-name="s,grub,grub2," )
-	fi
+	myeconfargs+=( --program-transform-name="s,grub,grub2," )
 
 	# Set up font symlinks
 	ln -s "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
@@ -280,24 +273,14 @@ src_install() {
 
 	einstalldocs
 
-	if use multislot && ! use opensuse ; then
-		mv "${ED%/}"/usr/share/info/grub{,2}.info || die
-	fi
-
 	insinto /etc/default
-	if use opensuse ; then
-		newins "${FILESDIR}"/grub.default-merged grub
-	else
-		newins "${FILESDIR}"/grub.default-3 grub
-	fi
-	if use opensuse ; then
-		insinto /etc/grub.d
-		doins "${FILESDIR}"/20_memtest86+
-		doins "${FILESDIR}"/80_suse_btrfs_snapshot
-		doins "${FILESDIR}"/90_persistent
-		dosbin "${FILESDIR}"/grub2-once
-		systemd_dounit "${FILESDIR}"/grub2-once.service
-	fi
+	newins "${FILESDIR}"/grub.default-merged grub
+	insinto /etc/grub.d
+	doins "${FILESDIR}"/20_memtest86+
+	doins "${FILESDIR}"/80_suse_btrfs_snapshot
+	doins "${FILESDIR}"/90_persistent
+	dosbin "${FILESDIR}"/grub2-once
+	systemd_dounit "${FILESDIR}"/grub2-once.service
 }
 
 pkg_postinst() {

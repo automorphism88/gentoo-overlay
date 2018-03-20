@@ -332,10 +332,10 @@ src_prepare() {
 
 	epatch "${FILESDIR}/15.12-xstate-fp.patch"
 
-	# apply patches for 4.6+ kernels
-	epatch "${FILESDIR}/kernel-4.6.patch"
-	epatch "${FILESDIR}/kernel-4.7.patch"
-	epatch "${FILESDIR}/kernel-4.9.patch"
+	# apply patches for 4.6+ kernels, taken from AUR
+	epatch "${FILESDIR}/aur_4.6-arch-get_user_pages_remote.patch"
+	epatch "${FILESDIR}/aur_4.7-arch-cpu_has_pge-v2.patch"
+	epatch "${FILESDIR}/aur_4.9_over_4.6-arch-get_user_pages_remote.patch"
 
 	epatch_user
 

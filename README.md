@@ -147,8 +147,11 @@ from portage tree)
 
 x11-drivers/ati-drivers  
 Old closed source fglrx driver for ATI/AMD graphics cards (previously removed
-from portage tree, with patches added for kernels up to 4.14 - may work with
-newer kernels, but has not been tested and may require further patching)
+from portage tree, with patches added for kernels released since Gentoo dropped
+support, taken from the AUR catalyst package). Currently known to support
+kernels through 4.15 - for newer kernels, check
+https://aur.archlinux.org/packages/catalyst/ for patches (and, if newer patches
+are available, please report it on GitHub so they can be added to the repo).
 
 x11-libs/amd-sdl-sdk and x11-libs/xvba-video  
 For use with x11-drivers/ati-drivers (previously removed from portage tree)

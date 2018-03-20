@@ -63,8 +63,8 @@ REQUIRED_USE="
 # os-prober: Used on runtime to detect other OSes
 # xorriso (dev-libs/libisoburn): Used on runtime for mkrescue
 RDEPEND="
-	!sys-boot/grub:2[multislot]
 	app-arch/xz-utils
+	!sys-boot/grub:2[multislot]
 	>=sys-libs/ncurses-5.2-r5:0=
 	debug? (
 		sdl? ( media-libs/libsdl )
@@ -133,8 +133,13 @@ src_unpack() {
 }
 
 src_prepare() {
-	for i in $(cat "${FILESDIR}/${PV}.patches") ; do
-			eapply "${FILESDIR}/$i"
+	local opensuse_patch_list
+	opensuse_patch_list="${FILESDIR}/opensuse-${PV}.patches"
+	[[ -f "$opensuse_patch_list" ]] || die
+	local -a opensuse_patches
+	IFS=$'\n' read -r -d '' -a opensuse_patches < "$opensuse_patch_list"
+	for i in "${opensuse_patches[@]}" ; do
+		eapply "${FILESDIR}/opensuse-${PV}/$i"
 	done
 	# fix texinfo file name, bug 416035
 	sed -e 's/^\* GRUB:/* GRUB2:/' \
@@ -276,11 +281,15 @@ src_install() {
 	insinto /etc/default
 	newins "${FILESDIR}"/grub.default-merged grub
 	insinto /etc/grub.d
-	doins "${FILESDIR}"/20_memtest86+
-	doins "${FILESDIR}"/80_suse_btrfs_snapshot
-	doins "${FILESDIR}"/90_persistent
-	dosbin "${FILESDIR}"/grub2-once
-	systemd_dounit "${FILESDIR}"/grub2-once.service
+	doins "${FILESDIR}/opensuse-${PV}/20_memtest86+"
+	doins "${FILESDIR}/opensuse-${PV}/80_suse_btrfs_snapshot"
+	doins "${FILESDIR}/opensuse-${PV}/90_persistent"
+	insinto "$(get_libdir)/snapper/plugins"
+	newins "${FILESDIR}/opensuse-${PV}/grub2-snapper-plugin.sh" grub
+	insinto "$(systemd_get_utildir)/system-sleep"
+	newins "${FILESDIR}/opensuse-${PV}/grub2-systemd-sleep.sh" grub2.sleep
+	dosbin "${FILESDIR}/opensuse-${PV}/grub2-once"
+	systemd_dounit "${FILESDIR}"/opensuse-${PV}/grub2-once.service
 }
 
 pkg_postinst() {

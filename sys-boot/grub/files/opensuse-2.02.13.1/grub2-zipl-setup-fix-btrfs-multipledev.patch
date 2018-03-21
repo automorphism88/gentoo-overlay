@@ -1,15 +1,1 @@
-Index: grub-2.02~beta2/util/s390x/zipl2grub.pl.in
-===================================================================
---- grub-2.02~beta2.orig/util/s390x/zipl2grub.pl.in
-+++ grub-2.02~beta2/util/s390x/zipl2grub.pl.in
-@@ -361,6 +361,10 @@ while ( <IN> ) {
-     } else {
-       $v = "";
-     }
-+    if ($k eq "GRUB_DEVICE" && $v !~ /^UUID/ && ! -e $v) {
-+      s{root=\@$k\@}{}g;
-+      next;
-+    }
-     s{\@$k\@}{$v}g;
-   }
-   Info( 2, $_);
+../opensuse-2.02.26.9/grub2-zipl-setup-fix-btrfs-multipledev.patch

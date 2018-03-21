@@ -9,7 +9,7 @@ inherit kernel-2 git-r3 versionator
 DESCRIPTION="amd-staging kernel with DC/DAL, plus gentoo-sources patches"
 HOMEPAGE="https://cgit.freedesktop.org/~agd5f/linux/log/?h=amd-staging-4.9"
 LICENSE="GPL-2 freedist"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+gentoo-base +gentoo-extras +gentoo-experimental"
 
 detect_version

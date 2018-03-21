@@ -333,16 +333,16 @@ src_prepare() {
 	epatch "${FILESDIR}/15.12-xstate-fp.patch"
 
 	# apply patches for 4.6+ kernels, taken from AUR
-	epatch "${FILESDIR}/aur_4.6-arch-get_user_pages_remote.patch"
-	epatch "${FILESDIR}/aur_4.7-arch-cpu_has_pge-v2.patch"
-	epatch "${FILESDIR}/aur_4.9_over_4.6-arch-get_user_pages_remote.patch"
-	epatch "${FILESDIR}/aur_4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch"
-	epatch "${FILESDIR}/aur_4.11-npfeiler-signal_vmf.patch"
-	epatch "${FILESDIR}/aur_4.12-npfeiler-PUD_OFFSET.patch"
-	epatch "${FILESDIR}/aur_4.12-arch-remove_clts.patch"
-	epatch "${FILESDIR}/aur_4.12-npfeiler-movsl_mask.patch"
-	epatch "${FILESDIR}/aur_4.13-npfeiler-wait_queue_t.patch"
-	epatch "${FILESDIR}/aur_4.14-npfeiler-task_struct-mm_segment_t.patch"
+	epatch "${FILESDIR}/4.6-arch-get_user_pages_remote.patch"
+	epatch "${FILESDIR}/4.7-arch-cpu_has_pge-v2.patch"
+	epatch "${FILESDIR}/4.9_over_4.6-arch-get_user_pages_remote.patch"
+	epatch "${FILESDIR}/4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch"
+	epatch "${FILESDIR}/4.11-npfeiler-signal_vmf.patch"
+	epatch "${FILESDIR}/4.12-npfeiler-PUD_OFFSET.patch"
+	epatch "${FILESDIR}/4.12-arch-remove_clts.patch"
+	epatch "${FILESDIR}/4.12-npfeiler-movsl_mask.patch"
+	epatch "${FILESDIR}/4.13-npfeiler-wait_queue_t.patch"
+	epatch "${FILESDIR}/4.14-npfeiler-task_struct-mm_segment_t.patch"
 
 	epatch_user
 

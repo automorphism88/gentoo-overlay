@@ -15,10 +15,10 @@ KEYWORDS="~amd64 ~x86"
 SRC_URI="https://github.com/doudou/snapsync/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 RDEPEND="${RDEPEND}
-	app-backup/snapper[btrfs]
+	app-backup/snapper
 	sys-fs/btrfs-progs"
 DEPEND="${DEPEND}
-	app-backup/snapper[btrfs]
+	app-backup/snapper
 	sys-fs/btrfs-progs"
 
 ruby_add_rdepend ">=dev-ruby/concurrent-ruby-0.9.0

@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+DESCRIPTION="Low-bitrate audio codec designed for speech"
 SLOT="0/0.8"
 inherit cmake-utils subversion
 DEPEND="media-libs/speex"

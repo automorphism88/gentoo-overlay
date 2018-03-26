@@ -16,7 +16,7 @@ else
 	SRC_URI="https://github.com/automorphism88/snapraid-btrfs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-RDEPEND="app-backup/snapper[btrfs]
+RDEPEND="app-backup/snapper
 	sys-fs/snapraid"
 
 src_install() {

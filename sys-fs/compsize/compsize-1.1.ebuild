@@ -22,15 +22,9 @@ else
 	SRC_URI="https://github.com/kilobyte/compsize/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-src_prepare() {
-	eapply_user
-	# Don't try to install a gzipped manfile during make install, instead
-	# use doman in src_install to ensure that PORTAGE_COMPRESS is used
-	sed -i $'/^\tgzip /d' Makefile || die
-}
-
 src_install() {
+	# work around Makefile failing to create this directory
+	mkdir -p "${ED}/usr/share/man/man8" || die
 	emake PREFIX="$ED" install
-	doman compsize.8
 	einstalldocs
 }

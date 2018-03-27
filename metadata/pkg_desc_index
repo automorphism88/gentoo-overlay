@@ -26,6 +26,7 @@ sys-boot/grub-btrfs 1.11 9999: grub2 plugin for btrfs snapshots
 sys-boot/grub-customizer 5.0.6: A graphical grub2 settings manager
 sys-fs/btrfsmaintenance 0.3.1 9999: btrfs maintenance scripts from openSUSE
 sys-fs/compsize 1.1 9999: Utility to find btrfs compression ratio
+sys-fs/cryfs 0.9.9 9999: Encrypted FUSE filesystem that conceals metadata
 sys-fs/mdadm 9999: A useful tool for running RAID systems - it can be used as a replacement for the raidtools
 sys-fs/mergerfs 2.23.1 9999: Featureful FUSE-based union filesystem
 sys-fs/mergerfs-tools 9999: Optional tools to help manage data in a mergerfs pool

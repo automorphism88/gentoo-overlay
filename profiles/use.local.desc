@@ -1,0 +1,32 @@
+# This file is deprecated as per GLEP 56 in favor of metadata.xml. Please add
+# your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using egencache *
+
+app-misc/jdupes:btrfs - Build support for btrfs deduplication with '-B/--dedupe'
+app-misc/jdupes:custom-optimization - Build with user-specified compiler optimization from CFLAGS
+app-misc/jdupes:debug - Build support for debug output with '-@'
+app-misc/jdupes:low-memory - Build for low memory usage instead of speed
+app-misc/jdupes:stats - Build with support for algorithm statistic reporting with '-D'
+app-text/acroread:html - HTML support and help reading capability (only for x86).
+app-text/calibre:disable-plugins - Apply Gentoo patch to disable plugins (improves security)
+app-text/calibre:no-trash - Always really delete files instead of sending them to the trash
+app-text/calibre:no-update-dialog - Apply Gentoo patch to disable update prompt dialog
+app-text/calibre:system-beautifulsoup - Use system dev-python/beautifulsoup instead of bundled
+dev-java/ecj-gcj:native - Build a native binary along with the jar. Provides faster execution time, but needs about 1G memory and some patience to compile.
+sys-kernel/amdstaging-sources:gentoo-base - Apply base patches from gentoo-sources
+sys-kernel/amdstaging-sources:gentoo-experimental - Apply experimental patches from gentoo-sources
+sys-kernel/amdstaging-sources:gentoo-extras - Apply extras patches from gentoo-sources
+virtual/linux-sources:firmware - Install linux kernel firmware
+x11-drivers/ati-drivers:gdm-hack - Do a potentially dangerous binary search and replace to fix gdm compatibility
+x11-drivers/ati-drivers:modules - Build the kernel modules
+x11-drivers/ati-drivers:pax_kernel - Enable pax kernel specific patches
+x11-drivers/ati-drivers:qt4 - Install qt4 dependent optional tools (e.g Catalyst Control Panel)
+x11-themes/cloak-theme:cinnamon - Install theme for gnome-extra/cinnamon
+x11-themes/cloak-theme:firefox - Install theme for www-client/firefox
+x11-themes/cloak-theme:gnome-shell - Install theme for gnome-base/gnome-shell
+x11-themes/cloak-theme:gtk2 - Install GTK+2 theme
+x11-themes/cloak-theme:gtk3 - Install GTK+3 theme
+x11-themes/cloak-theme:mate - Install metacity theme for mate-base/mate
+x11-themes/cloak-theme:openbox - Install theme for x11-wm/openbox
+x11-themes/cloak-theme:xfce - Install theme for xfce-base/xfwm4
+x11-themes/cloak-theme:xfdashboard - Install theme for xfce-extra/xfdashboard

@@ -21,7 +21,7 @@ fi
 src_prepare() {
 	eapply_user
 	sed -i -e 's/ -pipe//' -e 's/-g //' Makefile || die
-	use custom-optimization && sed -i 's/-O2 //' Makefile || die
+	use custom-optimization && { sed -i 's/-O2 //' Makefile || die ; }
 }
 
 src_compile() {

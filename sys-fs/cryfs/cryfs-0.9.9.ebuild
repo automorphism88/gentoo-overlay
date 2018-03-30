@@ -85,12 +85,8 @@ src_test() {
 src_install() {
 	# work around upstream issue with cmake not creating install target
 	# in Makefile if we enable BUILD_TESTING
-	if use test ; then
-		dobin "${BUILD_DIR}/src/cryfs-cli/cryfs"
-		gzip -cd "${BUILD_DIR}/doc/cryfs.1.gz" > "${T}/cryfs.1" || die
-		doman "${T}/cryfs.1"
-		einstalldocs
-	else
-		default
-	fi
+	dobin "${BUILD_DIR}/src/cryfs-cli/cryfs"
+	gzip -cd "${BUILD_DIR}/doc/cryfs.1.gz" > "${T}/cryfs.1" || die
+	doman "${T}/cryfs.1"
+	einstalldocs
 }

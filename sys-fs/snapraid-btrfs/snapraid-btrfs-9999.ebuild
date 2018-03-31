@@ -1,1 +1,1 @@
-snapraid-btrfs-0.9.1.ebuild
+snapraid-btrfs-0.9.2.ebuild

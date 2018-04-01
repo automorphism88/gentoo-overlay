@@ -42,7 +42,7 @@ UNIFONT=unifont-9.0.06
 SRC_URI+=" fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
 	themes? ( mirror://sourceforge/dejavu/${DEJAVU}.zip )"
 
-DESCRIPTION="GNU GRUB boot loader"
+DESCRIPTION="GNU GRUB boot loader with openSUSE patches"
 HOMEPAGE="https://www.gnu.org/software/grub/"
 
 # Includes licenses for dejavu and unifont

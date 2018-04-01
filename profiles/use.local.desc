@@ -13,6 +13,7 @@ app-text/calibre:no-trash - Always really delete files instead of sending them t
 app-text/calibre:no-update-dialog - Apply Gentoo patch to disable update prompt dialog
 app-text/calibre:system-beautifulsoup - Use system dev-python/beautifulsoup instead of bundled
 dev-java/ecj-gcj:native - Build a native binary along with the jar. Provides faster execution time, but needs about 1G memory and some patience to compile.
+dev-java/gcj-jdk:awt - Install AWT libraries, needed by some GUIs (not needed to build icedtea)
 sys-fs/cryfs:custom-optimization - Use user-defined compiler optimization level
 sys-fs/cryfs:update-check - Enable automatic checking for updates and security vulnerabilities
 sys-kernel/amdstaging-sources:gentoo-base - Apply base patches from gentoo-sources

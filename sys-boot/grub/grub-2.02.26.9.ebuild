@@ -48,7 +48,7 @@ HOMEPAGE="https://www.gnu.org/software/grub/"
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3 fonts? ( GPL-2-with-font-exception ) themes? ( BitstreamVera )"
 SLOT="2-opensuse/${PVR}"
-IUSE="debug device-mapper doc efiemu +fonts mount nls static sdl test +themes truetype libzfs"
+IUSE="debug device-mapper doc efiemu +fonts mount nls static sdl test +themes truetype libzfs zstd"
 
 GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot qemu qemu-mips pc uboot xen xen-32 )
 IUSE+=" ${GRUB_ALL_PLATFORMS[@]/#/grub_platforms_}"
@@ -141,6 +141,12 @@ src_prepare() {
 	for i in "${opensuse_patches[@]}" ; do
 		eapply "${FILESDIR}/opensuse-${PV}/$i"
 	done
+	# patches from btrfs-zstd branch at https://github.com/kdave/grub
+	if use zstd ; then
+		for i in ${FILESDIR}/zstd/*.patch ; do
+			eapply "$i"
+		done
+	fi
 	# fix texinfo file name, bug 416035
 	sed -e 's/^\* GRUB:/* GRUB2:/' \
 		-e 's/(grub)/(grub2)/' \

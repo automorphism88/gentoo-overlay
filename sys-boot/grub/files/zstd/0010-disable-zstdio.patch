@@ -1,0 +1,80 @@
+From fe3c38fb76d1ff7f22b5d121580eca4fd643c67f Mon Sep 17 00:00:00 2001
+From: David Sterba <dsterba@suse.com>
+Date: Tue, 5 Dec 2017 15:30:19 +0100
+Subject: [PATCH 10/12] disable zstdio
+
+---
+ grub-core/io/zstdio.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/grub-core/io/zstdio.c b/grub-core/io/zstdio.c
+index bb511f1d3..5f49b44aa 100644
+--- a/grub-core/io/zstdio.c
++++ b/grub-core/io/zstdio.c
+@@ -39,6 +39,7 @@ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+ struct grub_zstdio
+ {
++#if 0
+   grub_file_t file;
+   grub_uint8_t inbuf[MAX_BUF_SIZE];
+   grub_uint8_t outbuf[MAX_BUF_SIZE];
+@@ -49,6 +50,7 @@ struct grub_zstdio
+   ZSTD_inBuffer in_buf;
+   ZSTD_outBuffer out_buf;
+   grub_off_t saved_offset;
++#endif
+ };
+ 
+ typedef struct grub_zstdio *grub_zstdio_t;
+@@ -58,6 +60,8 @@ static grub_file_t
+ grub_zstdio_open (grub_file_t io,
+ 		const char *name __attribute__ ((unused)))
+ {
++	return 0;
++#if 0
+   grub_file_t file;
+   grub_zstdio_t zstdio;
+ 
+@@ -111,11 +115,14 @@ grub_zstdio_open (grub_file_t io,
+   /* TODO: check validity of the stream */
+ 
+   return file;
++#endif
+ }
+ 
+ static grub_ssize_t
+ grub_zstdio_read (grub_file_t file, char *buf, grub_size_t len)
+ {
++	return -1;
++#if 0
+   grub_ssize_t ret = 0;
+   grub_ssize_t readret;
+   grub_size_t zstdret;
+@@ -190,12 +197,15 @@ grub_zstdio_read (grub_file_t file, char *buf, grub_size_t len)
+     zstdio->saved_offset = file->offset + ret;
+ 
+   return ret;
++#endif
+ }
+ 
+ /* Release everything, including the underlying file object.  */
+ static grub_err_t
+ grub_zstdio_close (grub_file_t file)
+ {
++	return 0;
++#if 0
+   grub_zstdio_t zstdio = file->data;
+ 
+   grub_file_close (zstdio->file);
+@@ -206,6 +216,7 @@ grub_zstdio_close (grub_file_t file)
+   file->device = 0;
+   file->name = 0;
+   return grub_errno;
++#endif
+ }
+ 
+ static struct grub_fs grub_zstdio_fs = {
+-- 
+2.16.1
+

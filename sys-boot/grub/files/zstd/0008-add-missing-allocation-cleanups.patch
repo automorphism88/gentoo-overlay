@@ -1,0 +1,62 @@
+From fb3f87ab62efb4b68905eb66ec2a2498bea3720d Mon Sep 17 00:00:00 2001
+From: David Sterba <dsterba@suse.com>
+Date: Wed, 15 Nov 2017 01:03:49 +0100
+Subject: [PATCH 08/12] add missing allocation cleanups
+
+Signed-off-by: David Sterba <dsterba@suse.com>
+---
+ grub-core/fs/btrfs.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/grub-core/fs/btrfs.c b/grub-core/fs/btrfs.c
+index 87dc15db9..87f6e6de8 100644
+--- a/grub-core/fs/btrfs.c
++++ b/grub-core/fs/btrfs.c
+@@ -937,9 +937,6 @@ grub_btrfs_zstd_decompress(char *ibuf, grub_size_t isize, grub_off_t off,
+   void *wmem;
+   grub_size_t wsize;
+ 
+-  /*
+-   * TODO: allocators
+-   */
+   wsize = ZSTD_DStreamWorkspaceBound(ZSTD_BTRFS_MAX_INPUT);
+   wmem = grub_malloc(wsize);
+   if (!wmem)
+@@ -1004,7 +1001,6 @@ grub_btrfs_zstd_decompress(char *ibuf, grub_size_t isize, grub_off_t off,
+ 	  if (!buf)
+ 	    return -1;
+ 
+-	  /* TODO: zstd decompress */
+ 	  in_buf.src = ibuf;
+ 	  in_buf.pos = 0;
+ 	  in_buf.size = cblock_size;
+@@ -1014,7 +1010,7 @@ grub_btrfs_zstd_decompress(char *ibuf, grub_size_t isize, grub_off_t off,
+ 	  ret2 = ZSTD_decompressStream(stream, &out_buf, &in_buf);
+ 	  if (ZSTD_isError(ret2))
+ 	    {
+-	    /* CLEANUP */
++	      grub_free (wmem);
+ 	      grub_free (buf);
+ 	      return -1;
+ 	    }
+@@ -1043,6 +1039,7 @@ grub_btrfs_zstd_decompress(char *ibuf, grub_size_t isize, grub_off_t off,
+       ret2 = ZSTD_decompressStream(stream, &out_buf, &in_buf);
+       if (ZSTD_isError(ret2))
+         {
++	   grub_free (wmem);
+ 	   return -1;
+ 	}
+       usize = out_buf.size;
+@@ -1053,7 +1050,8 @@ grub_btrfs_zstd_decompress(char *ibuf, grub_size_t isize, grub_off_t off,
+       ibuf += cblock_size;
+     }
+ 
+-  return -1;
++  grub_free (wmem);
++  return ret;
+ }
+ 
+ static grub_ssize_t
+-- 
+2.16.1
+

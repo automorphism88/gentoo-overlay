@@ -1,0 +1,100 @@
+From ef136404a5e3d70be1fbb1b9b7afcdba1e831159 Mon Sep 17 00:00:00 2001
+From: David Sterba <dsterba@suse.com>
+Date: Tue, 5 Dec 2017 16:06:34 +0100
+Subject: [PATCH 12/12] debugging
+
+---
+ grub-core/fs/btrfs.c | 27 ++++++++++++++++++++++-----
+ 1 file changed, 22 insertions(+), 5 deletions(-)
+
+diff --git a/grub-core/fs/btrfs.c b/grub-core/fs/btrfs.c
+index 4f44ded1c..c1e3ba993 100644
+--- a/grub-core/fs/btrfs.c
++++ b/grub-core/fs/btrfs.c
+@@ -943,20 +943,25 @@ grub_btrfs_zstd_decompress(char *ibuf, grub_size_t isize, grub_off_t off,
+   wsize = sizeof(zstd_workspace);
+   wmem = zstd_workspace;
+   if (wsize < ZSTD_DCtxWorkspaceBound()) {
+-       grub_error (GRUB_ERR_BAD_FS, "ASSERTION failed");
++       grub_error (GRUB_ERR_BAD_FS, "ASSERTION: wsize < sz: %ld < %ld",
++		       wsize, ZSTD_DCtxWorkspaceBound());
+        return -1;
+   }
+   stream = ZSTD_initDStream(ZSTD_BTRFS_MAX_INPUT, wmem, wsize);
+   if (!stream)
+     {
++       grub_error (GRUB_ERR_BAD_FS, "ASSERTION: init stream");
+        return -1;
+     }
+ 
+   total_size = grub_le_to_cpu32 (grub_get_unaligned32 (ibuf));
+   ibuf += sizeof (total_size);
+ 
+-  if (isize < total_size)
++  if (isize < total_size) {
++    grub_error (GRUB_ERR_BAD_FS, "ASSERTION: isize < total_size: %ld < %ld",
++		    isize, total_size);
+     return -1;
++  }
+ 
+   /* Jump forward to first block with requested data.  */
+   while (off >= GRUB_BTRFS_ZSTD_BLOCK_SIZE)
+@@ -968,8 +973,11 @@ grub_btrfs_zstd_decompress(char *ibuf, grub_size_t isize, grub_off_t off,
+       cblock_size = grub_le_to_cpu32 (grub_get_unaligned32 (ibuf));
+       ibuf += sizeof (cblock_size);
+ 
+-      if (cblock_size > GRUB_BTRFS_ZSTD_BLOCK_MAX_CSIZE)
++      if (cblock_size > GRUB_BTRFS_ZSTD_BLOCK_MAX_CSIZE) {
++	grub_error (GRUB_ERR_BAD_FS, "ASSERTION: cblock_size > max: %ld > %ld",
++			cblock_size, GRUB_BTRFS_ZSTD_BLOCK_MAX_CSIZE);
+ 	return -1;
++      }
+ 
+       off -= GRUB_BTRFS_ZSTD_BLOCK_SIZE;
+       ibuf += cblock_size;
+@@ -987,8 +995,11 @@ grub_btrfs_zstd_decompress(char *ibuf, grub_size_t isize, grub_off_t off,
+       cblock_size = grub_le_to_cpu32 (grub_get_unaligned32 (ibuf));
+       ibuf += sizeof (cblock_size);
+ 
+-      if (cblock_size > GRUB_BTRFS_ZSTD_BLOCK_MAX_CSIZE)
++      if (cblock_size > GRUB_BTRFS_ZSTD_BLOCK_MAX_CSIZE) {
++	grub_error (GRUB_ERR_BAD_FS, "ASSERTION: cblock_size > max: %ld > %ld",
++			cblock_size, GRUB_BTRFS_ZSTD_BLOCK_MAX_CSIZE);
+ 	return -1;
++      }
+ 
+       /* Block partially filled with requested data.  */
+       if (off > 0 || osize < GRUB_BTRFS_ZSTD_BLOCK_SIZE)
+@@ -1000,8 +1011,10 @@ grub_btrfs_zstd_decompress(char *ibuf, grub_size_t isize, grub_off_t off,
+ 	    to_copy = osize;
+ 
+ 	  buf = grub_malloc (GRUB_BTRFS_ZSTD_BLOCK_SIZE);
+-	  if (!buf)
++	  if (!buf) {
++	    grub_error (GRUB_ERR_BAD_FS, "ASSERTION: alloc partiall");
+ 	    return -1;
++	  }
+ 
+ 	  in_buf.src = ibuf;
+ 	  in_buf.pos = 0;
+@@ -1013,6 +1026,8 @@ grub_btrfs_zstd_decompress(char *ibuf, grub_size_t isize, grub_off_t off,
+ 	  if (ZSTD_isError(ret2))
+ 	    {
+ 	      grub_free (buf);
++	      grub_error (GRUB_ERR_BAD_FS, "ASSERTION: decompress error: %ld",
++			      ret2);
+ 	      return -1;
+ 	    }
+ 
+@@ -1040,6 +1055,8 @@ grub_btrfs_zstd_decompress(char *ibuf, grub_size_t isize, grub_off_t off,
+       ret2 = ZSTD_decompressStream(stream, &out_buf, &in_buf);
+       if (ZSTD_isError(ret2))
+         {
++	      grub_error (GRUB_ERR_BAD_FS, "ASSERTION: decompress error: %ld",
++			      ret2);
+ 	   return -1;
+ 	}
+       usize = out_buf.size;
+-- 
+2.16.1
+

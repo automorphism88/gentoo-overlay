@@ -1,0 +1,72 @@
+From 551257439bce011903c085ae24f16bf4e1558488 Mon Sep 17 00:00:00 2001
+From: David Sterba <dsterba@suse.com>
+Date: Tue, 5 Dec 2017 14:57:31 +0100
+Subject: [PATCH 09/12] static buffer
+
+---
+ grub-core/fs/btrfs.c | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/grub-core/fs/btrfs.c b/grub-core/fs/btrfs.c
+index 87f6e6de8..4f44ded1c 100644
+--- a/grub-core/fs/btrfs.c
++++ b/grub-core/fs/btrfs.c
+@@ -56,6 +56,9 @@ GRUB_MOD_LICENSE ("GPLv3+");
+ #define GRUB_BTRFS_ZSTD_BLOCK_SIZE		4096
+ #define GRUB_BTRFS_ZSTD_BLOCK_MAX_CSIZE		8192
+ 
++#define BTRFS_ZSTD_WORKSPACE_SIZE_U64 (155984 / sizeof(grub_uint64_t))
++static grub_uint64_t zstd_workspace[BTRFS_ZSTD_WORKSPACE_SIZE_U64];
++
+ typedef grub_uint8_t grub_btrfs_checksum_t[0x20];
+ typedef grub_uint16_t grub_btrfs_uuid_t[8];
+ 
+@@ -937,16 +940,15 @@ grub_btrfs_zstd_decompress(char *ibuf, grub_size_t isize, grub_off_t off,
+   void *wmem;
+   grub_size_t wsize;
+ 
+-  wsize = ZSTD_DStreamWorkspaceBound(ZSTD_BTRFS_MAX_INPUT);
+-  wmem = grub_malloc(wsize);
+-  if (!wmem)
+-    {
++  wsize = sizeof(zstd_workspace);
++  wmem = zstd_workspace;
++  if (wsize < ZSTD_DCtxWorkspaceBound()) {
++       grub_error (GRUB_ERR_BAD_FS, "ASSERTION failed");
+        return -1;
+-    }
++  }
+   stream = ZSTD_initDStream(ZSTD_BTRFS_MAX_INPUT, wmem, wsize);
+   if (!stream)
+     {
+-       grub_free(wmem);
+        return -1;
+     }
+ 
+@@ -1010,7 +1012,6 @@ grub_btrfs_zstd_decompress(char *ibuf, grub_size_t isize, grub_off_t off,
+ 	  ret2 = ZSTD_decompressStream(stream, &out_buf, &in_buf);
+ 	  if (ZSTD_isError(ret2))
+ 	    {
+-	      grub_free (wmem);
+ 	      grub_free (buf);
+ 	      return -1;
+ 	    }
+@@ -1039,7 +1040,6 @@ grub_btrfs_zstd_decompress(char *ibuf, grub_size_t isize, grub_off_t off,
+       ret2 = ZSTD_decompressStream(stream, &out_buf, &in_buf);
+       if (ZSTD_isError(ret2))
+         {
+-	   grub_free (wmem);
+ 	   return -1;
+ 	}
+       usize = out_buf.size;
+@@ -1050,7 +1050,6 @@ grub_btrfs_zstd_decompress(char *ibuf, grub_size_t isize, grub_off_t off,
+       ibuf += cblock_size;
+     }
+ 
+-  grub_free (wmem);
+   return ret;
+ }
+ 
+-- 
+2.16.1
+

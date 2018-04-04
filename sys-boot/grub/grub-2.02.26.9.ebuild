@@ -284,6 +284,7 @@ src_test() {
 
 src_install() {
 	grub_do emake install DESTDIR="${D}" bashcompletiondir="$(get_bashcompdir)"
+	mv -v "${D}/$(get_bashcompdir)"/grub{,2} || die
 	use doc && grub_do_once emake -C docs install-html DESTDIR="${D}"
 
 	einstalldocs

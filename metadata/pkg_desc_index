@@ -1,5 +1,5 @@
 app-backup/snapper-gui 0.1 9999: GUI for snapper, a tool for Linux filesystem snapshot management
-app-backup/snapsync 0.3.7-r1: A synchronization tool for snapper based on btrfs send/receive
+app-backup/snapsync 0.3.8: A synchronization tool for snapper based on btrfs send/receive
 app-emacs/markdown-preview-mode 0.9: Minor mode to preview Markdown output as you save
 app-emacs/uuidgen 20140820: UUID generation implemented in elisp
 app-emacs/web-server 0.1.0: Web server running Emacs Lisp handlers

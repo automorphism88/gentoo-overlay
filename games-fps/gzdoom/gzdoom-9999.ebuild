@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,8 +42,8 @@ DEPEND="${RDEPEND}
 	x86? ( >=dev-lang/nasm-0.98.39 )"
 
 src_prepare() {
-	sed -i -e "s:/usr/local/share/:/usr/share/:" src/posix/i_system.h || die
-	sed -i -e "s/<unknown version>/${PV}/" \
+	sed -i "s:/usr/local/share/:/usr/share/:" src/posix/i_system.h || die
+	sed -i "s/<unknown version>/${PV}/" \
 		tools/updaterevision/updaterevision.c || die
 	eapply_user
 	cmake-utils_src_prepare
@@ -55,6 +55,11 @@ src_configure() {
 	use openal || mycmakeargs+="-DNO_OPENAL=ON"
 	append-cxxflags "-O3"
 	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-utils_src_install
+	rm -frv "${ED%/}/usr/share/doc/gzdoom/licenses" || die
 }
 
 pkg_postinst() {

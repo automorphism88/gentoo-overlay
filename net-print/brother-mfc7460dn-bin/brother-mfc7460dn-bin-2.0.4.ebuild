@@ -17,6 +17,8 @@ KEYWORDS="amd64 x86"
 RDEPEND="net-print/cups"
 
 RESTRICT="strip"
+QA_PREBUILT="opt/brother/Printers/MFC7460DN/inf/brprintconflsr3
+opt/brother/Printers/MFC7460DN/lpd/rawtobr3"
 S="${WORKDIR}/usr/local/Brother/Printer/MFC7460DN"
 
 pkg_setup() {

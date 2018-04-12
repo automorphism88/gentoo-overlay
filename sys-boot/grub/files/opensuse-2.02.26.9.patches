@@ -26,7 +26,6 @@ grub2-s390x-02-kexec-module-added-to-emu.patch
 grub2-s390x-03-output-7-bit-ascii.patch
 grub2-s390x-04-grub2-install.patch
 grub2-s390x-05-grub2-mkconfig.patch
-grub2-use-rpmsort-for-version-sorting.patch
 grub2-getroot-treat-mdadm-ddf-as-simple-device.patch
 grub2-setup-try-fs-embed-if-mbr-gap-too-small.patch
 grub2-xen-linux16.patch

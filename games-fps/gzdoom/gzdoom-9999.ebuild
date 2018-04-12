@@ -50,7 +50,8 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs=()
+	local -a mycmakeargs
+	mycmakeargs=()
 	use gtk || mycmakeargs+="-DNO_GTK=ON"
 	use openal || mycmakeargs+="-DNO_OPENAL=ON"
 	append-cxxflags "-O3"

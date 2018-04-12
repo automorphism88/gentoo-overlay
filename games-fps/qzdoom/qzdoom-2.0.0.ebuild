@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils cmake-utils gnome2-utils flag-o-matic
+inherit cmake-utils gnome2-utils flag-o-matic xdg-utils
 
 DESCRIPTION="A 3D-accelerated Doom source port based on ZDoom code"
 HOMEPAGE="https://zdoom.org"
@@ -61,14 +61,19 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 	rm -frv "${ED%/}/usr/share/doc/qzdoom/licenses" || die
+	newicon "${S}/src/posix/zdoom.xpm" qzdoom.xpm
+	insinto /usr/share/applications
+	doins "${FILESDIR}/qzdoom.desktop"
 }
 
 pkg_postinst() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 	ewarn "Copy or link wad files into ~/.config/qzdoom"
 	ewarn "or set the \$DOOMWADDIR environment variable"
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

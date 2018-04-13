@@ -14,9 +14,10 @@ LICENSE="brother-eula GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RESTRICT="strip"
 RDEPEND="net-print/cups"
-S="${WORKDIR}"
+
+RESTRICT="strip"
+S="${WORKDIR}/usr/local/Brother/Printer/MFC7460DN"
 
 pkg_setup() {
 	CONFIG_CHECK=""
@@ -35,15 +36,15 @@ src_unpack() {
 
 src_prepare() {
 	default
-	sed -i 's:/usr/local/Brother/Printer:/opt/brother/Printers:' "${S}/usr/local/Brother/Printer/MFC7460DN/lpd/filterMFC7460DN" || die
-	sed -e '/^\*PPD-Adobe:/,/^ENDOFPPDFILE/!d' -e '/^ENDOFPPDFILE/d' "${S}/usr/local/Brother/Printer/MFC7460DN/cupswrapper/cupswrapperMFC7460DN-2.0.4" > "${T}/brother-MFC7460DN.ppd" || die
-	sed -e '/^cat <<!ENDOFWFILTER!/,/^!ENDOFWFILTER!/!d' -e '/!ENDOFWFILTER!/d' -e 's:/usr/local/Brother/Printer:/opt/brother/Printers:' -e 's/\\//g' "${S}/usr/local/Brother/Printer/MFC7460DN/cupswrapper/cupswrapperMFC7460DN-2.0.4" > "${T}/brlpdwrapperMFC7460DN" || die
+	sed -i 's:/usr/local/Brother/Printer:/opt/brother/Printers:' "${S}/lpd/filterMFC7460DN" || die
+	sed -e '/^\*PPD-Adobe:/,/^ENDOFPPDFILE/!d' -e '/^ENDOFPPDFILE/d' "${S}/cupswrapper/cupswrapperMFC7460DN-2.0.4" > "${T}/brother-MFC7460DN.ppd" || die
+	sed -e '/^cat <<!ENDOFWFILTER!/,/^!ENDOFWFILTER!/!d' -e '/!ENDOFWFILTER!/d' -e 's:/usr/local/Brother/Printer:/opt/brother/Printers:' -e 's/\\//g' "${S}/cupswrapper/cupswrapperMFC7460DN-2.0.4" > "${T}/brlpdwrapperMFC7460DN" || die
 }
 
 src_install() {
 	keepdir /var/spool/lpd/MFC7460DN
 	dodir /opt/brother/Printers
-	cp -a "${S}/usr/local/Brother/Printer/MFC7460DN" "${ED%/}/opt/brother/Printers" || die
+	cp -a "${S}" "${ED%/}/opt/brother/Printers" || die
 	insinto /opt/brother/Printers/MFC7460DN/cupswrapper
 	insopts -m644
 	doins "${T}/brother-MFC7460DN.ppd"

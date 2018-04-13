@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils qmake-utils
+inherit eutils gnome2-utils qmake-utils xdg-utils
 
 DESCRIPTION="Qt5-based Chess Database Utility"
 HOMEPAGE="http://chessx.sourceforge.net/"
@@ -38,4 +38,14 @@ src_install() {
 	dodoc ChangeLog TODO
 	doicon data/images/${PN}.png
 	domenu unix/chessx.desktop
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

@@ -7,4 +7,4 @@ Icon=qzdoom
 Exec=qzdoom %F
 Terminal=false
 MimeType=application/x-doom-wad;
-Categories=Game;ActionGame;
+Categories=Game;Shooter;

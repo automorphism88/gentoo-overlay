@@ -12,6 +12,7 @@ dev-java/gcj-jdk 5.4.0-r1: Java wrappers around GCJ
 dev-java/icedtea 7.2.6.11: A harness to build OpenJDK using Free Software build tools and dependencies
 dev-qt/qtstyleplugins 20170311 99999999: Additional style plugins for Qt
 dev-ruby/ruby-dbus 0.14.1: Ruby library for D-Bus
+games-board/chessx 1.4.0-r1: Qt5-based Chess Database Utility
 games-fps/gzdoom 3.3.1 9999: A 3D-accelerated Doom source port based on ZDoom code
 games-fps/qzdoom 2.0.0 9999: A 3D-accelerated Doom source port based on ZDoom code
 games-fps/zdoom 2.8.1: ZDoom is an enhanced port of the official DOOM source code

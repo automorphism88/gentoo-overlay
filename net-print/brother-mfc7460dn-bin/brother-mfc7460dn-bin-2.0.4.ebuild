@@ -36,9 +36,9 @@ src_unpack() {
 
 src_prepare() {
 	default
-	sed -i 's:/usr/local/Brother/Printer:/opt/brother/Printers:' "${S}/lpd/filterMFC7460DN" || die
-	sed -e '/^\*PPD-Adobe:/,/^ENDOFPPDFILE/!d' -e '/^ENDOFPPDFILE/d' "${S}/cupswrapper/cupswrapperMFC7460DN-2.0.4" > "${T}/brother-MFC7460DN.ppd" || die
-	sed -e '/^cat <<!ENDOFWFILTER!/,/^!ENDOFWFILTER!/!d' -e '/!ENDOFWFILTER!/d' -e 's:/usr/local/Brother/Printer:/opt/brother/Printers:' -e 's/\\//g' "${S}/cupswrapper/cupswrapperMFC7460DN-2.0.4" > "${T}/brlpdwrapperMFC7460DN" || die
+	sed -i -f "${FILESDIR}/fix-path.sed" "${S}/lpd/filterMFC7460DN" || die
+	sed -f "${FILESDIR}/extract-cups-ppd.sed" "${S}/cupswrapper/cupswrapperMFC7460DN-2.0.4" > "${T}/brother-MFC7460DN.ppd" || die
+	sed -f "${FILESDIR}/extract-cups-filter.sed" -f "${FILESDIR}/fix-path.sed" "${S}/cupswrapper/cupswrapperMFC7460DN-2.0.4" > "${T}/brlpdwrapperMFC7460DN" || die
 }
 
 src_install() {

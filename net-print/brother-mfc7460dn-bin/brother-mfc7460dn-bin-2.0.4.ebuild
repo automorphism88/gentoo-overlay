@@ -8,7 +8,7 @@ DESCRIPTION="Brother MFC-7460DN printer driver"
 HOMEPAGE="http://support.brother.com"
 
 SRC_URI="http://download.brother.com/welcome/dlf006257/mfc7460dnlpr-2.1.0-1.i386.rpm
-http://download.brother.com/welcome/dlf006259/cupswrapperMFC7460DN-2.0.4-2.i386.rpm"
+	http://download.brother.com/welcome/dlf006259/cupswrapperMFC7460DN-2.0.4-2.i386.rpm"
 
 LICENSE="brother-eula GPL-2"
 SLOT="0"
@@ -20,7 +20,7 @@ RDEPEND="net-print/cups"
 RESTRICT="strip"
 
 QA_PREBUILT="opt/brother/Printers/MFC7460DN/inf/brprintconflsr3
-opt/brother/Printers/MFC7460DN/lpd/rawtobr3"
+	opt/brother/Printers/MFC7460DN/lpd/rawtobr3"
 S="${WORKDIR}/usr/local/Brother/Printer/MFC7460DN"
 
 pkg_setup() {

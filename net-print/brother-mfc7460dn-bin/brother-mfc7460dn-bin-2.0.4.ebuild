@@ -48,10 +48,9 @@ src_install() {
 	dodir /opt/brother/Printers
 	cp -a "${S}" "${ED%/}/opt/brother/Printers" || die
 	insinto /opt/brother/Printers/MFC7460DN/cupswrapper
-	insopts -m644
 	doins "${T}/brother-MFC7460DN.ppd"
-	insopts -m755
-	doins "${T}/brlpdwrapperMFC7460DN"
+	exeinto /opt/brother/Printers/MFC7460DN/cupswrapper
+	doexe "${T}/brlpdwrapperMFC7460DN"
 	dosym ../../../../opt/brother/Printers/MFC7460DN/cupswrapper/brother-MFC7460DN.ppd /usr/share/cups/model/brother-MFC7460DN.ppd
 	dosym ../../../../opt/brother/Printers/MFC7460DN/cupswrapper/brlpdwrapperMFC7460DN /usr/libexec/cups/filter/brlpdwrapperMFC7460DN
 }

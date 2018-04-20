@@ -30,7 +30,7 @@ sys-fs/btrfsmaintenance 0.3.1 9999: btrfs maintenance scripts from openSUSE
 sys-fs/mergerfs 2.23.1 9999: Featureful FUSE-based union filesystem
 sys-fs/mergerfs-tools 9999: Optional tools to help manage data in a mergerfs pool
 sys-fs/snapraid-btrfs 0.9.3 9999: Script for using snapraid with btrfs snapshots
-sys-kernel/amdstaging-sources 4.9.72_pre20170329 4.9.76_pre20170329-r1 4.9.77_pre20170329 4.9.78_pre20170329 4.9.79_pre20170329 4.9.80_pre20170329 4.9.81_pre20170329 4.9.82_pre20170329 4.9.83_pre20170329 4.9.84_pre20170329 4.9.85_pre20170329 4.9.86_pre20170329 4.9.87_pre20170329 4.9.88_pre20170329 4.9.89_pre20170329 4.9.90_pre20170329 4.9.91_pre20170329 4.9.92_pre20170329 4.9.93_pre20170329 4.9.94_pre20170329 4.16.0_pre20180403 4.16.1_pre20180403 4.16.2_pre20180403: amd-staging kernel with DC/DAL, plus gentoo-sources patches
+sys-kernel/amdstaging-sources 4.9.72_pre20170329 4.9.76_pre20170329-r1 4.9.77_pre20170329 4.9.78_pre20170329 4.9.79_pre20170329 4.9.80_pre20170329 4.9.81_pre20170329 4.9.82_pre20170329 4.9.83_pre20170329 4.9.84_pre20170329 4.9.85_pre20170329 4.9.86_pre20170329 4.9.87_pre20170329 4.9.88_pre20170329 4.9.89_pre20170329 4.9.90_pre20170329 4.9.91_pre20170329 4.9.92_pre20170329 4.9.93_pre20170329 4.9.94_pre20170329 4.9.95_pre20170329 4.16.0_pre20180403 4.16.1_pre20180403 4.16.2_pre20180403: amd-staging kernel with DC/DAL, plus gentoo-sources patches
 sys-kernel/earlyoom 1.0 9999: Daemon to kill processes before the kernel OOM killer
 virtual/linux-sources 3: Virtual for Linux kernel sources
 x11-base/xorg-drivers 1.17: Meta package containing deps on all xorg drivers

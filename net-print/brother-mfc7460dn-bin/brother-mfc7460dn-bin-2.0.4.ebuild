@@ -14,6 +14,7 @@ LICENSE="brother-eula GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
+DEPEND="app-editors/vim-core"
 RDEPEND="net-print/cups"
 
 # Unsure if necessary - copied from brother-overlay
@@ -22,6 +23,34 @@ RESTRICT="strip"
 QA_PREBUILT="opt/brother/Printers/MFC7460DN/inf/brprintconflsr3
 	opt/brother/Printers/MFC7460DN/lpd/rawtobr3"
 S="${WORKDIR}/usr/local/Brother/Printer/MFC7460DN"
+
+fix_path_in_binary() {
+	local file in_hex out_hex out_str str strings tmp_file IFS
+	IFS=$'\n'
+	for file in "$@" ; do
+		elog "Fixing paths in ${file}..."
+		strings="$(strings "${file}" | grep /usr/local/Brother/Printer | sort -u)"
+		for str in ${strings} ; do
+			tmp_file="${T}/fix_path_in_binary.tmp"
+			in_hex="$(printf '%s' "${str}" | xxd -g 0 -u -ps -c 256)00"
+			out_str="$(printf '%s' "${str}" | sed -f "${FILESDIR}/fix-path.sed")"
+			out_hex="$(printf '%s' "${out_str}" | xxd -g 0 -u -ps -c 256)00"
+			while ((${#out_hex} < ${#in_hex})) ; do
+				out_hex="${out_hex}00"
+			done
+			hexdump -ve '1/1 "%.2X"' "${file}" |
+				sed "s/${in_hex}/${out_hex}/g" |
+				xxd -r -p > "${tmp_file}" || die
+			chmod --reference "${file}" "${tmp_file}" || die
+			mv "${tmp_file}" "${file}" || die
+		done
+		if strings "${file}" | grep /usr/local/Brother/Printer > /dev/null ; then
+			die "Failed to fix paths in ${file}"
+		else
+			elog "Fixed paths in ${file}"
+		fi
+	done
+}
 
 pkg_setup() {
 	CONFIG_CHECK=""
@@ -40,9 +69,13 @@ src_unpack() {
 
 src_prepare() {
 	default
+	sed -i -f "${FILESDIR}/fix-path.sed" "${S}/cupswrapper/cupswrapperMFC7460DN-${PV}" || die
+	sed -i -f "${FILESDIR}/fix-path.sed" "${S}/inf/setupPrintcap2" || die
 	sed -i -f "${FILESDIR}/fix-path.sed" "${S}/lpd/filterMFC7460DN" || die
-	sed -f "${FILESDIR}/extract-cups-ppd.sed" "${S}/cupswrapper/cupswrapperMFC7460DN-2.0.4" > "${T}/brother-MFC7460DN.ppd" || die
-	sed -f "${FILESDIR}/extract-cups-filter.sed" -f "${FILESDIR}/fix-path.sed" "${S}/cupswrapper/cupswrapperMFC7460DN-2.0.4" > "${T}/brlpdwrapperMFC7460DN" || die
+	fix_path_in_binary "${S}/cupswrapper/brcupsconfig4"
+	fix_path_in_binary "${S}/inf/brprintconflsr3"
+	sed -f "${FILESDIR}/extract-cups-ppd.sed" "${S}/cupswrapper/cupswrapperMFC7460DN-${PV}" > "${T}/brother-MFC7460DN.ppd" || die
+	sed -f "${FILESDIR}/extract-cups-filter.sed" "${S}/cupswrapper/cupswrapperMFC7460DN-${PV}" > "${T}/brlpdwrapperMFC7460DN" || die
 }
 
 src_install() {

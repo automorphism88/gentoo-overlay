@@ -42,6 +42,7 @@ fix_path_in_binary() {
 				sed "s/${in_hex}/${out_hex}/g" |
 				my_xxd -r -p > "${tmp_file}"
 			assert
+			[[ "$(stat -c %s "${tmp_file}")" = "$(stat -c %s "${file}")" ]] || die
 			chmod --reference "${file}" "${tmp_file}" || die
 			mv "${tmp_file}" "${file}" || die
 		done

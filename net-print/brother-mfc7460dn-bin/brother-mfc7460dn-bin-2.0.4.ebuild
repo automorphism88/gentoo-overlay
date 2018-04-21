@@ -40,7 +40,8 @@ fix_path_in_binary() {
 			done
 			hexdump -ve '1/1 "%.2X"' "${file}" |
 				sed "s/${in_hex}/${out_hex}/g" |
-				my_xxd -r -p > "${tmp_file}" || die
+				my_xxd -r -p > "${tmp_file}"
+			assert
 			chmod --reference "${file}" "${tmp_file}" || die
 			mv "${tmp_file}" "${file}" || die
 		done

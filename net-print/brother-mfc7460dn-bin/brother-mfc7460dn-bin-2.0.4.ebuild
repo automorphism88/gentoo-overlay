@@ -14,7 +14,7 @@ LICENSE="brother-eula GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-DEPEND="|| ( sys-apps/busybox sys-apps/toybox app-editors/vim-core )"
+DEPEND="app-editors/vim-core"
 RDEPEND="net-print/cups"
 
 # Unsure if necessary - copied from brother-overlay
@@ -32,15 +32,15 @@ fix_path_in_binary() {
 		strings="$(strings "${file}" | grep /usr/local/Brother/Printer | sort -u)"
 		for str in ${strings} ; do
 			tmp_file="${T}/fix_path_in_binary.tmp"
-			in_hex="$(printf '%s' "${str}" | my_xxd -g 0 -u -ps -c 256)00"
+			in_hex="$(printf '%s' "${str}" | xxd -g 0 -u -ps -c 256)00"
 			out_str="$(printf '%s' "${str}" | sed -f "${FILESDIR}/fix-path.sed")"
-			out_hex="$(printf '%s' "${out_str}" | my_xxd -g 0 -u -ps -c 256)00"
+			out_hex="$(printf '%s' "${out_str}" | xxd -g 0 -u -ps -c 256)00"
 			while ((${#out_hex} < ${#in_hex})) ; do
 				out_hex="${out_hex}00"
 			done
 			hexdump -ve '1/1 "%.2X"' "${file}" |
 				sed "s/${in_hex}/${out_hex}/g" |
-				my_xxd -r -p > "${tmp_file}"
+				xxd -r -p > "${tmp_file}"
 			assert
 			[[ "$(stat -c %s "${tmp_file}")" = "$(stat -c %s "${file}")" ]] || die
 			chmod --reference "${file}" "${tmp_file}" || die
@@ -52,18 +52,6 @@ fix_path_in_binary() {
 			elog "Fixed paths in ${file}"
 		fi
 	done
-}
-
-my_xxd() {
-	if type xxd &> /dev/null ; then
-		xxd "$@"
-	elif type busybox &> /dev/null ; then
-		busybox xxd "$@"
-	elif type toybox &> /dev/null ; then
-		toybox xxd "$@"
-	else
-		die "Couldn't find xxd"
-	fi
 }
 
 pkg_setup() {

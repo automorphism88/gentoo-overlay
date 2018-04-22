@@ -21,7 +21,6 @@ games-misc/cowsay 3.03-r3: configurable talking ASCII cow (and other characters)
 games-misc/cowsay-files 20170314: Collection of additional cow files for games-misc/cowsay
 games-misc/cowsay-philosoraptor 20130810: Philosoraptor cow for games-misc/cowsay
 games-misc/fortune-mod-philosoraptor 20130810: Philosoraptor quotes for games-misc/fortune-mod
-media-sound/codec2 0.7 9999: Low-bitrate audio codec designed for speech
 net-print/brother-mfc7460dn-bin 2.0.4: Brother MFC-7460DN printer driver
 sys-block/nocache 1.0 9999: Minimize the effect a program has on the file system cache
 sys-boot/dracut-crypt-ssh 1.0.3 9999: Dracut module which allows remote unlocking of systems

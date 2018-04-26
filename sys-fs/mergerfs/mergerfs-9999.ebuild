@@ -24,9 +24,13 @@ RDEPEND="sys-apps/attr:=
 DEPEND="app-text/pandoc
 		${RDEPEND}"
 
+PATCHES=( "${FILESDIR}/fix-makefile-2.24.2.patch" )
+
 src_prepare() {
 	[[ "${PV}" == 9999 ]] && emake src/version.hpp
 	default
+	sed -e "/^PREFIX/s:/usr/local:${EPREFIX%/}/usr:" \
+		-i Makefile
 }
 
 src_install() {

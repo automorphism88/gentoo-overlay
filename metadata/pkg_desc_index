@@ -28,7 +28,7 @@ sys-boot/grub 2.02.26.9: GNU GRUB boot loader with openSUSE patches
 sys-boot/grub-btrfs 1.11 9999: grub2 plugin for btrfs snapshots
 sys-boot/grub-customizer 5.0.6: A graphical grub2 settings manager
 sys-fs/btrfsmaintenance 0.3.1 9999: btrfs maintenance scripts from openSUSE
-sys-fs/mergerfs 2.23.1 2.24.2 9999: Featureful FUSE-based union filesystem
+sys-fs/mergerfs 2.24.2 9999: Featureful FUSE-based union filesystem
 sys-fs/mergerfs-tools 9999: Optional tools to help manage data in a mergerfs pool
 sys-fs/snapraid 11.2: a backup program for disk array for home media centers
 sys-fs/snapraid-btrfs 0.9.5 9999: Script for using snapraid with btrfs snapshots

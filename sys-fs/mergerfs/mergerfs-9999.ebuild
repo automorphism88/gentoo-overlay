@@ -23,12 +23,10 @@ RDEPEND="sys-apps/attr:=
 		sys-fs/fuse:="
 DEPEND="app-text/pandoc
 		${RDEPEND}"
-PATCHES=( "${FILESDIR}/makefile-respect-user-cflags.patch" )
 
 src_prepare() {
 	[[ "${PV}" == 9999 ]] && emake src/version.hpp
-	eapply "${PATCHES[@]}"
-	eapply_user
+	default
 }
 
 src_install() {

@@ -1,0 +1,57 @@
+--- a/Makefile	2017-12-26 14:47:41.310848618 -0800
++++ b/Makefile	2017-12-26 14:47:35.201848318 -0800
+@@ -51,14 +51,14 @@
+ TARGET      = mergerfs
+ MANPAGE     = $(TARGET).1
+ FUSE_CFLAGS = -D_FILE_OFFSET_BITS=64 -Ilibfuse/include
+-CFLAGS      = -g -Wall \
++MY_CFLAGS     = -g -Wall \
+ 	      $(OPTS) \
+ 	      -Wno-unused-result \
+               $(FUSE_CFLAGS) \
+               -DFUSE_USE_VERSION=29 \
+               -MMD \
+ 	      -DUGID_USE_RWLOCK=$(UGID_USE_RWLOCK)
+-LDFLAGS       = -pthread -lrt
++MY_LDFLAGS      = -pthread -lrt
+ 
+ PREFIX        = /usr/local
+ EXEC_PREFIX   = $(PREFIX)
+@@ -75,7 +75,7 @@
+ 
+ ifeq ($(XATTR_AVAILABLE),0)
+ $(warning "xattr not available: disabling")
+-CFLAGS += -DWITHOUT_XATTR
++MY_CFLAGS += -DWITHOUT_XATTR
+ endif
+ 
+ all: $(TARGET)
+@@ -85,8 +85,8 @@
+ 	@echo "make XATTR_AVAILABLE=0 - to build program without xattrs functionality (auto discovered otherwise)"
+ 
+ $(TARGET): src/version.hpp obj/obj-stamp libfuse/lib/.libs/libfuse.a $(OBJ)
+-	cd libfuse && make
+-	$(CXX) $(CFLAGS) $(OBJ) -o $@ libfuse/lib/.libs/libfuse.a -ldl $(LDFLAGS)
++	cd libfuse && $(MAKE)
++	$(CXX) $(CFLAGS) $(MY_CFLAGS) $(OBJ) -o $@ libfuse/lib/.libs/libfuse.a -ldl $(LDFLAGS) $(MY_LDFLAGS)
+ 
+ mount.mergerfs: $(TARGET)
+ 	$(LN) -fs "$<" "$@"
+@@ -117,7 +117,7 @@
+ 	$(TOUCH) $@
+ 
+ obj/%.o: src/%.cpp
+-	$(CXX) $(CFLAGS) -c $< -o $@
++	$(CXX) $(CXXFLAGS) $(MY_CFLAGS) -c $< -o $@
+ 
+ clean: rpm-clean libfuse_Makefile
+ 	$(RM) -f src/version.hpp
+@@ -216,7 +216,7 @@
+ 	yum -y install git rpm-build libattr-devel gcc-c++ make which python automake libtool gettext-devel
+ endif
+ 
+-unexport CFLAGS LDFLAGS
++unexport MY_CFLAGS MY_LDFLAGS
+ .PHONY: libfuse_Makefile
+ libfuse_Makefile:
+ ifeq ($(shell test -e libfuse/Makefile; echo $$?),1)

@@ -7,7 +7,7 @@ app-emacs/web-server 0.1.0: Web server running Emacs Lisp handlers
 app-emacs/websocket 1.8: A websocket implementation in elisp, for emacs
 app-misc/jdupes 1.9 9999: Fork of fdupes with better performance and btrfs deduplication support
 app-text/acroread 9.5.5-r3: Adobe's PDF reader
-app-text/calibre 3.15.0 3.24.0: Ebook management application
+app-text/calibre 3.15.0 3.25.0: Ebook management application
 dev-java/ecj-gcj 4.4.2: Subset of Eclipse Compiler for Java compiled by gcj, serving as javac in gcj-jdk
 dev-java/gcj-jdk 5.4.0-r1: Java wrappers around GCJ
 dev-java/icedtea 7.2.6.11: A harness to build OpenJDK using Free Software build tools and dependencies

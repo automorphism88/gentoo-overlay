@@ -34,7 +34,7 @@ LICENSE="
 "
 KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0"
-IUSE="ios +udisks"
+IUSE="ios +udisks +disable-plugins no-trash +no-update-dialog +system-beautifulsoup"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -46,7 +46,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/icu-57.1:=
 	dev-libs/libinput:=
 	>=dev-python/apsw-3.13.0[${PYTHON_USEDEP}]
-	>=dev-python/beautifulsoup-3.0.5:python-2[${PYTHON_USEDEP}]
+	system-beautifulsoup? ( >=dev-python/beautifulsoup-3.0.5:python-2[${PYTHON_USEDEP}] )
 	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/cssselect-0.7.1[${PYTHON_USEDEP}]
 	>=dev-python/cssutils-1.0.1[${PYTHON_USEDEP}]
@@ -108,9 +108,9 @@ pkg_pretend() {
 src_prepare() {
 	# no_updates: do not annoy user with "new version is availible all the time
 	# disable_plugins: walking sec-hole, wait for upstream to use GHNS interface
-	eapply \
-		"${FILESDIR}/${PN}-2.9.0-no_updates_dialog.patch" \
-		"${FILESDIR}/${PN}-disable_plugins.patch"
+	use no-update-dialog && eapply "${FILESDIR}/${PN}-2.9.0-no_updates_dialog.patch"
+	use disable-plugins && eapply "${FILESDIR}/${PN}-disable_plugins.patch"
+	use no-trash && eapply "${FILESDIR}/no-trash.patch"
 
 	eapply_user
 
@@ -143,12 +143,14 @@ src_prepare() {
 '-i', 'Makefile'])" \
 		-i setup/build.py || die "sed failed to patch build.py"
 
+	if use system-beautifulsoup ; then
 	# use system beautifulsoup, instead of bundled
 	rm -f "${S}"/src/calibre/ebooks/BeautifulSoup.py \
 		|| die "could not remove bundled beautifulsoup"
 	find "${S}" -type f -name \*.py -exec \
 		sed -e 's/calibre.ebooks.BeautifulSoup/BeautifulSoup/' -i {} + \
 		|| die "could not sed bundled beautifulsoup out of the source tree"
+	fi
 
 	# avoid failure of xdg tools to recognize vendor prefix
 	sed -e "s|xdg-icon-resource install|xdg-icon-resource install --novendor|" \
@@ -246,6 +248,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/calibre-server-3.init calibre-server
 	newconfd "${FILESDIR}"/calibre-server-3.conf calibre-server
+	doenvd "${FILESDIR}"/99calibre
 
 	bashcomp_alias calibre \
 		lrfviewer \

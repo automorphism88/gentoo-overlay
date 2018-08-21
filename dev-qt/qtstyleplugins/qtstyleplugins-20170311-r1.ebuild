@@ -21,7 +21,7 @@ else
 	SRC_URI="https://github.com/automorphism88/qtstyleplugins/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-RDEPEND="dev-qt/qtcore:5
+RDEPEND="dev-qt/qtcore:5=
 		 x11-libs/gtk+:2
 		 x11-libs/libX11"
 DEPEND="${RDEPEND}"

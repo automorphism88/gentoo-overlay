@@ -52,9 +52,9 @@ src_configure() {
 	append-cppflags -DOF=_Z_OF -DON=_Z_ON
 	local -a mycmakeargs
 	mycmakeargs=(
-		-DAPPDIR="/usr/bin"
-		-DSHAREDIR="/usr/share"
-		-DDOCDIR="/usr/share/doc/${PF}"
+		-DAPPDIR="${EPREFIX%/}/usr/bin"
+		-DSHAREDIR="${EPREFIX%/}/usr/share"
+		-DDOCDIR="${EPREFIX%/}/usr/share/doc/${PF}"
 		-DBUILD_TARGET="LINUX"
 		-DOPENGL="$(usex opengl)"
 		-DUSE_SDL2=1

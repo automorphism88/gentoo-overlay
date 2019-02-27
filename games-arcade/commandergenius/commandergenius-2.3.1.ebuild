@@ -46,6 +46,7 @@ src_prepare() {
 }
 
 src_configure() {
+	use python && python_setup
 	# add the flag we removed from CMakeLists.txt in src_prepare()
 	append-cflags -std=c99
 	# fix bundled minizip issue
@@ -57,19 +58,9 @@ src_configure() {
 		-DDOCDIR="${EPREFIX%/}/usr/share/doc/${PF}"
 		-DBUILD_TARGET="LINUX"
 		-DOPENGL="$(usex opengl)"
+		-DUSE_PYTHON3="$(usex python)"
 		-DUSE_SDL2=1
 	)
-	if use python ; then
-		python_setup
-		mycmakeargs+=(
-			-DUSE_PYTHON3=1
-		)
-	else
-		mycmakeargs+=(
-			-DUSE_PYTHON3=0
-		)
-	fi
-
 	cmake-utils_src_configure
 }
 

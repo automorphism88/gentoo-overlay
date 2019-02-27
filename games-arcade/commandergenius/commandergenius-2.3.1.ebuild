@@ -36,12 +36,14 @@ src_prepare() {
 	mv share/cgenius.desktop share/commandergenius.desktop || die
 	mv src/CGLogo.png src/commandergenius.png || die
 	sed -i -e 's/cgenius.desktop/commandergenius.desktop/' \
-		-e 's/CGLogo.png/commandergenius.png/' src/install.cmake || die
+		-e 's/CGLogo.png/commandergenius.png/' \
+		src/install.cmake || die
 	sed -i -e 's/CGeniusExe/commandergenius/' \
 		-e 's/CGLogo.png/commandergenius.png/' \
 		-e '/^Categories=/s/Application;//' \
 		share/commandergenius.desktop || die
-	sed -i -e 's/cgenius.desktop/commandergenius.desktop/' package.cmake || die
+	sed -i -e 's/cgenius.desktop/commandergenius.desktop/' \
+		package.cmake || die
 	cmake-utils_src_prepare
 }
 

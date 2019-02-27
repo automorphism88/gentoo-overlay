@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{5,6,7} )
-inherit python-single-r1 cmake-utils eutils flag-o-matic
+inherit python-single-r1 cmake-utils flag-o-matic
 
 DESCRIPTION="Open Source Commander Keen clone (needs original game files)"
 HOMEPAGE="http://clonekeenplus.sourceforge.net"

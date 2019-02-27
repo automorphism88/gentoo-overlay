@@ -32,7 +32,7 @@ S="${WORKDIR}/Commander-Genius-v${PV}"
 src_prepare() {
 	# don't clobber existing CFLAGS
 	sed -i -e '/-std=c99/d' CMakeLists.txt || die
-	# fix filenames
+	# fix filenames and remove deprecated category from .desktop file
 	mv share/cgenius.desktop share/commandergenius.desktop || die
 	mv src/CGLogo.png src/commandergenius.png || die
 	sed -i -e 's/cgenius.desktop/commandergenius.desktop/' \
@@ -51,7 +51,7 @@ src_configure() {
 	use python && python_setup
 	# add the flag we removed from CMakeLists.txt in src_prepare()
 	append-cflags -std=c99
-	# fix bundled minizip issue
+	# work around gentoo zlib modifications (bug #383179)
 	append-cppflags -DOF=_Z_OF -DON=_Z_ON
 	local -a mycmakeargs
 	mycmakeargs=(

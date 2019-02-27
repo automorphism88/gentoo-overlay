@@ -7,12 +7,12 @@
 #
 # use: commandergenius [path-to-keen-dir]
 
-if [ -z $1 ] ; then
+if [ -z "$1" ] ; then
 	SEARCHDIR=~/.CommanderGenius
 else
 	SEARCHDIR="$1"
 fi
 
-cd ${SEARCHDIR}
+cd "${SEARCHDIR}"
 
 exec CommanderGenius "$@"

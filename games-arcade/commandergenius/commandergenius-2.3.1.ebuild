@@ -63,7 +63,6 @@ src_configure() {
 		python_setup
 		mycmakeargs+=(
 			-DUSE_PYTHON3=1
-			-DCMAKE_PREFIX_PATH="$(python_get_sitedir)"
 		)
 	else
 		mycmakeargs+=(

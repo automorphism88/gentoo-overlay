@@ -35,7 +35,8 @@ src_prepare() {
 	# fix filenames and remove deprecated category from .desktop file
 	mv share/cgenius.desktop share/commandergenius.desktop || die
 	mv src/CGLogo.png src/commandergenius.png || die
-	sed -i -e 's/cgenius.desktop/commandergenius.desktop/' \
+	sed -i -e 's/APPDIR games/APPDIR bin/' \
+		-e 's/cgenius.desktop/commandergenius.desktop/' \
 		-e 's/CGLogo.png/commandergenius.png/' \
 		src/install.cmake || die
 	sed -i -e 's/CGeniusExe/commandergenius/' \
@@ -55,9 +56,7 @@ src_configure() {
 	append-cppflags -DOF=_Z_OF -DON=_Z_ON
 	local -a mycmakeargs
 	mycmakeargs=(
-		-DAPPDIR="${EPREFIX%/}/usr/bin"
-		-DSHAREDIR="${EPREFIX%/}/usr/share"
-		-DDOCDIR="${EPREFIX%/}/usr/share/doc/${PF}"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX%/}"
 		-DBUILD_TARGET="LINUX"
 		-DOPENGL="$(usex opengl)"
 		-DUSE_PYTHON3="$(usex python)"
@@ -73,7 +72,7 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 	newbin "${FILESDIR}"/commandergenius-wrapper commandergenius
-	mv "${ED}/usr/bin/CGeniusExe" "${ED}/usr/bin/CommanderGenius" || die
+	mv "${ED%/}/usr/bin/CGeniusExe" "${ED%/}/usr/bin/CommanderGenius" || die
 }
 
 pkg_postinst() {

@@ -1,1 +1,0 @@
-amdstaging-sources-4.16.0_pre20180425.ebuild

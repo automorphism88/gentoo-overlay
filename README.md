@@ -24,9 +24,6 @@ sync-uri = https://github.com/automorphism88/gentoo-overlay.git/
 auto-sync = yes
 ```
 
-## Packages
-See the file `metadata/pkg_desc_index` for a list of available packages.
-
 ## Bugs
 Please report any bugs on GitHub at
 https://github.com/automorphism88/gentoo-overlay

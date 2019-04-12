@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-# need concurrent-ruby and thor for ruby25
-USE_RUBY="ruby24"
+USE_RUBY="ruby24 ruby25 ruby26"
 inherit ruby-fakegem systemd
 SLOT=0
 

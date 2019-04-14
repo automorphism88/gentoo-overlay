@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby24 ruby25 ruby26"
+# dev-ruby/ruby-dbus doesn't support ruby26
+USE_RUBY="ruby24 ruby25"
 inherit ruby-fakegem systemd
 SLOT=0
 

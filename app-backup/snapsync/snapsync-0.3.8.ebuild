@@ -33,5 +33,6 @@ src_prepare() {
 
 src_install() {
 	systemd_dounit "all/${P}/snapsync.service"
+	dodoc "all/${P}/README.md"
 	ruby-ng_src_install
 }

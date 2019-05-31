@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ if [[ "${PV}" = 9999 ]] ; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://zdoom.org/files/gzdoom/src/${PN}-g${PV}.zip -> ${P}.zip"
+	SRC_URI="https://zdoom.org/files/gzdoom/src/${PN}-src-g${PV}.zip -> ${P}.zip"
 	S="${WORKDIR}/${PN}-g${PV}"
 fi
 
@@ -60,7 +60,7 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	rm -frv "${ED%/}/usr/share/doc/gzdoom/licenses" || die
+	rm -frv "${ED%/}/usr/share/doc" || die
 	newicon "${S}/src/posix/zdoom.xpm" gzdoom.xpm
 	domenu "${FILESDIR}/gzdoom.desktop"
 }

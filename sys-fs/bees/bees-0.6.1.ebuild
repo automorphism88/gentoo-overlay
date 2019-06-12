@@ -18,12 +18,11 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="tools xxhash"
+IUSE="tools"
 
 DEPEND="
 	>=sys-apps/util-linux-2.30.2
 	>=sys-fs/btrfs-progs-4.1
-	xxhash? ( dev-libs/xxhash )
 "
 RDEPEND="${DEPEND}"
 
@@ -52,11 +51,6 @@ pkg_pretend() {
 		elog "Bees recommends to run the latest current kernel for performance and"
 		elog "reliability reasons, see README.md."
 	fi
-}
-
-src_prepare() {
-	use xxhash && eapply "${FILESDIR}/xxhash.patch"
-	default
 }
 
 src_configure() {

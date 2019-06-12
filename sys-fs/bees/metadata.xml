@@ -11,7 +11,6 @@
 	</maintainer>
 <use>
 	<flag name="tools">Build extra tools useful for debugging (fiemap, fiewalk)</flag>
-	<flag name="xxhash">Use xxhash instead of the default crc64</flag>
 </use>
 <upstream>
 	<bugs-to>https://github.com/Zygo/bees/issues</bugs-to>

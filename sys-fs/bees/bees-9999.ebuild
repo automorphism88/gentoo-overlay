@@ -68,3 +68,9 @@ src_configure() {
 	# quickfix, will be removed when fixed upstream
 	sed -i "s/UNKNOWN/v${PV}/" src/Makefile || die
 }
+
+src_install() {
+	default
+	doinitd "${FILESDIR}/bees.initd"
+	doconfd "${FILESDIR}/bees.confd"
+}

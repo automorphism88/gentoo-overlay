@@ -1,0 +1,45 @@
+# Which FS will be used
+UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
+# To run on more than one filesystem, you can use OpenRC multiplexing - just
+# symlink /etc/init.d/bees to /etc/init.d/bees.foo and /etc/init.d/bees.bar and
+# copy /etc/conf.d/bees to /etc/conf.d/bees.foo and /etc/conf.d/bees.bar
+
+# Log file to use (empty string for no log)
+# BEES_LOGFILE=/var/log/${RC_SVCNAME}.log
+
+## System Vars
+# Change carefully
+# WORK_DIR=/run/bees/
+# MNT_DIR="$WORK_DIR/mnt/$UUID"
+# BEESHOME="$MNT_DIR/.beeshome"
+# BEESSTATUS="$WORK_DIR/$UUID.status"
+
+## Options to apply, see `beesd --help` for details
+# OPTIONS=""
+
+## Bees DB size
+# Hash Table Sizing
+# Hash table entries are 16 bytes each
+# (64-bit hash, 52-bit block number, and some metadata bits)
+# Each entry represents a minimum of 4K on disk.
+# unique data size    hash table size    average dedup block size
+#     1TB                 4GB                  4K
+#     1TB                 1GB                 16K
+#     1TB               256MB                 64K
+#     1TB                16MB               1024K
+#    64TB                 1GB               1024K
+#
+AL16M=$((16*1024*1024))
+# Size MUST be power of 16M
+# DB_SIZE=$((64*$AL16M)) # 1G in bytes
+
+# How long start-stop-daemon should wait for beesd to start, in case config
+# is invalid and it exits immediately, in milliseconds
+# BEES_STARTWAIT=1000
+
+# nice and ionice levels to use
+# BEES_NICELEVEL=19
+# BEES_IONICELEVEL=3
+
+# It is also recommended that you set cgroup weights - see /etc/rc.conf

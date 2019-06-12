@@ -55,7 +55,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	use xxhash && epatch "${FILESDIR}/xxhash.patch"
+	use xxhash && eapply "${FILESDIR}/xxhash.patch"
 	default
 }
 

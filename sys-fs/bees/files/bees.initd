@@ -50,8 +50,8 @@ start_pre() {
 	ebegin "Creating subvolume ${BEESHOME}"
 	btrfs sub create "${BEESHOME}"
 	eend $? || return 1
-    elif ! btrfs sub show "${BEESHOME}" > /dev/null 2>&1 ; then
-	eerror "${BEESHOME} must be a subvolume"
+    elif [ "$(stat -c %i "${BEESHOME}")" != 256 ] ; then
+	eerror "BEESHOME=${BEESHOME} must be a subvolume"
 	return 1
     fi
     AL16M="$((16*1024*1024))"

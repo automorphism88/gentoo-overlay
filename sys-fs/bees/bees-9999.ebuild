@@ -71,6 +71,6 @@ src_configure() {
 
 src_install() {
 	default
-	doinitd "${FILESDIR}/bees.initd"
-	doconfd "${FILESDIR}/bees.confd"
+	newinitd "${FILESDIR}/bees.initd" bees
+	newconfd "${FILESDIR}/bees.confd" bees
 }

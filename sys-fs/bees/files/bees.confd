@@ -32,7 +32,7 @@ UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 #
 AL16M=$((16*1024*1024))
 # Size MUST be power of 16M
-# DB_SIZE=$((64*$AL16M)) # 1G in bytes
+# DB_SIZE=$((64*AL16M)) # 1G in bytes
 
 # How long start-stop-daemon should wait for beesd to start, in case config
 # is invalid and it exits immediately, in milliseconds

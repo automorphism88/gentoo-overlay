@@ -59,11 +59,9 @@ src_configure() {
 		PREFIX=/usr
 		LIBDIR=$(get_libdir)
 		DEFAULT_MAKE_TARGET=all
+		BEES_VERSION="${PV}"
 	EOF
 	if use tools; then
 		echo OPTIONAL_INSTALL_TARGETS=install_tools >>localconf || die
 	fi
-
-	# quickfix, will be removed when fixed upstream
-	sed -i "s/UNKNOWN/v${PV}/" src/Makefile || die
 }

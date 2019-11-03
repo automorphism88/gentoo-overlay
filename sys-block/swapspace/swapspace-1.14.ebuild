@@ -7,6 +7,7 @@ inherit systemd
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64"
+DESCRIPTION="Daemon to dynamically add swap space"
 SRC_URI="https://github.com/Tookmund/Swapspace/releases/download/v${PV}/${P}.tar.gz"
 
 src_configure() {

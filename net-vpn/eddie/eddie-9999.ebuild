@@ -38,7 +38,6 @@ DEPEND="app-admin/sudo
 	X? ( dev-libs/libappindicator:2 )"
 
 src_prepare() {
-	eapply_user
 	local i
 	# fix paths in wrapper scripts
 	for i in \
@@ -62,6 +61,9 @@ src_prepare() {
 		src/eddie.linux.postbuild.sh \
 		src/App.CLI.Linux.Elevated/build.sh \
 		src/Lib.Platform.Linux.Native/build.sh || die
+	# Even though CMake is only used if USE=X is enabled, we have to call
+	# cmake-utils_src_prepare from src_prepare or portage will throw an error
+	cmake-utils_src_prepare
 }
 
 src_configure() {

@@ -46,7 +46,8 @@ src_prepare() {
 		cli/usr/bin/eddie-cli \
 		cli/usr/share/polkit-1/actions/org.airvpn.eddie.cli.elevated.policy
 	do
-		sed -ri 's:(/usr/lib/eddie)-(cl|u)i:\1:g' \
+		sed -ri -e 's:/usr/lib/eddie-(cl|u)i:/usr/libexec/eddie:g' \
+			-e 's:/usr/share/eddie-(cl|u)i:/usr/share/eddie:g' \
 			"repository/linux_arch/bundle/eddie-${i}" || die
 	done
 	# don't pre-strip executables, let portage do it
@@ -87,8 +88,8 @@ src_compile() {
 src_install() {
 	dobin repository/linux_arch/bundle/eddie-cli/usr/bin/eddie-cli
 	use X && dobin repository/linux_arch/bundle/eddie-ui/usr/bin/eddie-ui
-	insinto /usr/lib/eddie
-	exeinto /usr/lib/eddie
+	insinto /usr/libexec/eddie
+	exeinto /usr/libexec/eddie
 	doexe src/App.Forms.Linux/bin/x64/Release/eddie-cli-elevated
 	doins src/App.Forms.Linux/bin/x64/Release/Lib.Core.dll
 	doins src/App.Forms.Linux/bin/x64/Release/Lib.Forms.dll

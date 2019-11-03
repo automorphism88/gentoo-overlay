@@ -15,6 +15,7 @@ src_configure() {
 
 src_install() {
 	default
+	doman doc/doc/swapspace.8
 	keepdir /var/lib/swapspace
 	systemd_dounit swapspace.service
 	newinitd "${FILESDIR}/swapspace.initd" swapspace

@@ -1,1 +1,1 @@
-jdupes-9999.ebuild
+jdupes-1.12.ebuild

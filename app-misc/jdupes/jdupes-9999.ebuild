@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,10 @@ fi
 
 src_prepare() {
 	eapply_user
-	sed -i -e 's/ -pipe//' -e 's/-g //' Makefile || die
+	sed -i -e 's/ -pipe//' \
+		-e 's/-g //' \
+		-e '/^PREFIX/s:/usr/local:/usr:' \
+		Makefile || die
 	use custom-optimization && { sed -i 's/-O2 //' Makefile || die ; }
 }
 

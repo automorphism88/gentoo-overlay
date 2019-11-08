@@ -10,6 +10,12 @@ KEYWORDS="~amd64"
 DESCRIPTION="Daemon to dynamically add swap space"
 SRC_URI="https://github.com/Tookmund/Swapspace/releases/download/v${PV}/${P}.tar.gz"
 
+src_prepare() {
+	eapply_user
+	sed -i 's:/usr/local:/usr:' src/env.h || die
+	sed -i 's:/usr/local::' swapspace.conf || die
+}
+
 src_configure() {
 	econf --localstatedir=/var
 }

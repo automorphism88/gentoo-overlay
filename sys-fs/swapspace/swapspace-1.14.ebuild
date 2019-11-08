@@ -12,7 +12,9 @@ SRC_URI="https://github.com/Tookmund/Swapspace/releases/download/v${PV}/${P}.tar
 
 src_prepare() {
 	eapply_user
-	sed -i 's:/usr/local:/usr:' src/env.h || die
+	sed -i -e '/ETCPREFIX/s:/usr/local:/usr:' \
+		-e '/VARPREFIX/s:/usr/local::' \
+		src/env.h || die
 	sed -i 's:/usr/local::' swapspace.conf || die
 }
 

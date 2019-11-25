@@ -28,8 +28,7 @@ fi
 CMAKE_USE_DIR="${S}/src/UI.GTK.Linux.Tray"
 CMAKE_BUILD_TYPE=Release
 
-DEPEND="app-admin/sudo
-	dev-lang/mono
+DEPEND="dev-lang/mono
 	dev-util/desktop-file-utils
 	net-misc/curl
 	net-misc/openssh

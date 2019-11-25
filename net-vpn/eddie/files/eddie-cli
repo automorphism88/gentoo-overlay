@@ -1,0 +1,2 @@
+#!/bin/sh -
+exec mono /usr/libexec/eddie/eddie-cli.exe --path.resources=/usr/share/eddie --path.exec="$0" "$@"

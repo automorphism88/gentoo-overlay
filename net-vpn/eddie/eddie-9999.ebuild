@@ -39,17 +39,6 @@ DEPEND="dev-lang/mono
 
 src_prepare() {
 	local i
-	# fix paths in wrapper scripts
-	for i in \
-		ui/usr/bin/eddie-ui \
-		ui/usr/share/polkit-1/actions/org.airvpn.eddie.ui.elevated.policy \
-		cli/usr/bin/eddie-cli \
-		cli/usr/share/polkit-1/actions/org.airvpn.eddie.cli.elevated.policy
-	do
-		sed -ri -e 's:/usr/lib/eddie-(cl|u)i:/usr/libexec/eddie:g' \
-			-e 's:/usr/share/eddie-(cl|u)i:/usr/share/eddie:g' \
-			"repository/linux_arch/bundle/eddie-${i}" || die
-	done
 	# build dynamic eddie-cli-elevated
 	sed -ri -e 's/-static//g' -e 's/-Wl,--(no-)?whole-archive//g' \
 		src/App.CLI.Linux.Elevated/build.sh || die
@@ -93,8 +82,8 @@ src_compile() {
 }
 
 src_install() {
-	dobin repository/linux_arch/bundle/eddie-cli/usr/bin/eddie-cli
-	use X && dobin repository/linux_arch/bundle/eddie-ui/usr/bin/eddie-ui
+	dobin "${FILESDIR}/eddie-cli"
+	use X && dobin "${FILESDIR}/eddie-ui"
 	insinto /usr/libexec/eddie
 	exeinto /usr/libexec/eddie
 	newexe src/App.CLI.Linux/bin/x64/Release/App.CLI.Linux.exe eddie-cli.exe
@@ -128,7 +117,6 @@ src_install() {
 	doins common/lang/inv.json
 	if use policykit ; then
 		insinto /usr/share/polkit-1/actions
-		doins repository/linux_arch/bundle/eddie-cli/usr/share/polkit-1/actions/org.airvpn.eddie.cli.elevated.policy
-		use X && doins repository/linux_arch/bundle/eddie-ui/usr/share/polkit-1/actions/org.airvpn.eddie.ui.elevated.policy
+		doins "${FILESDIR}/org.airvpn.eddie.cli.elevated.policy"
 	fi
 }

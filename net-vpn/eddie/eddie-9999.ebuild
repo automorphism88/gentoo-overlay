@@ -49,6 +49,9 @@ src_prepare() {
 			-e 's:/usr/share/eddie-(cl|u)i:/usr/share/eddie:g' \
 			"repository/linux_arch/bundle/eddie-${i}" || die
 	done
+	# build dynamic eddie-cli-elevated
+	sed -ri -e 's/-static//g' -e 's/-Wl,--(no-)?whole-archive//g' \
+		src/App.CLI.Linux.Elevated/build.sh || die
 	# don't pre-strip executables, let portage do it
 	for i in \
 		src/App.CLI.Linux.Elevated/build.sh \

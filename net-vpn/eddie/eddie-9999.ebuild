@@ -34,7 +34,8 @@ DEPEND="dev-lang/mono
 	net-misc/openssh
 	net-misc/stunnel
 	net-vpn/openvpn
-	X? ( dev-libs/libappindicator:2 )"
+	X? ( dev-libs/libappindicator:2
+		 x11-libs/gtk+:2 )"
 
 src_prepare() {
 	local i

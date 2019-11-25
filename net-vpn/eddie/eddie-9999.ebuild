@@ -90,6 +90,7 @@ src_install() {
 	use X && dobin repository/linux_arch/bundle/eddie-ui/usr/bin/eddie-ui
 	insinto /usr/libexec/eddie
 	exeinto /usr/libexec/eddie
+	newexe src/App.CLI.Linux/bin/x64/Release/App.CLI.Linux.exe eddie-cli.exe
 	doexe src/App.Forms.Linux/bin/x64/Release/eddie-cli-elevated
 	doins src/App.Forms.Linux/bin/x64/Release/Lib.Core.dll
 	doins src/App.Forms.Linux/bin/x64/Release/Lib.Forms.dll

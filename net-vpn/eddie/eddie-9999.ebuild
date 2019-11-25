@@ -53,6 +53,10 @@ src_prepare() {
 	# build dynamic eddie-cli-elevated
 	sed -ri -e 's/-static//g' -e 's/-Wl,--(no-)?whole-archive//g' \
 		src/App.CLI.Linux.Elevated/build.sh || die
+	# build eddie_tray with dynamically linked libgcc
+	sed -i -e '/target_link_libraries/s/-static-libgcc //' \
+		-e '/target_link_libraries/s/-static-libstdc++ //' \
+		src/UI.GTK.Linux.Tray/CMakeLists.txt || die
 	# don't pre-strip executables, let portage do it
 	for i in \
 		src/App.CLI.Linux.Elevated/build.sh \

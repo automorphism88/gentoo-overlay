@@ -62,7 +62,7 @@ src_prepare() {
 		src/App.CLI.Linux.Elevated/build.sh \
 		src/Lib.Platform.Linux.Native/build.sh
 	do
-		sed -i '/^strip /d' "${i}" || die
+		sed -i -e '/^strip /d' -e 's/^set -e/&x/' "${i}" || die
 	done
 	# these scripts need to be executable during build
 	chmod +x \

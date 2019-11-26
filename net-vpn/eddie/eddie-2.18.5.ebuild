@@ -27,8 +27,6 @@ else
 fi
 
 DEPEND="net-misc/curl
-	net-misc/openssh
-	net-misc/stunnel
 	net-vpn/openvpn
 	X? ( dev-libs/libappindicator:2
 		 x11-libs/gtk+:2 )"
@@ -127,4 +125,10 @@ src_install() {
 
 	insinto /usr/share/polkit-1/actions
 	doins "${FILESDIR}/org.airvpn.eddie.cli.elevated.policy"
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	elog "net-misc/openssh required for SSH tunnels"
+	elog "net-misc/stunnel required for SSL tunnels"
 }

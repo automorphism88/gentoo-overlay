@@ -62,6 +62,8 @@ src_configure() {
 # Upstream build scripts have so many flaws that it's easier to invoke xbuild
 # and cmake and compile the remaining two files we need manually
 src_compile() {
+	# This .sln builds both the GUI and CLI .exe and .dll files, regardless of
+	# whether USE=X is enabled. We install the GUI only if USE=X is enabled
 	exbuild /p:Platform="${EDDIE_ARCH}" src/eddie2.linux.sln
 	# Instead of src/Lib.Platform.Linux.Native/build.sh
 	$(tc-getCXX) \

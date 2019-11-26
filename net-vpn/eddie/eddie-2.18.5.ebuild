@@ -87,7 +87,8 @@ src_install() {
 	if use X ; then
 		dobin "${FILESDIR}/eddie-ui"
 		newicon common/icon.png eddie-ui.png
-		make_desktop_entry /usr/bin/eddie-ui \
+		make_desktop_entry \
+			/usr/bin/eddie-ui \
 			"Eddie AirVPN Client" \
 			eddie-ui \
 			Network

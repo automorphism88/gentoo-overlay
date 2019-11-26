@@ -5,7 +5,7 @@
 EAPI=6
 SLOT=0
 
-inherit cmake-utils desktop dotnet
+inherit cmake-utils desktop dotnet toolchain-funcs
 FRAMEWORK="4.5"
 
 DESCRIPTION="AirVPN client"
@@ -34,98 +34,95 @@ DEPEND="net-misc/curl
 	net-misc/stunnel
 	net-vpn/openvpn
 	X? ( dev-libs/libappindicator:2
-		 dev-util/desktop-file-utils
 		 x11-libs/gtk+:2 )"
 
 pkg_setup() {
 	case "$ARCH" in
-		amd64) MY_ARCH=x64 ;;
-		x86) MY_ARCH=x86 ;;
+		amd64) EDDIE_ARCH=x64 ;;
+		x86) EDDIE_ARCH=x86 ;;
 		*) die "Unsupported ARCH=${ARCH}" ;;
 	esac
+	CMAKE_USE_DIR="${S}/src/UI.GTK.Linux.Tray"
 	dotnet_pkg_setup
 }
 
 src_prepare() {
-	local i
-	# build dynamic eddie-cli-elevated
-	sed -ri -e 's/-static//g' -e 's/-Wl,--(no-)?whole-archive//g' \
-		src/App.CLI.Linux.Elevated/build.sh || die
-	# build eddie_tray with dynamically linked libgcc
-	sed -i -e '/target_link_libraries/s/-static-libgcc //' \
-		-e '/target_link_libraries/s/-static-libstdc++ //' \
-		src/UI.GTK.Linux.Tray/CMakeLists.txt || die
-	# don't pre-strip executables, let portage do it
-	for i in \
-		src/App.CLI.Linux.Elevated/build.sh \
-		src/Lib.Platform.Linux.Native/build.sh
-	do
-		sed -i -e '/^strip /d' -e 's/^set -e/&x/' "${i}" || die
-	done
-	# these scripts need to be executable during build
-	chmod +x \
-		src/eddie.linux.postbuild.sh \
-		src/App.CLI.Linux.Elevated/build.sh \
-		src/Lib.Platform.Linux.Native/build.sh || die
 	# Even though CMake is only used if USE=X is enabled, we have to call
 	# cmake-utils_src_prepare from src_prepare or portage will throw an error
-	CMAKE_USE_DIR="${S}/src/UI.GTK.Linux.Tray"
-	CMAKE_BUILD_TYPE=Release
 	cmake-utils_src_prepare
+	# build eddie_tray with dynamically linked libgcc
+	sed -ri 's/-static-lib(gcc|stdc\+\+)//g' \
+		src/UI.GTK.Linux.Tray/CMakeLists.txt || die
 }
 
 src_configure() {
 	use X && cmake-utils_src_configure
 }
 
+# Upstream build scripts have so many flaws that it's easier to invoke xbuild
+# and cmake and compile the remaining two files we need manually
 src_compile() {
-	exbuild src/eddie2.linux.sln \
-		/p:Configuration="${CMAKE_BUILD_TYPE}" \
-		/p:Platform="${MY_ARCH}"
-	src/eddie.linux.postbuild.sh \
-		"src/App.Forms.Linux/bin/${MY_ARCH}/${CMAKE_BUILD_TYPE}/" \
-		cli "${MY_ARCH}" "${CMAKE_BUILD_TYPE}" || die
-	if use X ; then
-		cmake-utils_src_compile
-		src/eddie.linux.postbuild.sh \
-			"src/App.Forms.Linux/bin/${MY_ARCH}/${CMAKE_BUILD_TYPE}/" \
-			ui "${MY_ARCH}" "${CMAKE_BUILD_TYPE}" || die
-	fi
+	exbuild /p:Platform="${EDDIE_ARCH}" src/eddie2.linux.sln
+	# Instead of src/Lib.Platform.Linux.Native/build.sh
+	$(tc-getCXX) \
+		-o libLib.Platform.Linux.Native.so \
+		src/Lib.Platform.Linux.Native/src/api.cpp \
+		${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS} \
+		-shared -fPIC -Wall -std=c++11 -DRelease
+	# Instead of src/App.CLI.Linux.Elevated/build.sh
+	$(tc-getCXX) \
+		-o eddie-cli-elevated \
+		src/App.CLI.Linux.Elevated/src/main.cpp \
+		src/App.CLI.Linux.Elevated/src/impl.cpp \
+		src/App.CLI.Common.Elevated.C/iposix.cpp \
+		src/App.CLI.Common.Elevated.C/ibase.cpp \
+		src/App.CLI.Common.Elevated.C/sha256.cpp \
+		${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS} \
+		-Wall -std=c++11 -pthread -lpthread -DRelease
+	# build eddie-tray
+	use X && cmake-utils_src_compile
 }
 
 src_install() {
 	dobin "${FILESDIR}/eddie-cli"
-	use X && dobin "${FILESDIR}/eddie-ui"
-	insinto /usr/libexec/eddie
-	exeinto /usr/libexec/eddie
-	newexe "src/App.CLI.Linux/bin/${MY_ARCH}/${CMAKE_BUILD_TYPE}/App.CLI.Linux.exe" eddie-cli.exe
-	doexe "src/App.Forms.Linux/bin/${MY_ARCH}/${CMAKE_BUILD_TYPE}/eddie-cli-elevated"
-	doins "src/App.Forms.Linux/bin/${MY_ARCH}/${CMAKE_BUILD_TYPE}/Lib.Core.dll"
-	doins "src/App.Forms.Linux/bin/${MY_ARCH}/${CMAKE_BUILD_TYPE}/Lib.Forms.dll"
-	doins "src/App.Forms.Linux/bin/${MY_ARCH}/${CMAKE_BUILD_TYPE}/Lib.Platform.Linux.dll"
-	doins src/Lib.Platform.Linux.Native/bin/libLib.Platform.Linux.Native.so
 	if use X ; then
-		newexe "src/App.Forms.Linux/bin/${MY_ARCH}/${CMAKE_BUILD_TYPE}/App.Forms.Linux.exe" eddie-ui.exe
-		newexe "${BUILD_DIR}/eddie_tray" eddie-tray
-		doicon repository/linux_arch/bundle/eddie-ui/usr/share/pixmaps/eddie-ui.png
+		dobin "${FILESDIR}/eddie-ui"
+		newicon common/icon.png eddie-ui.png
 		make_desktop_entry /usr/bin/eddie-ui \
 			"Eddie AirVPN Client" \
 			eddie-ui \
 			Network
 	fi
+
+	insinto /usr/libexec/eddie
+	exeinto /usr/libexec/eddie
+	newexe \
+		"src/App.CLI.Linux/bin/${EDDIE_ARCH}/Release/App.CLI.Linux.exe" \
+		eddie-cli.exe
+	use X && newexe \
+		"src/App.Forms.Linux/bin/${EDDIE_ARCH}/Release/App.Forms.Linux.exe" \
+		eddie-ui.exe
+	doexe eddie-cli-elevated
+	use X && newexe "${BUILD_DIR}/eddie_tray" eddie-tray
+	doins \
+		libLib.Platform.Linux.Native.so \
+		"src/App.Forms.Linux/bin/${EDDIE_ARCH}/Release/Lib.Core.dll" \
+		"src/App.Forms.Linux/bin/${EDDIE_ARCH}/Release/Lib.Platform.Linux.dll"
+	use X && doins \
+		"src/App.Forms.Linux/bin/${EDDIE_ARCH}/Release/Lib.Forms.dll"
+
 	insinto /usr/share/eddie
-	doins common/cacert.pem
-	doins common/icon.png
-	doins common/icon_gray.png
-	dosym "${EPREFIX}/usr/share/eddie/icon.png" \
-		"${EPREFIX}/usr/share/eddie/tray.png"
-	dosym "${EPREFIX}/usr/share/eddie/icon_gray.png" \
-		"${EPREFIX}/usr/share/eddie/tray_gray.png"
-	doins common/iso-3166.json
-	# In Arch PKGBUILD, but this directory doesn't seem to exist
-	#doins -r common/webui
-	insinto /usr/share/eddie/lang
-	doins common/lang/inv.json
+	doins -r \
+		common/lang \
+		common/providers \
+		common/cacert.pem \
+		common/iso-3166.json
+	use X && doins \
+		common/icon.png \
+		common/icon_gray.png \
+		common/tray.png \
+		common/tray_gray.png
+
 	insinto /usr/share/polkit-1/actions
 	doins "${FILESDIR}/org.airvpn.eddie.cli.elevated.policy"
 }

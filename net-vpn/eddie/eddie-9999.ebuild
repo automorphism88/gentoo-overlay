@@ -29,12 +29,12 @@ CMAKE_USE_DIR="${S}/src/UI.GTK.Linux.Tray"
 CMAKE_BUILD_TYPE=Release
 
 DEPEND="dev-lang/mono
-	dev-util/desktop-file-utils
 	net-misc/curl
 	net-misc/openssh
 	net-misc/stunnel
 	net-vpn/openvpn
 	X? ( dev-libs/libappindicator:2
+		 dev-util/desktop-file-utils
 		 x11-libs/gtk+:2 )"
 
 src_prepare() {

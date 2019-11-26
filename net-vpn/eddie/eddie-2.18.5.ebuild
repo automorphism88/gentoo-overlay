@@ -5,7 +5,7 @@
 EAPI=6
 SLOT=0
 
-inherit cmake-utils desktop dotnet toolchain-funcs
+inherit cmake-utils desktop dotnet git-r3 toolchain-funcs
 FRAMEWORK="4.5"
 
 DESCRIPTION="AirVPN client"
@@ -13,20 +13,16 @@ HOMEPAGE="https://eddie.website"
 LICENSE="GPL-3"
 IUSE="X"
 
+EGIT_REPO_URI="https://github.com/AirVPN/Eddie"
+SRC_URI=
+
 if [[ "${PV}" == 9999 ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/AirVPN/Eddie"
-	SRC_URI=
 	KEYWORDS=
 elif [[ "${PV}" == 2.18.5 ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/AirVPN/Eddie"
-	SRC_URI=
 	EGIT_COMMIT=899f57d75eb8b9977f7710b86b421cff991d2070
 	KEYWORDS="~amd64 ~x86"
 else
-	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/AirVPN/Eddie/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	die "Unknown version"
 fi
 
 DEPEND="net-misc/curl

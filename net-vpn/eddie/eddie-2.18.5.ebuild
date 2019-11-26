@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # dotnet.eclass broken with EAPI=7, inherits versionator
+# Gentoo bug #701186
 EAPI=6
 SLOT=0
 

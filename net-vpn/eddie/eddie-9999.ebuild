@@ -8,7 +8,7 @@ inherit cmake-utils desktop mono
 DESCRIPTION="AirVPN client"
 HOMEPAGE="https://eddie.website"
 LICENSE="GPL-3"
-IUSE="+policykit X"
+IUSE="X"
 
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
@@ -115,8 +115,6 @@ src_install() {
 	#doins -r common/webui
 	insinto /usr/share/eddie/lang
 	doins common/lang/inv.json
-	if use policykit ; then
-		insinto /usr/share/polkit-1/actions
-		doins "${FILESDIR}/org.airvpn.eddie.cli.elevated.policy"
-	fi
+	insinto /usr/share/polkit-1/actions
+	doins "${FILESDIR}/org.airvpn.eddie.cli.elevated.policy"
 }

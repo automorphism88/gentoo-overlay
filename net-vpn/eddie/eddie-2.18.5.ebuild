@@ -6,7 +6,7 @@
 EAPI=6
 SLOT=0
 
-inherit cmake-utils desktop dotnet git-r3 toolchain-funcs
+inherit cmake-utils desktop dotnet git-r3 toolchain-funcs xdg
 FRAMEWORK="4.5"
 
 DESCRIPTION="AirVPN client"
@@ -44,6 +44,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# xdg_src_prepare, without running the default src_prepare twice
+	xdg_environment_reset
 	# Even though CMake is only used if USE=X is enabled, we have to call
 	# cmake-utils_src_prepare from src_prepare or portage will throw an error
 	cmake-utils_src_prepare

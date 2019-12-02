@@ -1,0 +1,7 @@
+// Let users in eddie group run eddie with elevated privileges
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.airvpn.eddie.ui.elevated.policy" &&
+        subject.isInGroup("eddie") && subject.active) {
+        return "yes";
+    }
+});

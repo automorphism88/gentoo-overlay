@@ -30,6 +30,8 @@ DEPEND="net-misc/curl
 	net-vpn/openvpn
 	X? ( dev-libs/libappindicator:2
 		 x11-libs/gtk+:2 )"
+RDEPEND="acct-group/eddie
+	${DEPEND}"
 
 pkg_setup() {
 	case "$ARCH" in
@@ -125,6 +127,8 @@ src_install() {
 
 	insinto /usr/share/polkit-1/actions
 	doins "${FILESDIR}/org.airvpn.eddie.cli.elevated.policy"
+	insinto /usr/share/polkit-1/rules
+	doins "${FILESDIR}/org.airvpn.eddie.cli.elevated.rules"
 }
 
 pkg_postinst() {

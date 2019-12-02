@@ -6,7 +6,7 @@
 EAPI=6
 SLOT=0
 
-inherit cmake-utils desktop dotnet git-r3 toolchain-funcs xdg
+inherit cmake-utils desktop dotnet git-r3 mono-env toolchain-funcs xdg
 FRAMEWORK="4.5"
 
 DESCRIPTION="AirVPN client"
@@ -40,6 +40,8 @@ pkg_setup() {
 		*) die "Unsupported ARCH=${ARCH}" ;;
 	esac
 	CMAKE_USE_DIR="${S}/src/UI.GTK.Linux.Tray"
+	# Gentoo bug #659422
+	mono-env_pkg_setup
 	dotnet_pkg_setup
 }
 

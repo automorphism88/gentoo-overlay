@@ -71,7 +71,7 @@ src_compile() {
 		-o libLib.Platform.Linux.Native.so \
 		src/Lib.Platform.Linux.Native/src/api.cpp \
 		${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS} \
-		-shared -fPIC -Wall -std=c++11 -DRelease
+		-shared -fPIC -Wall -std=c++11 -DRelease || die
 	# Instead of src/App.CLI.Linux.Elevated/build.sh
 	$(tc-getCXX) \
 		-o eddie-cli-elevated \
@@ -81,7 +81,7 @@ src_compile() {
 		src/App.CLI.Common.Elevated.C/ibase.cpp \
 		src/App.CLI.Common.Elevated.C/sha256.cpp \
 		${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS} \
-		-Wall -std=c++11 -pthread -lpthread -DRelease
+		-Wall -std=c++11 -pthread -lpthread -DRelease || die
 	# build eddie-tray
 	use X && cmake-utils_src_compile
 }

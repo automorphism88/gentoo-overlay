@@ -32,8 +32,7 @@ esac
 
 DEPEND="net-misc/curl
 	net-vpn/openvpn
-	X? ( dev-libs/libappindicator:2
-		 x11-libs/gtk+:2 )"
+	X? ( dev-libs/libappindicator )"
 RDEPEND="acct-group/eddie
 	${DEPEND}"
 

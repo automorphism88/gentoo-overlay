@@ -25,10 +25,6 @@ case "${PV}" in
 		EGIT_COMMIT=0d75935ceeffebdc24ebe03b41c1274a286aea99
 		KEYWORDS="~amd64 ~x86"
 		;;
-	2.18.5)
-		EGIT_COMMIT=899f57d75eb8b9977f7710b86b421cff991d2070
-		KEYWORDS="~amd64 ~x86"
-		;;
 	*)
 		die "Unknown version"
 		;;

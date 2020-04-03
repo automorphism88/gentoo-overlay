@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,8 +22,10 @@ else
 fi
 
 RDEPEND="dev-qt/qtcore:5=
-		 x11-libs/gtk+:2
-		 x11-libs/libX11"
+	dev-qt/qtgui:5=
+	dev-qt/qtwidgets:5=
+	x11-libs/gtk+:2
+	x11-libs/libX11"
 DEPEND="${RDEPEND}"
 
 src_configure() {

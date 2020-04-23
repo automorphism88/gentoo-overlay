@@ -3,7 +3,7 @@
 
 EAPI=6
 # also need dev-ruby/bones (dev-ruby/logging dependency) for ruby25
-USE_RUBY="ruby24 ruby25"
+USE_RUBY="ruby25"
 inherit ruby-fakegem systemd
 SLOT=0
 

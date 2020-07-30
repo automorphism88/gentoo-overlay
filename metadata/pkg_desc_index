@@ -26,7 +26,7 @@ sys-boot/grub-btrfs 4.0.1 9999: grub2 plugin for btrfs snapshots
 sys-boot/grub-customizer 5.0.6: A graphical grub2 settings manager
 sys-fs/mergerfs 2.24.2 9999: Featureful FUSE-based union filesystem
 sys-fs/mergerfs-tools 9999: Optional tools to help manage data in a mergerfs pool
-sys-fs/snapraid-btrfs 0.10.0 9999: Script for using snapraid with btrfs snapshots
+sys-fs/snapraid-btrfs 0.10.0 0.10.1 9999: Script for using snapraid with btrfs snapshots
 sys-fs/swapspace 1.17: Daemon to dynamically add swap space
 sys-kernel/earlyoom 1.0 9999: Daemon to kill processes before the kernel OOM killer
 x11-misc/awf 1.4.0: A Widget Factory - theme preview application for GTK+2 and GTK+3

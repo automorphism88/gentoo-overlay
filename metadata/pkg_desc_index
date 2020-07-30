@@ -1,0 +1,33 @@
+acct-group/eddie 0: System group: eddie
+app-backup/buttersink 0.6.8 9999: rsync-like utility for btrfs snapshots
+app-backup/snapper-gui 0.1 9999: GUI for snapper, a tool for Linux filesystem snapshot management
+app-backup/snapsync 0.3.8: A synchronization tool for snapper based on btrfs send/receive
+app-emacs/markdown-preview-mode 0.9: Minor mode to preview Markdown output as you save
+app-emacs/sed-mode 1.0: Major mode to edit sed scripts
+app-emacs/uuidgen 20140820: UUID generation implemented in elisp
+app-emacs/web-server 0.1.0: Web server running Emacs Lisp handlers
+app-emacs/websocket 1.8: A websocket implementation in elisp, for emacs
+app-misc/jdupes 1.9 1.12 1.13.2 9999: Fork of fdupes with better performance and btrfs deduplication support
+dev-qt/qtstyleplugins 20170311-r2 99999999-r1: Additional style plugins for Qt
+dev-ruby/bones 3.8.4-r3: Tool that creates new Ruby projects from a code skeleton
+dev-ruby/logging 2.2.2: Flexible logging library based on the design of Java's log4j library
+dev-ruby/ruby-dbus 0.14.1: Ruby library for D-Bus
+games-emulation/yabause 0.9.15: Sega Saturn emulator
+games-misc/cowsay 3.03-r3 3.04: Configurable talking ASCII cow (and other characters)
+games-misc/cowsay-files 20170314: Collection of additional cow files for games-misc/cowsay
+games-misc/cowsay-philosoraptor 20130810: Philosoraptor cow for games-misc/cowsay
+games-misc/fortune-mod-philosoraptor 20130810: Philosoraptor quotes for games-misc/fortune-mod
+media-tv/emby-server 3.3.1.0: Emby is a server designed to stream media to a variety of devices
+net-print/brother-mfc7460dn-bin 2.0.4: Brother MFC-7460DN printer driver
+net-vpn/eddie 2.18.7 9999: AirVPN client
+sys-block/nocache 1.0 9999: Minimize the effect a program has on the file system cache
+sys-boot/dracut-crypt-ssh 1.0.3 9999: Dracut module which allows remote unlocking of systems
+sys-boot/grub-btrfs 4.0.1 9999: grub2 plugin for btrfs snapshots
+sys-boot/grub-customizer 5.0.6: A graphical grub2 settings manager
+sys-fs/mergerfs 2.24.2 9999: Featureful FUSE-based union filesystem
+sys-fs/mergerfs-tools 9999: Optional tools to help manage data in a mergerfs pool
+sys-fs/snapraid-btrfs 0.9.7 0.9.8 0.9.9 0.9.10 0.10.0 9999: Script for using snapraid with btrfs snapshots
+sys-fs/swapspace 1.14: Daemon to dynamically add swap space
+sys-kernel/earlyoom 1.0 9999: Daemon to kill processes before the kernel OOM killer
+x11-misc/awf 1.4.0: A Widget Factory - theme preview application for GTK+2 and GTK+3
+x11-themes/cloak-theme 20170615 99999999: A black theme set for GTK+

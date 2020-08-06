@@ -43,6 +43,8 @@ src_configure() {
 
 src_compile() {
 	default
+	cd bin
+	for all in `ls *.dll`; do sn -q -R $all ../${PN}.snk; done
 }
 
 src_install() {

@@ -8,6 +8,7 @@ app-emacs/uuidgen 20140820: UUID generation implemented in elisp
 app-emacs/web-server 0.1.0: Web server running Emacs Lisp handlers
 app-emacs/websocket 1.8: A websocket implementation in elisp, for emacs
 app-misc/jdupes 1.9 1.12 1.13.2 9999: Fork of fdupes with better performance and btrfs deduplication support
+dev-dotnet/mono-addins 1.0-r1: A generic framework for creating extensible applications
 dev-qt/qtstyleplugins 20170311-r2 99999999-r1: Additional style plugins for Qt
 dev-ruby/bones 3.8.4-r3: Tool that creates new Ruby projects from a code skeleton
 dev-ruby/logging 2.2.2: Flexible logging library based on the design of Java's log4j library

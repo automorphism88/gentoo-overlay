@@ -5,3 +5,7 @@ command="/usr/sbin/swapspace"
 pidfile="/run/${RC_SVCNAME}.pid"
 command_args="-p ${pidfile} --quiet"
 command_args_background="--daemon"
+
+depend() {
+    need localmount
+}

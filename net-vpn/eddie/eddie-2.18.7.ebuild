@@ -32,7 +32,7 @@ esac
 
 DEPEND="net-misc/curl
 	net-vpn/openvpn
-	X? ( dev-libs/libappindicator )"
+	X? ( dev-libs/libappindicator:3 )"
 RDEPEND="acct-group/eddie
 	${DEPEND}"
 
@@ -51,11 +51,15 @@ pkg_setup() {
 src_prepare() {
 	# xdg_src_prepare, without running the default src_prepare twice
 	xdg_environment_reset
+	use X && eapply "${FILESDIR}/libappindicator-include.patch"
 	# Even though CMake is only used if USE=X is enabled, we have to call
 	# cmake-utils_src_prepare from src_prepare or portage will throw an error
 	cmake-utils_src_prepare
 	# build eddie_tray with dynamically linked libgcc
 	sed -ri 's/-static-lib(gcc|stdc\+\+)//g' \
+		src/UI.GTK.Linux.Tray/CMakeLists.txt || die
+	# fix link path to use libappindicator:3
+	sed -i '/^target_link_libraries/s/appindicator/&3/' \
 		src/UI.GTK.Linux.Tray/CMakeLists.txt || die
 }
 

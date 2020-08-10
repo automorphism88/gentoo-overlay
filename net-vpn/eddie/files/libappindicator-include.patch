@@ -1,0 +1,11 @@
+--- a/src/UI.GTK.Linux.Tray/src/main.cpp	2020-08-09 17:27:07.703144854 -0700
++++ b/src/UI.GTK.Linux.Tray/src/main.cpp	2020-08-09 17:42:44.973088989 -0700
+@@ -19,7 +19,7 @@
+ #include <fcntl.h>
+ #include <fstream>
+ #include <iostream>
+-#include <libappindicator/app-indicator.h>
++#include <libappindicator3-0.1/libappindicator/app-indicator.h>
+ #include <map>
+ #include <memory>
+ #include <mutex>

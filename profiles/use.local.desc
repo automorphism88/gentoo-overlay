@@ -11,6 +11,10 @@ app-misc/jdupes:stats - Build with support for algorithm statistic reporting wit
 media-libs/x264:interlaced - enable interlaced encoding support, this can decrease encoding speed by up to 2%
 media-libs/x264:opencl - Add support for OpenCL.
 media-libs/x264:pic - disable optimized assembly code that is not PIC friendly
+sys-fs/ecryptfs-utils:gpg - Enable app-crypt/gnupg key module
+sys-fs/ecryptfs-utils:openssl - Enable dev-libs/openssl key module
+sys-fs/ecryptfs-utils:pkcs11 - Enable PKCS#11 (Smartcards) key module
+sys-fs/ecryptfs-utils:tpm - Enable support for Trusted Platform Module (TPM) using app-crypt/trousers
 x11-themes/cloak-theme:cinnamon - Install theme for gnome-extra/cinnamon
 x11-themes/cloak-theme:firefox - Install theme for www-client/firefox
 x11-themes/cloak-theme:gnome-shell - Install theme for gnome-base/gnome-shell

@@ -28,7 +28,6 @@ sys-block/nocache 1.0 9999: Minimize the effect a program has on the file system
 sys-boot/dracut-crypt-ssh 1.0.3 9999: Dracut module which allows remote unlocking of systems
 sys-boot/grub-btrfs 4.0.1 9999: grub2 plugin for btrfs snapshots
 sys-boot/grub-customizer 5.0.6: A graphical grub2 settings manager
-sys-fs/mergerfs 2.24.2 9999: Featureful FUSE-based union filesystem
 sys-fs/mergerfs-tools 9999: Optional tools to help manage data in a mergerfs pool
 sys-fs/snapraid-btrfs 0.11.1 9999: Script for using snapraid with btrfs snapshots
 sys-fs/swapspace 1.17: Daemon to dynamically add swap space

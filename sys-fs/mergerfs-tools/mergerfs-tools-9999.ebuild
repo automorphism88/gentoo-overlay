@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 DESCRIPTION="Optional tools to help manage data in a mergerfs pool"
 HOMEPAGE="https://github.com/trapexit/mergerfs-tools"
 LICENSE="ISC"
@@ -21,7 +21,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX%/}/usr"
+	return
 }
 
 src_install() {

@@ -1,1 +1,0 @@
-qtstyleplugins-20170311-r2.ebuild

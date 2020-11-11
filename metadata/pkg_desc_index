@@ -22,6 +22,7 @@ games-misc/fortune-mod-philosoraptor 20130810: Philosoraptor quotes for games-mi
 media-fonts/mathematica-fonts 10.0: Mathematica's Fonts for MathML
 media-libs/x264 0.0.20190214 0.0.20190903 0.0.20190903-r1 9999: A free library for encoding X264/AVC streams
 media-tv/emby-server 3.3.1.0: Emby is a server designed to stream media to a variety of devices
+net-misc/youtube-dlc 2020.11.10: Download videos from YouTube.com (and more sites...)
 net-print/brother-mfc7460dn-bin 2.0.4: Brother MFC-7460DN printer driver
 net-vpn/eddie 2.19.4 9999: AirVPN client
 sys-block/nocache 1.0 9999: Minimize the effect a program has on the file system cache

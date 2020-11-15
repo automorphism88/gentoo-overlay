@@ -2,7 +2,6 @@
 # your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using egencache *
 
-app-emulation/playonlinux:winbind - Enables support for the winbind auth daemon
 app-misc/jdupes:btrfs - Build support for btrfs deduplication with '-B/--dedupe'
 app-misc/jdupes:custom-optimization - Build with user-specified compiler optimization from CFLAGS
 app-misc/jdupes:debug - Build support for debug output with '-@'

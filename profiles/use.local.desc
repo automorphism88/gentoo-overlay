@@ -7,9 +7,6 @@ app-misc/jdupes:custom-optimization - Build with user-specified compiler optimiz
 app-misc/jdupes:debug - Build support for debug output with '-@'
 app-misc/jdupes:low-memory - Build for low memory usage instead of speed
 app-misc/jdupes:stats - Build with support for algorithm statistic reporting with '-D'
-media-libs/x264:interlaced - enable interlaced encoding support, this can decrease encoding speed by up to 2%
-media-libs/x264:opencl - Add support for OpenCL.
-media-libs/x264:pic - disable optimized assembly code that is not PIC friendly
 x11-themes/cloak-theme:cinnamon - Install theme for gnome-extra/cinnamon
 x11-themes/cloak-theme:firefox - Install theme for www-client/firefox
 x11-themes/cloak-theme:gnome-shell - Install theme for gnome-base/gnome-shell

@@ -7,6 +7,10 @@ app-misc/jdupes:custom-optimization - Build with user-specified compiler optimiz
 app-misc/jdupes:debug - Build support for debug output with '-@'
 app-misc/jdupes:low-memory - Build for low memory usage instead of speed
 app-misc/jdupes:stats - Build with support for algorithm statistic reporting with '-D'
+sys-fs/btrfs-progs:convert - Build ext2 conversion utility (btrfs-convert)
+sys-fs/btrfs-progs:dump-csum - Build inspect-internal dump-csum command
+sys-fs/btrfs-progs:reiserfs - Enable reiserfs support in btrfs-convert tool.
+sys-fs/btrfs-progs:static - Build static binaries in addition to the dynamic ones
 x11-themes/cloak-theme:cinnamon - Install theme for gnome-extra/cinnamon
 x11-themes/cloak-theme:firefox - Install theme for www-client/firefox
 x11-themes/cloak-theme:gnome-shell - Install theme for gnome-base/gnome-shell

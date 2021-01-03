@@ -22,7 +22,7 @@ RDEPEND="
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/PTable[${PYTHON_USEDEP}]
 	')
-	sys-fs/btrfs-progs[dump-csum,python]
+	sys-fs/btrfs-progs[dump-csum]
 "
 DEPEND="${RDEPEND}"
 

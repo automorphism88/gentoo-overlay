@@ -68,6 +68,10 @@ src_prepare() {
 
 	# fix Makefile to avoid eclass error
 	sed -i '/^PYTHON =/s/python2/python/' Makefile || die
+
+	# fix find_python bash script to find EPYTHON
+	sed -i '/[ \t]*next_python "python3"/s/^/next_python "'${EPYTHON}'"\n/' \
+		bash/find_python || die
 }
 
 src_install() {

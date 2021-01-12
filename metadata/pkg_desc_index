@@ -7,7 +7,7 @@ app-emacs/sed-mode 1.0: Major mode to edit sed scripts
 app-emacs/uuidgen 20140820: UUID generation implemented in elisp
 app-emacs/web-server 0.1.0: Web server running Emacs Lisp handlers
 app-emacs/websocket 1.8: A websocket implementation in elisp, for emacs
-app-emulation/playonlinux 4.2.12 4.3.4-r1: Set of scripts to easily install and use Windows games and software
+app-emulation/playonlinux 4.4: Set of scripts to easily install and use Windows games and software
 app-misc/jdupes 1.9 1.12 1.13.2 9999: Fork of fdupes with better performance and btrfs deduplication support
 dev-dotnet/mono-addins 1.0-r1: A generic framework for creating extensible applications
 dev-libs/libappindicator 12.10.0-r202: A library to allow applications to export a menu into the Unity Menu bar
@@ -15,7 +15,6 @@ dev-python/PTable 0.9.2: Represents tabular data in visually appealing ASCII tab
 dev-ruby/bones 3.8.4-r3: Tool that creates new Ruby projects from a code skeleton
 dev-ruby/logging 2.2.2: Flexible logging library based on the design of Java's log4j library
 dev-ruby/ruby-dbus 0.14.1: Ruby library for D-Bus
-games-emulation/yabause 0.9.15: Sega Saturn emulator
 games-misc/cowsay 3.03-r3 3.04: Configurable talking ASCII cow (and other characters)
 games-misc/cowsay-files 20170314: Collection of additional cow files for games-misc/cowsay
 games-misc/cowsay-philosoraptor 20130810: Philosoraptor cow for games-misc/cowsay
@@ -33,7 +32,7 @@ sys-fs/btrfs-progs 5.9-r100: Btrfs filesystem utilities
 sys-fs/dduper 0.04: btrfs deduplication tool using precomputed filesystem checksums
 sys-fs/mergerfs-tools 9999: Optional tools to help manage data in a mergerfs pool
 sys-fs/snapraid-btrfs 0.12.0 9999: Script for using snapraid with btrfs snapshots
-sys-fs/swapspace 1.17: Daemon to dynamically add swap space
+sys-fs/swapspace 1.17 1.17-r1: Daemon to dynamically add swap space
 sys-kernel/earlyoom 1.0 9999: Daemon to kill processes before the kernel OOM killer
 x11-misc/awf 1.4.0: A Widget Factory - theme preview application for GTK+2 and GTK+3
 x11-themes/cloak-theme 20170615 99999999: A black theme set for GTK+

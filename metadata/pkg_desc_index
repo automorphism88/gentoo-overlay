@@ -32,7 +32,7 @@ sys-fs/btrfs-progs 5.9-r100: Btrfs filesystem utilities
 sys-fs/dduper 0.04: btrfs deduplication tool using precomputed filesystem checksums
 sys-fs/mergerfs-tools 9999: Optional tools to help manage data in a mergerfs pool
 sys-fs/snapraid-btrfs 0.12.0 9999: Script for using snapraid with btrfs snapshots
-sys-fs/swapspace 1.17 1.17-r1: Daemon to dynamically add swap space
+sys-fs/swapspace 1.17-r1: Daemon to dynamically add swap space
 sys-kernel/earlyoom 1.0 9999: Daemon to kill processes before the kernel OOM killer
 x11-misc/awf 1.4.0: A Widget Factory - theme preview application for GTK+2 and GTK+3
 x11-themes/cloak-theme 20170615 99999999: A black theme set for GTK+

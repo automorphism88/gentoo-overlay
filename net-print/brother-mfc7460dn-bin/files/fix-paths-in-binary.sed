@@ -11,7 +11,7 @@
 	bx
 }
 \:/etc/printcap.local:{
-	s:\(/etc/printcap\).local:\1:
+	s:/etc/printcap.local:/etc/printcap:
 	s/$/\x00\x00\x00\x00\x00\x00/
 	bx
 }

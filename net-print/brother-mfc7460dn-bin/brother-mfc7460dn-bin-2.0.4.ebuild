@@ -10,7 +10,7 @@ HOMEPAGE="http://support.brother.com"
 SRC_URI="http://download.brother.com/welcome/dlf006257/mfc7460dnlpr-2.1.0-1.i386.rpm
 	http://download.brother.com/welcome/dlf006259/cupswrapperMFC7460DN-2.0.4-2.i386.rpm"
 
-LICENSE="brother-eula GPL-2"
+LICENSE="brother-eula GPL-2 no-source-code"
 SLOT="0"
 KEYWORDS="amd64 x86"
 

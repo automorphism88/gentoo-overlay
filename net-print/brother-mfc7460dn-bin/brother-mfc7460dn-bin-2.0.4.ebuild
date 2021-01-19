@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 inherit rpm linux-info multilib
 
 DESCRIPTION="Brother MFC-7460DN printer driver"
@@ -16,9 +16,7 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="net-print/cups"
 
-# Unsure if necessary - copied from brother-overlay
 RESTRICT="strip"
-
 QA_PREBUILT="opt/brother/Printers/MFC7460DN/inf/brprintconflsr3
 	opt/brother/Printers/MFC7460DN/lpd/rawtobr3"
 S="${WORKDIR}/usr/local/Brother/Printer/MFC7460DN"

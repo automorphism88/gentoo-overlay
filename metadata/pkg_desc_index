@@ -22,7 +22,7 @@ media-fonts/mathematica-fonts 10.0: Mathematica's Fonts for MathML
 media-tv/emby-server 3.3.1.0: Emby is a server designed to stream media to a variety of devices
 net-misc/youtube-dlc 2020.11.10: Download videos from YouTube.com (and more sites...)
 net-print/brother-mfc7460dn-bin 2.0.4: Brother MFC-7460DN printer driver
-net-vpn/eddie 2.19.4 2.19.7 9999: AirVPN client
+net-vpn/eddie 2.19.7 9999: AirVPN client
 sys-apps/anything-sync-daemon 5.85 9999: Symlinks and syncs user specified dirs to RAM
 sys-block/nocache 1.0 9999: Minimize the effect a program has on the file system cache
 sys-boot/dracut-crypt-ssh 1.0.3 9999: Dracut module which allows remote unlocking of systems

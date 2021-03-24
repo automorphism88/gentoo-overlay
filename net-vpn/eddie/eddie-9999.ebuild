@@ -1,1 +1,1 @@
-eddie-2.19.7.ebuild
+eddie-2.20.0.ebuild

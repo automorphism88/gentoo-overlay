@@ -20,7 +20,6 @@ games-misc/cowsay-files 20170314: Collection of additional cow files for games-m
 games-misc/cowsay-philosoraptor 20130810: Philosoraptor cow for games-misc/cowsay
 games-misc/fortune-mod-philosoraptor 20130810: Philosoraptor quotes for games-misc/fortune-mod
 media-fonts/mathematica-fonts 10.0: Mathematica's Fonts for MathML
-media-tv/emby-server 3.3.1.0: Emby is a server designed to stream media to a variety of devices
 net-misc/youtube-dlc 2020.11.10: Download videos from YouTube.com (and more sites...)
 net-print/brother-mfc7460dn-bin 2.0.4: Brother MFC-7460DN printer driver
 net-vpn/eddie 2.19.7 2.20.0 9999: AirVPN client

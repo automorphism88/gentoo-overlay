@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby25"
+USE_RUBY="ruby25 ruby26 ruby27"
 inherit ruby-fakegem
 SLOT=0
 
